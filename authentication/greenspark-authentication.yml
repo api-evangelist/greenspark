@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/greenspark-openapi.yml
+docs: https://docs.getgreenspark.com/docs/mcp
+description: >-
+  Greenspark authenticates every API call with a single API key sent in the
+  x-api-key request header. Keys are created in the Greenspark dashboard and are
+  environment-bound: a sandbox key only works against the sandbox host and a
+  production key only against production. No OAuth2/OIDC is offered.
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  description: 'Greenspark API key. Match key to host: sandbox key -> sandbox host, production
+    key -> production host.'
+  sources:
+  - openapi/greenspark-openapi.yml
