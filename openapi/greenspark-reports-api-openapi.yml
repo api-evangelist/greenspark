@@ -1,0 +1,1614 @@
+openapi: 3.0.0
+info:
+  title: Greenspark Climate Account Reports API
+  version: 2.3.0
+  description: 'Greenspark Impact-as-a-Service Climate API: create carbon-offset, tree-planting, plastic-recovery and other climate impacts, fetch impact/project data, carbon estimations, reporting, email templates and embeddable impact widgets. Reconstructed by API Evangelist from the provider''s per-endpoint OpenAPI definitions published on docs.getgreenspark.com.'
+  contact:
+    name: Greenspark Support
+    email: support@getgreenspark.com
+    url: https://www.getgreenspark.com
+servers:
+- url: https://api.getgreenspark.com
+  description: Production
+- url: https://sandbox.getgreenspark.com
+  description: Sandbox
+- url: https://demo-api.getgreenspark.com
+  description: Demo
+security:
+- ApiKeyAuth: []
+tags:
+- name: Reports
+paths:
+  /v1/reports/{reportId}/{cursor}:
+    get:
+      deprecated: true
+      description: Deprecated — returns 404 at runtime. Use v2 fetchRawReportV2 (GET /v2/reports) with cursor pagination.
+      operationId: fetchAReportPage
+      parameters:
+      - name: reportId
+        required: true
+        in: path
+        description: The id of a previously generated report.
+        schema:
+          example: 671766d9-65d5-4e5f-aa75-00782d3b7f9e
+          type: string
+      - name: cursor
+        required: true
+        in: path
+        description: The cursor identifies the next page within a report.
+        schema:
+          example: BHI6BU2ZQMAQAAASA4EAAEEAQCAAKGQEBBSBAZBAWCXBK===
+          type: string
+      responses:
+        '200':
+          description: The report page has been successfully queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RawReport'
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch a Report Page
+      tags:
+      - Reports
+  /v1/reports/average-spend-per-impact:
+    get:
+      description: Fetch the Array of average spending on impacts per currency.
+      operationId: fetchAverageSpendPerImpact
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: number
+                      description: The spending on impacts.
+                example:
+                - value: $0.5
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Average Spend Per Impact
+      tags:
+      - Reports
+  /v1/reports/carbon-by-interval:
+    get:
+      deprecated: true
+      description: Fetch the Array of spending on impacts of carbon per month.
+      operationId: fetchCarbonByInterval
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: The type of the spending.
+                    amount:
+                      type: number
+                      description: The amount of the spending.
+                    month:
+                      type: string
+                      description: The month when your impacts were created.
+                example:
+                - type: carbon
+                  amount: 5
+                  month: 2022-09
+                - type: carbon
+                  amount: 3
+                  month: 2022-08
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Carbon By Interval
+      tags:
+      - Reports
+  /v1/reports/impact-amount-by-type-per-source:
+    get:
+      description: Fetch the Array of spending on impacts on a single type and source.
+      operationId: fetchImpactAmountByTypePerSourceReport
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    source:
+                      type: string
+                      description: The name of the source.
+                    type:
+                      type: string
+                      description: The type of the spending.
+                    amount:
+                      type: number
+                      description: The amount of the spending.
+                example:
+                - source: API
+                  type: carbon
+                  amount: 30
+                - source: Source1
+                  type: trees
+                  amount: 265
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Impact Amount By Type Per Source Report
+      tags:
+      - Reports
+  /v1/reports/impact-amount-by-type-per-trigger:
+    get:
+      description: Fetch the Array of spending on impacts on a single type and trigger.
+      operationId: fetchImpactAmountByTypePerTriggerReport
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    trigger:
+                      type: string
+                      description: The name of the trigger.
+                    type:
+                      type: string
+                      description: The type of the spending.
+                    amount:
+                      type: number
+                      description: The amount of the spending.
+                example:
+                - trigger: TRIGGER1
+                  type: carbon
+                  amount: 30
+                - trigger: TAILORED_IMPACT
+                  type: trees
+                  amount: 265
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Impact Amount By Type Per Trigger Report
+      tags:
+      - Reports
+  /v1/reports/impacts-by-interval:
+    get:
+      description: Fetch the Array of spending on impacts per month.
+      operationId: fetchImpactsByInterval
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: The type of the spending.
+                    amount:
+                      type: number
+                      description: The amount of the spending.
+                    projectId:
+                      type: string
+                      description: The project of the spending.
+                    month:
+                      type: string
+                      description: The month when your impacts were created.
+                example:
+                - type: trees
+                  amount: 10
+                  projectId: c6e4b1bf-843e-4859-bc85-c3b764f507e6
+                  month: 2022-09
+                - type: water
+                  amount: 29
+                  projectId: 6b0add6d-246f-4a22-a072-3469eb65b225
+                  month: 2022-09
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Impacts By Interval
+      tags:
+      - Reports
+  /v1/reports/plastic-by-interval:
+    get:
+      deprecated: true
+      description: Fetch the Array of spending on impacts of plastic per month.
+      operationId: fetchPlasticByInterval
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: The type of the spending.
+                    amount:
+                      type: number
+                      description: The amount of the spending.
+                    month:
+                      type: string
+                      description: The month when your impacts were created.
+                example:
+                - type: plastic
+                  amount: 1
+                  month: 2022-09
+                - type: plastic
+                  amount: 2
+                  month: 2022-08
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Plastic By Interval
+      tags:
+      - Reports
+  /v1/reports:
+    get:
+      deprecated: true
+      description: Deprecated — returns 404 at runtime. Use v2 fetchRawReportV2 (GET /v2/reports).
+      operationId: fetchRawReport
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      - name: impactType
+        required: false
+        in: query
+        description: Type can be trees, plastic or carbon. As a result only the impacts containing the provided impact type will be returned. If they contain other impact types as well, those won't be filtered out.
+        schema:
+          type: string
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RawReport'
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Raw Report
+      tags:
+      - Reports
+  /v2/reports:
+    get:
+      description: Canonical raw impact export. Paginate with the cursor query parameter when the response includes a non-null cursor. Row metadata may contain merchant-defined key/value pairs.
+      operationId: fetchRawReportV2
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      - name: impactType
+        required: false
+        in: query
+        description: Type can be trees, plastic or carbon. As a result only the impacts containing the provided impact type will be returned. If they contain other impact types as well, those won't be filtered out.
+        schema:
+          type: string
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+      - name: cursor
+        required: false
+        in: query
+        description: The cursor identifies the next page within a report.
+        schema:
+          example: BHI6BU2ZQMAQAAASA4EAAEEAQCAAKGQEBBSBAZBAWCXBK===
+          type: string
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RawReportV2'
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Raw Report v2
+      tags:
+      - Reports
+  /v1/reports/total-impact-by-sources:
+    get:
+      description: Fetch the Array of impacts amount per source.
+      operationId: fetchTotalImpactBySources
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    source:
+                      type: string
+                      description: The name of the source.
+                    total:
+                      type: number
+                      description: The amount of impacts.
+                example:
+                - source: Source1
+                  total: 1272
+                - source: Api
+                  total: 305
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Total Impact By Sources
+      tags:
+      - Reports
+  /v1/reports/total-impact-by-triggers:
+    get:
+      description: Fetch the Array of impacts amount per trigger.
+      operationId: fetchTotalImpactByTriggers
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    trigger:
+                      type: string
+                      description: The name of the trigger.
+                    total:
+                      type: number
+                      description: The amount of impacts.
+                example:
+                - trigger: Tailored Impact
+                  total: 305
+                - trigger: Trigger1
+                  total: 270
+                - trigger: Trigger1
+                  total: 2
+                - trigger: Trigger1
+                  total: 1
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Total Impact By Triggers
+      tags:
+      - Reports
+  /v1/reports/total-impact-by-type:
+    get:
+      description: Fetch the Array of spending on impacts on a single type.
+      operationId: fetchTotalImpactByTypeReport
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: The type of the spending.
+                    amount:
+                      type: number
+                      description: The amount of the spending.
+                example:
+                - type: carbon
+                  amount: 30
+                - type: trees
+                  amount: 265
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Total Impact By Type Report
+      tags:
+      - Reports
+  /v1/reports/total-impacts-count:
+    get:
+      description: Fetch the total number of impacts.
+      operationId: fetchTotalImpactsCount
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: number
+                    description: The total number of impacts.
+                example:
+                - value: 116
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Total Impacts Count
+      tags:
+      - Reports
+  /v1/reports/total-spend-on-impacts:
+    get:
+      description: Fetch the Array of total spending on impacts per currency.
+      operationId: fetchTotalSpendOnImpacts
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: number
+                      description: The spending on impacts.
+                example:
+                - value: $58.27
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Total Spend On Impacts
+      tags:
+      - Reports
+  /v1/reports/trees-by-interval:
+    get:
+      deprecated: true
+      description: Fetch the Array of spending on impacts of trees per month.
+      operationId: fetchTreesByInterval
+      parameters:
+      - name: sourceId
+        required: false
+        in: query
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: false
+        in: query
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      - name: startDate
+        required: false
+        in: query
+        description: The beginning of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: endDate
+        required: false
+        in: query
+        description: The end of the date filter interval.
+        schema:
+          example: '2022-09-01'
+          type: string
+      - name: metadata
+        required: false
+        in: query
+        description: You can filter the data by the provided key-value pairs as Metadata.
+        schema:
+          example: key1,value1;key2,value2
+          type: string
+      - name: sourceType
+        required: false
+        in: query
+        description: The source type of the impact, one of "one-time", "subscription".
+        schema:
+          example: one-time
+          type: string
+          enum:
+          - one-time
+          - subscription
+      responses:
+        '200':
+          description: The report has been successfully queried.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: The type of the spending.
+                    amount:
+                      type: number
+                      description: The amount of the spending.
+                    month:
+                      type: string
+                      description: The month when your impacts were created.
+                example:
+                - type: trees
+                  amount: 10
+                  month: 2022-09
+                - type: trees
+                  amount: 29
+                  month: 2022-08
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch Trees By Interval
+      tags:
+      - Reports
+components:
+  schemas:
+    ImpactPurchaseWithPrice:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+          description: Type of the impact.
+          example: trees
+        projectId:
+          type: string
+          description: The id of the project.
+          example: 34d41293-6b84-40e7-9744-122e301590a2
+        amount:
+          type: number
+          description: Amount means number of trees, number of plastic bottles, kg of CO2.
+          example: 5
+        price:
+          type: number
+          example: 0.55
+          description: Amount of money spent on the impact purchase.
+        purchaseIds:
+          example:
+          - id1
+          - id2
+          description: The ids of the purchases what are made to for the impact.
+          type: array
+          items:
+            type: string
+      required:
+      - type
+      - amount
+      - price
+      - purchaseIds
+    ImpactPurchase:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+          description: Type of the impact.
+          example: trees
+        projectId:
+          type: string
+          description: The id of the project.
+          example: 34d41293-6b84-40e7-9744-122e301590a2
+        amount:
+          type: number
+          description: Amount means number of trees, number of plastic bottles, kg of CO2.
+          example: 5
+      required:
+      - type
+      - amount
+    RawReportRow:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          example: '2022-09-09 09:12:54.162+00'
+          description: Creation date of the impact.
+        totalPrice:
+          type: number
+          example: 1
+          description: Total amount of money spent on the impact.
+        currency:
+          type: string
+          example: dollar
+          description: The currency of the spent money on the impact.
+        sourceName:
+          type: string
+          example: source1
+          description: The name of the source associated with the impact.
+        sourceId:
+          type: string
+          example: 631b035dcd13c4ad66c6d496
+          description: The id of the source associated with the impact.
+        triggerName:
+          type: string
+          example: trigger1
+          description: The name of the trigger associated with the impact.
+        triggerId:
+          type: string
+          example: 631b035dcd13c4ad66c6d497
+          description: The id of the trigger associated with the impact.
+        impactPurchases:
+          description: The impactPurchases array contains your spending on a specific purpose.
+          type: array
+          items:
+            $ref: '#/components/schemas/ImpactPurchase'
+        metadata:
+          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your impact.
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+      required:
+      - createdAt
+      - totalPrice
+      - currency
+      - sourceName
+      - sourceId
+      - triggerName
+      - triggerId
+      - impactPurchases
+      - metadata
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Minimum 1, maximum 40 characters.
+          example: customerId
+        value:
+          type: string
+          description: Minimum 1, maximum 100 characters.
+          example: 743ce227-22ef-4c6e-9c06-725f97b99690
+      required:
+      - key
+      - value
+    RawReport:
+      type: object
+      properties:
+        rows:
+          example:
+          - createdAt: '2022-09-09 09:12:54.162+00'
+            totalPrice: 1
+            currency: dollar
+            sourceName: source1
+            sourceId: 631b035dcd13c4ad66c6d496
+            triggerName: trigger1
+            triggerId: 631b035dcd13c4ad66c6d497
+            impactPurchases:
+            - type: trees
+              amount: 5
+              price: 1
+            - type: carbon
+              amount: 5
+              price: 0.05
+            metadata:
+            - key: key1
+              value: value1
+            - key: key2
+              value: value2
+          - createdAt: '2022-09-09 09:05:07.863+00'
+            totalPrice: 0.05
+            currency: dollar
+            sourceName: API
+            sourceId: null
+            triggerName: TAILORED_IMPACT
+            triggerId: null
+            impactPurchases:
+            - type: carbon
+              amount: 5
+              price: 0.05
+            metadata:
+            - key: key1
+              value: value1
+            - key: key2
+              value: value2
+          type: array
+          items:
+            $ref: '#/components/schemas/RawReportRow'
+        totalRows:
+          type: number
+          example: 42
+          description: Number of rows in the report.
+        maxResults:
+          type: number
+          example: 100
+          description: Maximum number of rows per page.
+        cursor:
+          type: string
+          example: BG6JLNBVQMAQAAASA4EAAEEAQCAAKGQEBBSBAZBAWCXBK===
+          description: If the result set spread through multiple pages, you can fetch the next page with it. If null, it indicates that no pagination needed.
+        reportId:
+          type: string
+          example: 1aae6329-1417-48c1-96a5-a6d21c0f1a57
+          description: The id of your generated report. If the result set spread through multiple pages, you can refer to your report with it while pagination.
+      required:
+      - rows
+      - totalRows
+      - maxResults
+      - cursor
+      - reportId
+    RawReportRowV2:
+      type: object
+      properties:
+        id:
+          type: string
+          example: ecebda64-1da0-4894-8658-f79059eaa00d
+          description: ID of the impact.
+        createdAt:
+          type: string
+          example: '2022-09-09 09:12:54.162+00'
+          description: Creation date of the impact.
+        totalPrice:
+          type: number
+          example: 22.76
+          description: Total amount of money spent on the impact.
+        currency:
+          type: string
+          example: dollar
+          description: The currency of the spent money on the impact.
+        sourceName:
+          type: string
+          example: source1
+          description: The name of the source associated with the impact.
+        sourceId:
+          type: string
+          example: 631b035dcd13c4ad66c6d496
+          description: The id of the source associated with the impact.
+        triggerName:
+          type: string
+          example: trigger1
+          description: The name of the trigger associated with the impact.
+        triggerId:
+          type: string
+          example: 631b035dcd13c4ad66c6d497
+          description: The id of the trigger associated with the impact.
+        impactPurchases:
+          description: The impactPurchases array contains your spending on a specific purpose.
+          type: array
+          items:
+            $ref: '#/components/schemas/ImpactPurchaseWithPrice'
+        metadata:
+          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your impact.
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+        status:
+          type: object
+          description: The payment status of the impact.
+      required:
+      - id
+      - createdAt
+      - totalPrice
+      - currency
+      - sourceName
+      - sourceId
+      - triggerName
+      - triggerId
+      - impactPurchases
+      - metadata
+      - status
+    RawReportV2:
+      type: object
+      properties:
+        rows:
+          example:
+          - id: 89842ca8-476d-4cea-9f72-c5341c6220a7
+            createdAt: '2022-09-09 09:12:54.162+00'
+            totalPrice: 1
+            currency: dollar
+            sourceName: source1
+            sourceId: 631b035dcd13c4ad66c6d496
+            triggerName: trigger1
+            triggerId: 631b035dcd13c4ad66c6d497
+            impactPurchases:
+            - type: trees
+              amount: 5
+              price: 1
+            - type: carbon
+              amount: 5
+              price: 0.05
+            metadata:
+            - key: key1
+              value: value1
+            - key: key2
+              value: value2
+          - id: 28e34977-6934-4db8-b0d1-3dbe2b9243ec
+            createdAt: '2022-09-09 09:05:07.863+00'
+            totalPrice: 0.05
+            currency: dollar
+            sourceName: API
+            sourceId: null
+            triggerName: TAILORED_IMPACT
+            triggerId: null
+            impactPurchases:
+            - type: carbon
+              amount: 5
+              price: 0.05
+            metadata:
+            - key: key1
+              value: value1
+            - key: key2
+              value: value2
+          type: array
+          items:
+            $ref: '#/components/schemas/RawReportRowV2'
+        maxResults:
+          type: number
+          example: 100
+          description: Maximum number of rows per page.
+        cursor:
+          type: string
+          example: BG6JLNBVQMAQAAASA4EAAEEAQCAAKGQEBBSBAZBAWCXBK===
+          description: If the result set spread through multiple pages, you can fetch the next page with it. If null, it indicates that no pagination needed.
+      required:
+      - rows
+      - maxResults
+      - cursor
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: 'Greenspark API key. Match key to host: sandbox key -> sandbox host, production key -> production host.'

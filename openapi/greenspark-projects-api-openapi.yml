@@ -1,0 +1,596 @@
+openapi: 3.0.0
+info:
+  title: Greenspark Climate Account Projects API
+  version: 2.3.0
+  description: 'Greenspark Impact-as-a-Service Climate API: create carbon-offset, tree-planting, plastic-recovery and other climate impacts, fetch impact/project data, carbon estimations, reporting, email templates and embeddable impact widgets. Reconstructed by API Evangelist from the provider''s per-endpoint OpenAPI definitions published on docs.getgreenspark.com.'
+  contact:
+    name: Greenspark Support
+    email: support@getgreenspark.com
+    url: https://www.getgreenspark.com
+servers:
+- url: https://api.getgreenspark.com
+  description: Production
+- url: https://sandbox.getgreenspark.com
+  description: Sandbox
+- url: https://demo-api.getgreenspark.com
+  description: Demo
+security:
+- ApiKeyAuth: []
+tags:
+- name: Projects
+paths:
+  /v1/projects/{projectId}:
+    get:
+      description: Fetch detailed project information. Accepts all standard API key types. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles.
+      operationId: getProject
+      parameters:
+      - name: projectId
+        required: true
+        in: path
+        description: The id of the project.
+        schema:
+          example: 34d41293-6b84-40e7-9744-122e301590a2
+          type: string
+      responses:
+        '200':
+          description: The project is successfully fetched.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectDetails'
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch project by id
+      tags:
+      - Projects
+  /v1/project-categories:
+    get:
+      description: List impact project categories. Accepts all standard API key types. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles.
+      operationId: getProjectCategories
+      parameters:
+      - name: type
+        required: false
+        in: query
+        description: The type of the impact which can by purchased by the project category.
+        schema:
+          example: carbon
+          type: string
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+      responses:
+        '200':
+          description: The project categories are successfully fetched.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProjectCategory'
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch project categories
+      tags:
+      - Projects
+  /v1/projects:
+    get:
+      description: List impact projects available to the account. Accepts all standard API key types. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles.
+      operationId: getProjects
+      parameters:
+      - name: country
+        required: false
+        in: query
+        description: Defines a country where the project is located.
+        schema:
+          example: India
+          type: string
+      - name: projectCategoryId
+        required: false
+        in: query
+        description: Defines the category that the project falls under. It links the project to its relevant category.
+        schema:
+          example: 256d3c28-e9c3-4a47-a5a8-63b7634ac5bd
+          type: string
+      - name: type
+        required: false
+        in: query
+        description: The type of the impact which can by purchased by the project category.
+        schema:
+          example: carbon
+          type: string
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+      - name: vintage
+        required: false
+        in: query
+        description: The year when the project started.
+        schema:
+          example: 2020
+          type: number
+      - name: currency
+        required: false
+        in: query
+        description: The currency in which the project prices are returned. Returns in the account's currency for an authenticated call, otherwise in USD if it's not provided.
+        schema:
+          example: USD
+          type: string
+      - name: lng
+        required: false
+        in: query
+        description: The locale what the project is returned in.
+        schema:
+          example: en
+          type: string
+      - name: plan
+        required: false
+        in: query
+        description: The subscription plan to fetch the project prices for.
+        schema:
+          example: growthBusiness
+          type: string
+          enum:
+          - free
+          - ecommerce
+          - ECOMMERCE
+          - freeBusiness
+          - starterBusiness
+          - growthBusiness
+          - premiumBusiness
+          - enterpriseBusiness
+          - starterBusinessYearly
+          - growthBusinessYearly
+          - premiumBusinessYearly
+          - personal
+          - plasticHeroPersonal
+          - earthHero
+          - positiveFamilyAdult
+          - positiveFamilyChild
+          - positiveFamilyPet
+          - earthPositiveFamilyAdult
+          - earthPositiveFamilyChild
+          - earthPositiveFamilyPet
+      - name: statuses
+        required: false
+        in: query
+        description: Comma separated list of the project statuses. Default to approved.
+        schema:
+          example: active
+          type: string
+          enum:
+          - approved
+          - deprecated
+      responses:
+        '200':
+          description: The projects are successfully fetched.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+        '422':
+          description: 422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).
+      security:
+      - access-key: []
+      summary: Fetch projects
+      tags:
+      - Projects
+components:
+  schemas:
+    ProjectCategory:
+      type: object
+      properties:
+        projectCategoryId:
+          type: string
+          description: The unique identifier of the project.
+          example: 256d3c28-e9c3-4a47-a5a8-63b7634ac5bd
+        name:
+          type: string
+          description: The name of the project category.
+          example: Energy Efficiency
+        description:
+          type: string
+          description: Detailed explanation of what the project category is about. It provides more context for users who want to understand the category.
+          example: Energy Efficiency project category description.
+        images:
+          description: Images associated with the project category. They help users visualise the impact of the project category.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectCategoryImage'
+        type:
+          type: string
+          description: Defines the type of environmental impact associated with projects in this category.
+          example: carbon
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+      required:
+      - projectCategoryId
+      - name
+      - description
+      - images
+      - type
+    ProjectCategoryImage:
+      type: object
+      properties:
+        imageUrl:
+          type: string
+          description: The url of the image.
+          example: example.com/image.png
+        style:
+          type: string
+          description: The style of the image.
+          example: flat
+          enum:
+          - flat
+          - simplified
+          - 3d
+      required:
+      - imageUrl
+      - style
+    ProjectMetadata:
+      type: object
+      properties:
+        description:
+          type: string
+          description: The description of the metadata.
+        key:
+          type: string
+          description: The key of the metadata.
+        type:
+          type: string
+          description: The type of the metadata. It can be either a primitive type, an array or an object or even a custom type.
+        value:
+          type: object
+          description: The value of the metadata with the type defined in the type field.
+      required:
+      - description
+      - key
+      - type
+      - value
+    Project:
+      type: object
+      properties:
+        projectId:
+          type: string
+          description: The unique identifier of the project.
+          example: ca724c03-6e8b-4c17-800d-80177ede64c7
+        projectCategoryId:
+          type: string
+          description: Defines the category that the project falls under. It links the project to its relevant category.
+          example: 256d3c28-e9c3-4a47-a5a8-63b7634ac5bd
+        name:
+          type: string
+          description: The name of the project.
+          example: Hydropower Project
+        description:
+          type: string
+          description: Detailed explanation of what the project is about. It provides more context for users who want to understand the project.
+        type:
+          type: string
+          description: Refers to the type of impact that the project is expected to have.
+          example: carbon
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+        unit:
+          type: number
+          description: 'The purchase unit of the given project. Example: purchasing 20 bees by purchasing one amount of the project.'
+          example: 20
+        registryLink:
+          type: string
+          description: This is a link to a webpage where users can find more detailed information about the project.
+          example: www.example.com
+        link:
+          type: string
+          description: This is a link to the project specific Greenspark page.
+          example: https://www.getgreenspark.com/projects/the-plastic-bank-turning-plastic-pollution-into-empowering-income
+        imageUrl:
+          type: string
+          description: Link to an image representing the project.
+          example: www.example.com/image.png
+        thumbnailImageUrl:
+          type: string
+          description: Link to a thumbnail image representing the project.
+          example: www.example.com/image_thumbnail.png
+        countries:
+          type: string
+          description: List of countries where the project is located.
+          example:
+          - China
+          - India
+          - Brazil
+        vintage:
+          type: number
+          description: The year when the project started.
+          example: 2020
+        price:
+          type: number
+          description: Defines how much it costs to purchase one unit of impact in the account's currency.
+          example: 0.01
+        availability:
+          type: number
+          description: Defines how many units of impact are still available for purchase through the project. If there's no limit, this would be null. For a carbon offsetting project, this would be the number of tonnes of carbon that can still be offset through the project.
+          example: 1000
+        default:
+          type: boolean
+          description: Defines the default project for a project category. When an impact purchase is made, the default project's impact will be purchased if the project is not specified.
+          example: true
+        status:
+          type: string
+          description: Defines the project status.
+          example: approved
+          enum:
+          - approved
+          - deprecated
+        statusInitiatedAt:
+          type: string
+          description: The date when the project get into the current status.
+          example: '2024-01-01'
+        projectPartnerLogo:
+          type: string
+          description: Defines the logo of the project partner.
+          example: https://cdn.getgreenspark.com/project-images/partner-logos/example_logo.jpg
+        geoJSON:
+          description: The geometry of the project. http://datatracker.ietf.org/doc/html/rfc7946#section-3.3
+          example:
+            type: FeatureCollection
+            features:
+            - type: Feature
+              geometry:
+                type: Point
+                coordinates:
+                - -122.63701428179544
+                - 44.86975845546196
+              properties: {}
+          allOf:
+          - $ref: '#/components/schemas/FeatureCollectionDto'
+      required:
+      - projectId
+      - projectCategoryId
+      - name
+      - description
+      - type
+      - unit
+      - link
+      - imageUrl
+      - thumbnailImageUrl
+      - countries
+      - vintage
+      - price
+      - status
+      - statusInitiatedAt
+    PointDto:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Specifies the type of GeoJSON object.
+          example: Feature
+        coordinates:
+          description: Coordinates of Point geometry object. https://tools.ietf.org/html/rfc7946#section-3.1.2
+          example: Feature
+          type: array
+          items:
+            type: string
+      required:
+      - type
+      - coordinates
+    ProjectDetails:
+      type: object
+      properties:
+        projectId:
+          type: string
+          description: The unique identifier of the project.
+          example: ca724c03-6e8b-4c17-800d-80177ede64c7
+        projectCategoryId:
+          type: string
+          description: Defines the category that the project falls under. It links the project to its relevant category.
+          example: 256d3c28-e9c3-4a47-a5a8-63b7634ac5bd
+        name:
+          type: string
+          description: The name of the project.
+          example: Hydropower Project
+        description:
+          type: string
+          description: Detailed explanation of what the project is about. It provides more context for users who want to understand the project.
+        type:
+          type: string
+          description: Refers to the type of impact that the project is expected to have.
+          example: carbon
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+        unit:
+          type: number
+          description: 'The purchase unit of the given project. Example: purchasing 20 bees by purchasing one amount of the project.'
+          example: 20
+        registryLink:
+          type: string
+          description: This is a link to a webpage where users can find more detailed information about the project.
+          example: www.example.com
+        link:
+          type: string
+          description: This is a link to the project specific Greenspark page.
+          example: https://www.getgreenspark.com/projects/the-plastic-bank-turning-plastic-pollution-into-empowering-income
+        imageUrl:
+          type: string
+          description: Link to an image representing the project.
+          example: www.example.com/image.png
+        thumbnailImageUrl:
+          type: string
+          description: Link to a thumbnail image representing the project.
+          example: www.example.com/image_thumbnail.png
+        countries:
+          type: string
+          description: List of countries where the project is located.
+          example:
+          - China
+          - India
+          - Brazil
+        vintage:
+          type: number
+          description: The year when the project started.
+          example: 2020
+        price:
+          type: number
+          description: Defines how much it costs to purchase one unit of impact in the account's currency.
+          example: 0.01
+        availability:
+          type: number
+          description: Defines how many units of impact are still available for purchase through the project. If there's no limit, this would be null. For a carbon offsetting project, this would be the number of tonnes of carbon that can still be offset through the project.
+          example: 1000
+        default:
+          type: boolean
+          description: Defines the default project for a project category. When an impact purchase is made, the default project's impact will be purchased if the project is not specified.
+          example: true
+        status:
+          type: string
+          description: Defines the project status.
+          example: approved
+          enum:
+          - approved
+          - deprecated
+        statusInitiatedAt:
+          type: string
+          description: The date when the project get into the current status.
+          example: '2024-01-01'
+        projectPartnerLogo:
+          type: string
+          description: Defines the logo of the project partner.
+          example: https://cdn.getgreenspark.com/project-images/partner-logos/example_logo.jpg
+        geoJSON:
+          description: The geometry of the project. http://datatracker.ietf.org/doc/html/rfc7946#section-3.3
+          example:
+            type: FeatureCollection
+            features:
+            - type: Feature
+              geometry:
+                type: Point
+                coordinates:
+                - -122.63701428179544
+                - 44.86975845546196
+              properties: {}
+          allOf:
+          - $ref: '#/components/schemas/FeatureCollectionDto'
+        metadata:
+          description: Defines project specific additional information.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectMetadata'
+      required:
+      - projectId
+      - projectCategoryId
+      - name
+      - description
+      - type
+      - unit
+      - link
+      - imageUrl
+      - thumbnailImageUrl
+      - countries
+      - vintage
+      - price
+      - status
+      - statusInitiatedAt
+    FeatureCollectionDto:
+      type: object
+      properties:
+        features:
+          description: A collection of feature objects. https://tools.ietf.org/html/rfc7946#section-3.3
+          example:
+          - type: Feature
+            geometry:
+              type: Point
+              coordinates:
+              - -122.63701428179544
+              - 44.86975845546196
+            properties: {}
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureDto'
+        type:
+          type: string
+          description: Specifies the type of GeoJSON object.
+          example: FeatureCollection
+      required:
+      - features
+      - type
+    FeatureDto:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Specifies the type of GeoJSON object.
+          example: Feature
+        geometry:
+          description: Geometry object. https://tools.ietf.org/html/rfc7946#section-3
+          example:
+            type: Point
+            coordinates:
+            - -122.63701428179544
+            - 44.86975845546196
+          allOf:
+          - $ref: '#/components/schemas/PointDto'
+        properties:
+          type: object
+          description: Properties associated with this feature.
+      required:
+      - type
+      - geometry
+      - properties
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: 'Greenspark API key. Match key to host: sandbox key -> sandbox host, production key -> production host.'

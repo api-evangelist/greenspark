@@ -1,0 +1,1161 @@
+openapi: 3.0.0
+info:
+  title: Greenspark Climate Account Widgets API
+  version: 2.3.0
+  description: 'Greenspark Impact-as-a-Service Climate API: create carbon-offset, tree-planting, plastic-recovery and other climate impacts, fetch impact/project data, carbon estimations, reporting, email templates and embeddable impact widgets. Reconstructed by API Evangelist from the provider''s per-endpoint OpenAPI definitions published on docs.getgreenspark.com.'
+  contact:
+    name: Greenspark Support
+    email: support@getgreenspark.com
+    url: https://www.getgreenspark.com
+servers:
+- url: https://api.getgreenspark.com
+  description: Production
+- url: https://sandbox.getgreenspark.com
+  description: Sandbox
+- url: https://demo-api.getgreenspark.com
+  description: Demo
+security:
+- ApiKeyAuth: []
+tags:
+- name: Widgets
+paths:
+  /v2/widgets/by-percentage-of-revenue-widget:
+    post:
+      summary: By percentage of revenue widget v2
+      description: Fetching a widget that describes a given store’s by percentage of revenue impact settings.
+      operationId: by-percentage-of-revenue-widget-v2
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - integrationSlug
+              - color
+              properties:
+                integrationSlug:
+                  type: string
+                  description: 'The name of your store as it is saved in Greenspark. For example: example.myshopify.com'
+                  default: YOUR-SHOP-NAME
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black" | "grey" | "transparent"'
+                  default: green
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                  default: false
+                style:
+                  type: string
+                  description: 'Select if you want the default style (displayed above) or if you want a simplified version. Current options include: "default" | "simplified"'
+                  default: default
+                popupTheme:
+                  type: string
+                  description: Selects the color theme for the popup. Only applies if `withPopup` is set to `true`
+                  default: light
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+  /v2/widgets/by-percentage-widget:
+    post:
+      summary: By percentage widget v2
+      description: Fetching a widget that describes a given store’s by percentage impact settings.
+      operationId: by-percentage-widget-v2
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - integrationSlug
+              - color
+              properties:
+                integrationSlug:
+                  type: string
+                  description: 'The name of your store as it is saved in Greenspark. For example: example.myshopify.com'
+                  default: YOUR-SHOP-NAME
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black" | "grey" | "transparent"'
+                  default: green
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                  default: false
+                style:
+                  type: string
+                  description: 'Select if you want the default style (displayed above) or if you want a simplified version. Current options include: "default" | "simplified"'
+                  default: default
+                popupTheme:
+                  type: string
+                  description: Selects the color theme for the popup. Only applies if `withPopup` is set to `true`
+                  default: light
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+  /widgets/by-percentage-widget:
+    post:
+      summary: By percentage widget
+      description: Fetching a widget that describes a given store’s by percentage impact settings.
+      operationId: by-percentage-widget
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - shopUniqueName
+              - color
+              properties:
+                shopUniqueName:
+                  type: string
+                  description: 'The name of your store as it is saved in Greenspark. For example: example.myshopify.com'
+                  default: YOUR-SHOP-NAME
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black"'
+                  default: green
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                  default: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+  /v2/widgets/cart-widget:
+    post:
+      summary: Cart widget v2
+      description: Fetching a widget that describes the impact made by the products placed in the cart.
+      operationId: cart-widget-v2
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - integrationSlug
+              - color
+              - order
+              properties:
+                integrationSlug:
+                  type: string
+                  description: 'The name of your store as it is saved in Greenspark. For example: example.myshopify.com'
+                  default: YOUR-SHOP-NAME
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black" | "grey" | "transparent"'
+                  default: green
+                order:
+                  type: object
+                  description: Specify the order data to show the correct impact totals in the widget.
+                  properties:
+                    currency:
+                      type: string
+                      description: 'This is the order''s currency. For example: "USD" | "GBP" | "EUR" | "AUD" | "NZD"'
+                      default: USD
+                    totalPrice:
+                      type: integer
+                      description: Specify the total price of the order as a number in cents.
+                      default: 100
+                      format: int32
+                    lineItems:
+                      type: array
+                      description: These are all of the products that a customer has in their cart.
+                      items:
+                        properties:
+                          productId:
+                            type: string
+                            description: Specify the product id of the item in the cart.
+                            default: PRODUCT ID OF CART ITEM
+                          quantity:
+                            type: integer
+                            description: Specify the quantity of the product in the cart.
+                            default: 1
+                            format: int32
+                        type: object
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                  default: false
+                style:
+                  type: string
+                  description: 'Select if you want the default style (displayed above) or if you want a simplified version. Current options include: "default" | "simplified"'
+                  default: default
+                popupTheme:
+                  type: string
+                  description: Selects the color theme for the popup. Only applies if `withPopup` is set to `true`
+                  default: light
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+  /widgets/cart-widget:
+    post:
+      summary: Cart widget
+      description: Fetching a widget that describes the impact made by the products placed in the cart.
+      operationId: cart-widget
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - shopUniqueName
+              - color
+              - order
+              properties:
+                shopUniqueName:
+                  type: string
+                  description: 'The name of your store as it is saved in Greenspark. For example: example.myshopify.com'
+                  default: YOUR-SHOP-NAME
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black"'
+                  default: green
+                order:
+                  type: object
+                  description: Specify the order data to show the correct impact totals in the widget.
+                  properties:
+                    currency:
+                      type: string
+                      description: 'This is the order''s currency. For example: "USD" | "GBP" | "EUR" | "AUD" | "NZD"'
+                      default: USD
+                    totalPrice:
+                      type: integer
+                      description: Specify the total price of the order as a number in cents.
+                      default: 100
+                      format: int32
+                    lineItems:
+                      type: array
+                      description: These are all of the products that a customer has in their cart.
+                      items:
+                        properties:
+                          productId:
+                            type: string
+                            description: Specify the product id of the item in the cart.
+                            default: PRODUCT ID OF CART ITEM
+                          quantity:
+                            type: integer
+                            description: Specify the quantity of the product in the cart.
+                            default: 1
+                            format: int32
+                        type: object
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                  default: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url 'https://api.getgreenspark.com/widgets/cart-widget?lng=en' \\\n     --header 'accept: text/html' \\\n     --header 'content-type: application/json' \\\n     --header 'x-api-key: \"YOUR-API-KEY\"' \\\n     --data '\n{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"order\": {\n    \"currency\": \"USD\",\n    \"totalPrice\": 100,\n    \"lineItems\": [\n\t\t\t{\n      \t\"productId\": \"YOUR-PRODUCT-ID\",\n        \"quantity\": 1\n\t\t\t}\n\t\t]\n  },\n  \"withPopup\": false\n}\n'"
+        samples-languages:
+        - curl
+      tags:
+      - Widgets
+  /v2/widgets/full-width-banner:
+    post:
+      summary: Full width banner v2
+      description: Fetching a banner which displays the user's top stats
+      operationId: full-width-banner-v2
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - options
+              properties:
+                options:
+                  type: array
+                  description: 'Add the following values to display the corresponding data on the banner : "monthsEarthPositive" | "trees" | "plastic" | "carbon" | "kelp" | "straws" | "miles" | "footballPitches"'
+                  items:
+                    type: string
+                imageUrl:
+                  type: string
+                  description: Customize the banner's background image with an URL
+                title:
+                  type: string
+                  description: If a title exists, it will be displayed at the top of the banner
+                description:
+                  type: string
+                  description: If a description exists, it will be displayed at the top of the banner or, if a title also exists, it will be displayed below the title
+                callToActionUrl:
+                  type: string
+                  description: Adds a button with the "Learn more" call to action, that redirects the user to the specified URL
+                textColor:
+                  type: string
+                  description: Changes the color of every text and icon content in the banner. Must be an hexadecimal color.
+                buttonBackgroundColor:
+                  type: string
+                  description: If `callToActionUrl` is no empty, it sets the background color of the call to action button. Must be an hexadecimal color.
+                buttonTextColor:
+                  type: string
+                  description: If `callToActionUrl` is no empty, it sets the background color of the call to action button. Must be an hexadecimal color.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: text
+          code: "{\n\toptions: ['monthsEarthPositive', 'trees', 'carbon', 'plastic']\n}"
+        samples-languages:
+        - text
+      tags:
+      - Widgets
+  /widgets/full-width-banner:
+    post:
+      summary: Full width banner
+      description: Fetching a banner which displays the user's top stats
+      operationId: full-width-banner
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - options
+              properties:
+                options:
+                  type: array
+                  description: 'Add the following values to display the corresponding data on the banner : "monthsEarthPositive" | "trees" | "plastic" | "carbon" | "straws" | "miles" | "footballPitches"'
+                  items:
+                    type: string
+                imageUrl:
+                  type: string
+                  description: Customize the banner's background image with an URL
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: text
+          code: "{\n\toptions: ['monthsEarthPositive', 'trees', 'carbon', 'plastic']\n}"
+        samples-languages:
+        - text
+      tags:
+      - Widgets
+  /v2/widgets/per-order-widget:
+    post:
+      summary: Per order widget v2
+      description: Fetching a widget that describes a given store’s per order impact settings.
+      operationId: per-order-widget-v2
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - integrationSlug
+              - color
+              properties:
+                integrationSlug:
+                  type: string
+                  description: 'The name of your store as it is saved in Greenspark. For example: example.myshopify.com'
+                  default: YOUR-SHOP-NAME
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black" | "grey" | "transparent"'
+                  default: green
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                  default: false
+                style:
+                  type: string
+                  description: 'Select if you want the default style (displayed above) or if you want a simplified version. Current options include: "default" | "simplified"'
+                  default: default
+                popupTheme:
+                  type: string
+                  description: Selects the color theme for the popup. Only applies if `withPopup` is set to `true`
+                  default: light
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+  /widgets/per-order-widget:
+    post:
+      summary: Per order widget
+      description: Fetching a widget that describes a given store’s per order impact settings.
+      operationId: per-order-widget
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - shopUniqueName
+              - color
+              properties:
+                shopUniqueName:
+                  type: string
+                  description: 'The name of your store as it is saved in Greenspark. For example: example.myshopify.com'
+                  default: YOUR-SHOP-NAME
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black"'
+                  default: green
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                  default: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+  /v2/widgets/per-product-widget:
+    post:
+      summary: Per product widget v2
+      description: Fetching a widget that describes a given store’s impact settings for a selected product.
+      operationId: per-product-widget-v2
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - integrationSlug
+              - color
+              - productId
+              properties:
+                integrationSlug:
+                  type: string
+                  description: 'The name of your store as it is saved in Greenspark. For example: example.myshopify.com'
+                  default: YOUR-SHOP-NAME
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black" | "grey" | "transparent"'
+                  default: green
+                productId:
+                  type: string
+                  description: Specify the ID of your product.
+                  default: PRODUCT ID
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                  default: false
+                style:
+                  type: string
+                  description: 'Select if you want the default style (displayed above) or if you want a simplified version. Current options include: "default" | "simplified"'
+                  default: default
+                popupTheme:
+                  type: string
+                  description: Selects the color theme for the popup. Only applies if `withPopup` is set to `true`
+                  default: light
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+  /widgets/per-product-widget:
+    post:
+      summary: Per product widget
+      description: Fetching a widget that describes a given store’s impact settings for a selected product.
+      operationId: per-product-widget
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - shopUniqueName
+              - color
+              - productId
+              properties:
+                shopUniqueName:
+                  type: string
+                  description: 'The name of your store as it is saved in Greenspark. For example: example.myshopify.com'
+                  default: YOUR-SHOP-NAME
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black"'
+                  default: green
+                productId:
+                  type: string
+                  description: Specify the ID of your product.
+                  default: PRODUCT ID
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                  default: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+  /v2/widgets/spend-level-widget:
+    post:
+      summary: Spend level widget v2
+      description: Fetching a widget that describes a given store’s spend level impact settings.
+      operationId: spend-level-widget-v2
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - integrationSlug
+              - color
+              - currency
+              properties:
+                integrationSlug:
+                  type: string
+                  description: 'The name of your store as it is saved in Greenspark. For example: example.myshopify.com'
+                  default: YOUR-SHOP-NAME
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black" | "grey" | "transparent"'
+                  default: green
+                currency:
+                  type: string
+                  description: 'This is the customer or shop currency. For example: "USD" | "GBP" | "EUR" | "AUD" | "NZD"'
+                  default: USD
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                  default: false
+                style:
+                  type: string
+                  description: 'Select if you want the default style (displayed above) or if you want a simplified version. Current options include: "default" | "simplified"'
+                  default: default
+                popupTheme:
+                  type: string
+                  description: Selects the theme for the popup. Only applies if `withPopup` is set to true
+                  default: light
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+  /widgets/spend-level-widget:
+    post:
+      summary: Spend level widget
+      description: Fetching a widget that describes a given store’s spend level impact settings.
+      operationId: spend-level-widget
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - shopUniqueName
+              - color
+              - currency
+              properties:
+                shopUniqueName:
+                  type: string
+                  description: 'The name of your store as it is saved in Greenspark. For example: example.myshopify.com'
+                  default: YOUR-SHOP-NAME
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black"'
+                  default: green
+                currency:
+                  type: string
+                  description: 'This is the customer or shop currency. For example: "USD" | "GBP" | "EUR" | "AUD" | "NZD"'
+                  default: USD
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                  default: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+  /v2/widgets/tiered-spend-level-widget:
+    post:
+      summary: Tiered spend level widget v2
+      description: Fetching a widget that describes a given store’s tiered spend level impact settings.
+      operationId: tiered-spend-level-widget-v2
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - integrationSlug
+              - color
+              - currency
+              properties:
+                integrationSlug:
+                  type: string
+                  description: 'The name of your store as it is saved in Greenspark. For example: example.myshopify.com'
+                  default: YOUR-SHOP-NAME
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black" | "grey" | "transparent"'
+                  default: green
+                currency:
+                  type: string
+                  description: 'This is the customer or shop currency. For example: "USD" | "GBP" | "EUR" | "AUD" | "NZD"'
+                  default: USD
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                  default: false
+                style:
+                  type: string
+                  description: 'Select if you want the default style (displayed above) or if you want a simplified version. Current options include: "default" | "simplified"'
+                  default: default
+                popupTheme:
+                  type: string
+                  description: Selects the color theme for the popup. Only applies if `withPopup` is set to `true`
+                  default: light
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+  /widgets/tiered-spend-level-widget:
+    post:
+      summary: Tiered spend level widget
+      description: Fetching a widget that describes a given store’s tiered spend level impact settings.
+      operationId: tiered-spend-level-widget
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - shopUniqueName
+              - color
+              - currency
+              properties:
+                shopUniqueName:
+                  type: string
+                  description: 'The name of your store as it is saved in Greenspark. For example: example.myshopify.com'
+                  default: YOUR-SHOP-NAME
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black"'
+                  default: green
+                currency:
+                  type: string
+                  description: 'This is the customer or shop currency. For example: "USD" | "GBP" | "EUR" | "AUD" | "NZD"'
+                  default: USD
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                  default: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+  /v2/widgets/stats-widget:
+    post:
+      summary: Top stats widget v2
+      description: Fetching a widget that shows the overall stats of a given Greenspark account. Please note that any impacts with 0 value are automatically hidden from the widget.
+      operationId: top-stats-widget-v2
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - color
+              properties:
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black" | "grey" | "transparent"'
+                  default: green
+                withPopup:
+                  type: boolean
+                  description: Adds a popup for the response, triggered by clicking on the widget
+                popupTheme:
+                  type: string
+                  description: Selects the color theme for the popup. Only applies if `withPopup` is set to `true`
+                  default: light
+                impactTypes:
+                  type: array
+                  description: Impacts to display in the top stats list. Available options are 'trees', 'plastic', 'carbon', 'kelp' and 'water'.
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+  /widgets/stats-widget:
+    post:
+      summary: Top stats widget
+      description: Fetching a widget that shows the overall stats of a given Greenspark account. Please note that any impacts with 0 value are automatically hidden from the widget.
+      operationId: top-stats-widget
+      parameters:
+      - name: lng
+        in: query
+        description: 'Set the widget''s language. Currently supported languages are: English (en), German (de)'
+        schema:
+          type: string
+          default: en
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - color
+              properties:
+                color:
+                  type: string
+                  description: 'Set the widget colour. Current options include: "beige" | "green" | "blue" | "white" | "black"'
+                  default: green
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Widgets
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: 'Greenspark API key. Match key to host: sandbox key -> sandbox host, production key -> production host.'

@@ -1,0 +1,598 @@
+openapi: 3.0.0
+info:
+  title: Greenspark Climate Account Estimations API
+  version: 2.3.0
+  description: 'Greenspark Impact-as-a-Service Climate API: create carbon-offset, tree-planting, plastic-recovery and other climate impacts, fetch impact/project data, carbon estimations, reporting, email templates and embeddable impact widgets. Reconstructed by API Evangelist from the provider''s per-endpoint OpenAPI definitions published on docs.getgreenspark.com.'
+  contact:
+    name: Greenspark Support
+    email: support@getgreenspark.com
+    url: https://www.getgreenspark.com
+servers:
+- url: https://api.getgreenspark.com
+  description: Production
+- url: https://sandbox.getgreenspark.com
+  description: Sandbox
+- url: https://demo-api.getgreenspark.com
+  description: Demo
+security:
+- ApiKeyAuth: []
+tags:
+- name: Estimations
+paths:
+  /v1/estimations/transaction/mcc:
+    post:
+      operationId: fetchCarbonEstimateOfATransactionByMCC
+      summary: Fetch Carbon Estimate of a Transaction by MCC
+      description: Estimating the carbon footprint of a transaction based on a Merchant Category Code
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EstimationsByMCCRequestBody'
+      responses:
+        '200':
+          description: The estimated carbon footprint has been successfully fetched.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estimation'
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide your API key.
+        '403':
+          description: Please upgrade to a premium or enterprise plan.
+        '404':
+          description: Not found.
+        '429':
+          description: Too Many Requests
+      tags:
+      - Estimations
+      security:
+      - access-key: []
+  /v1/estimations/transaction/category-type:
+    post:
+      operationId: fetchCarbonEstimateOfATransactionByOpenBankingCategoryTypes
+      summary: Fetch Carbon Estimate of a Transaction by Open Banking Category Types
+      description: Estimating the carbon footprint of a transaction based on Open Banking Category Types
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EstimationsByCategoryTypeRequestBody'
+      responses:
+        '200':
+          description: The estimated carbon footprint has been successfully fetched.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estimation'
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide your API key.
+        '403':
+          description: Please upgrade to a premium or enterprise plan.
+        '404':
+          description: Not found.
+        '429':
+          description: Too Many Requests
+      tags:
+      - Estimations
+      security:
+      - access-key: []
+  /v1/estimations/transaction/mcc/bulk:
+    post:
+      operationId: fetchCarbonEstimateOfMultipleTransactionsByMCC
+      summary: Fetch Carbon Estimate of Multiple Transactions by MCC
+      description: Estimating the carbon footprint of multiple transactions based on a Merchant Category Code
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkEstimationsByMCCRequestBody'
+      responses:
+        '200':
+          description: The estimated carbon footprints has been successfully fetched.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estimation'
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide your API key.
+        '403':
+          description: Please upgrade to a premium or enterprise plan.
+        '404':
+          description: Not found.
+        '429':
+          description: Too Many Requests
+      tags:
+      - Estimations
+      security:
+      - access-key: []
+  /v1/estimations/transaction/category-type/bulk:
+    post:
+      operationId: fetchCarbonEstimateOfMultipleTransactionsByOpenBankingCategoryTypes
+      summary: Fetch Carbon Estimate of Multiple Transactions by Open Banking Category Types
+      description: Estimating the carbon footprint of multiple transactions based on Open Banking Category Types
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkEstimationsByCategoryTypeRequestBody'
+      responses:
+        '200':
+          description: The estimated carbon footprint has been successfully fetched.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estimation'
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide your API key.
+        '403':
+          description: Please upgrade to a premium or enterprise plan.
+        '404':
+          description: Not found.
+        '429':
+          description: Too Many Requests
+      tags:
+      - Estimations
+      security:
+      - access-key: []
+components:
+  schemas:
+    EstimationsByMCC:
+      type: object
+      properties:
+        price:
+          type: number
+          description: Price of purchase.
+          example: 1000
+        mcc:
+          type: string
+          description: '[Merchant Category Code](https://usa.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf) of Merchant.'
+          example: '5411'
+        currencyISO:
+          type: string
+          description: ISO Currency Code of Purchase.
+          example: EUR
+        merchant:
+          type: string
+          description: Name of Merchant.
+          example: Superstore
+      required:
+      - price
+      - mcc
+      - currencyISO
+    BulkEstimationsByMCCRequestBody:
+      type: object
+      properties:
+        geo:
+          type: string
+          enum:
+          - USA
+          - EU/UK
+          - GB
+          - BG
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - CN
+          - CZ
+          - DE
+          - DK
+          - ES
+          - FR
+          - GR
+          - HR
+          - HU
+          - IT
+          - JP
+          - KR
+          - LT
+          - LV
+          - MX
+          - NL
+          - 'NO'
+          - PL
+          - PT
+          - RU
+          - SK
+          - TW
+          - WA
+          - WE
+          - WF
+          - WL
+          - WM
+          - EE
+          - ID
+          - IE
+          - MT
+          - SE
+          - SI
+          - ZA
+          description: Indicates the specific country that should be used for the CO2 emissions factors.
+          example: EU/UK
+        userType:
+          type: string
+          enum:
+          - PERSONAL
+          - BUSINESS
+          description: 'Indicates whether the API should use emissions factors for people or businesses (Either: "PERSONAL"(default), "BUSINESS")'
+          example: PERSONAL
+        transactions:
+          description: Array of transactions.
+          example:
+          - merchant: Supermarket
+            price: 77.96
+            mcc: '3612'
+            currencyISO: GBP
+          - merchant: Superstore
+            price: 41.27
+            mcc: '3611'
+            currencyISO: HUF
+          type: array
+          items:
+            $ref: '#/components/schemas/EstimationsByMCC'
+        metadata:
+          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your estimation.
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+      required:
+      - transactions
+    BulkEstimationsByCategoryTypeRequestBody:
+      type: object
+      properties:
+        geo:
+          type: string
+          enum:
+          - USA
+          - EU/UK
+          - GB
+          - BG
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - CN
+          - CZ
+          - DE
+          - DK
+          - ES
+          - FR
+          - GR
+          - HR
+          - HU
+          - IT
+          - JP
+          - KR
+          - LT
+          - LV
+          - MX
+          - NL
+          - 'NO'
+          - PL
+          - PT
+          - RU
+          - SK
+          - TW
+          - WA
+          - WE
+          - WF
+          - WL
+          - WM
+          - EE
+          - ID
+          - IE
+          - MT
+          - SE
+          - SI
+          - ZA
+          description: Indicates the specific country that should be used for the CO2 emissions factors.
+          example: EU/UK
+        userType:
+          type: string
+          enum:
+          - PERSONAL
+          - BUSINESS
+          description: 'Indicates whether the API should use emissions factors for people or businesses (Either: "PERSONAL"(default), "BUSINESS")'
+          example: PERSONAL
+        transactions:
+          description: Array of transactions.
+          example:
+          - price: 77.96
+            currencyISO: GBP
+            categoryType: plaid
+            categoryValue:
+            - FOOD_AND_DRINK
+            - FOOD_AND_DRINK_GROCERIES
+          type: array
+          items:
+            $ref: '#/components/schemas/EstimationsByCategoryType'
+        metadata:
+          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your estimation.
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+      required:
+      - transactions
+    EstimationsByMCCRequestBody:
+      type: object
+      properties:
+        price:
+          type: number
+          description: Price of purchase.
+          example: 1000
+        mcc:
+          type: string
+          description: '[Merchant Category Code](https://usa.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf) of Merchant.'
+          example: '5411'
+        currencyISO:
+          type: string
+          description: ISO Currency Code of Purchase.
+          example: EUR
+        merchant:
+          type: string
+          description: Name of Merchant.
+          example: Superstore
+        geo:
+          type: string
+          enum:
+          - USA
+          - EU/UK
+          - GB
+          - BG
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - CN
+          - CZ
+          - DE
+          - DK
+          - ES
+          - FR
+          - GR
+          - HR
+          - HU
+          - IT
+          - JP
+          - KR
+          - LT
+          - LV
+          - MX
+          - NL
+          - 'NO'
+          - PL
+          - PT
+          - RU
+          - SK
+          - TW
+          - WA
+          - WE
+          - WF
+          - WL
+          - WM
+          - EE
+          - ID
+          - IE
+          - MT
+          - SE
+          - SI
+          - ZA
+          description: Indicates the specific country that should be used for the CO2 emissions factors.
+          example: EU/UK
+        userType:
+          type: string
+          enum:
+          - PERSONAL
+          - BUSINESS
+          description: 'Indicates whether the API should use emissions factors for people or businesses (Either: "PERSONAL"(default), "BUSINESS")'
+          example: PERSONAL
+        metadata:
+          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your estimation.
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+      required:
+      - price
+      - mcc
+      - currencyISO
+    EstimationsByCategoryTypeRequestBody:
+      type: object
+      properties:
+        price:
+          type: number
+          description: Price of purchase.
+          example: 1000
+        categoryType:
+          type: string
+          enum:
+          - plaid
+          description: Type of category.
+          example: plaid
+        categoryValue:
+          description: The name of the category used to calculate the co2 emission. We support all [plaid categories](https://plaid.com/docs/api/products/transactions/#categoriesget) and the new categorisation for [personal_finance_category](https://plaid.com/docs/api/products/transactions/#transactions-recurring-get-request-options-include-personal-finance-category).
+          example:
+          - FOOD_AND_DRINK
+          - FOOD_AND_DRINK_GROCERIES
+          type: array
+          items:
+            type: string
+        currencyISO:
+          type: string
+          description: ISO Currency Code of Purchase.
+          example: EUR
+        geo:
+          type: string
+          enum:
+          - USA
+          - EU/UK
+          - GB
+          - BG
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - CN
+          - CZ
+          - DE
+          - DK
+          - ES
+          - FR
+          - GR
+          - HR
+          - HU
+          - IT
+          - JP
+          - KR
+          - LT
+          - LV
+          - MX
+          - NL
+          - 'NO'
+          - PL
+          - PT
+          - RU
+          - SK
+          - TW
+          - WA
+          - WE
+          - WF
+          - WL
+          - WM
+          - EE
+          - ID
+          - IE
+          - MT
+          - SE
+          - SI
+          - ZA
+          description: Indicates the specific country that should be used for the CO2 emissions factors.
+          example: EU/UK
+        userType:
+          type: string
+          enum:
+          - PERSONAL
+          - BUSINESS
+          description: 'Indicates whether the API should use emissions factors for people or businesses (Either: "PERSONAL"(default), "BUSINESS")'
+          example: PERSONAL
+        metadata:
+          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your estimation.
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+      required:
+      - price
+      - categoryType
+      - categoryValue
+      - currencyISO
+    EstimationsByCategoryType:
+      type: object
+      properties:
+        price:
+          type: number
+          description: Price of purchase.
+          example: 1000
+        categoryType:
+          type: string
+          enum:
+          - plaid
+          description: Type of category.
+          example: plaid
+        categoryValue:
+          description: The name of the category used to calculate the co2 emission. We support all [plaid categories](https://plaid.com/docs/api/products/transactions/#categoriesget) and the new categorisation for [personal_finance_category](https://plaid.com/docs/api/products/transactions/#transactions-recurring-get-request-options-include-personal-finance-category).
+          example:
+          - FOOD_AND_DRINK
+          - FOOD_AND_DRINK_GROCERIES
+          type: array
+          items:
+            type: string
+        currencyISO:
+          type: string
+          description: ISO Currency Code of Purchase.
+          example: EUR
+      required:
+      - price
+      - categoryType
+      - categoryValue
+      - currencyISO
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Minimum 1, maximum 40 characters.
+          example: customerId
+        value:
+          type: string
+          description: Minimum 1, maximum 100 characters.
+          example: 743ce227-22ef-4c6e-9c06-725f97b99690
+      required:
+      - key
+      - value
+    Estimation:
+      type: object
+      properties:
+        emissionsLevel:
+          type: string
+          enum:
+          - category
+          - merchant
+          description: Either "category" or "merchant" depending on whether there is emissions data available on that merchant or only on the mcc category.
+          example: category
+        name:
+          type: string
+          description: 'In the case of "category" this is the mcc code string (Ex: Supermarkets), and if emissions_level is "merchant" it returns the name of the merchant you entered (ex: "Superstore"). [Full list of merchant categories.](https://usa.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf)'
+          example: Superstore
+        kgOfCO2Emissions:
+          type: number
+          description: Estimated carbon footprint In Kg of CO2 equivalent.
+          example: 4.66
+        mtOfCO2Emissions:
+          type: number
+          description: Estimated carbon footprint In metric tons (mt) of CO2 equivalent.
+          example: 0.0047
+        similarTo:
+          description: Random list of relatable actions with similar footprint.
+          example:
+          - Eating 52 cookies
+          - Absorbed by a tree every 19 days
+          - Eating 1.8 cans of tuna
+          type: array
+          items:
+            type: string
+      required:
+      - emissionsLevel
+      - name
+      - kgOfCO2Emissions
+      - mtOfCO2Emissions
+      - similarTo
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: 'Greenspark API key. Match key to host: sandbox key -> sandbox host, production key -> production host.'

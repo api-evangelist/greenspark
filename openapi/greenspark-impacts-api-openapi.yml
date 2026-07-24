@@ -1,0 +1,855 @@
+openapi: 3.0.0
+info:
+  title: Greenspark Climate Account Impacts API
+  version: 2.3.0
+  description: 'Greenspark Impact-as-a-Service Climate API: create carbon-offset, tree-planting, plastic-recovery and other climate impacts, fetch impact/project data, carbon estimations, reporting, email templates and embeddable impact widgets. Reconstructed by API Evangelist from the provider''s per-endpoint OpenAPI definitions published on docs.getgreenspark.com.'
+  contact:
+    name: Greenspark Support
+    email: support@getgreenspark.com
+    url: https://www.getgreenspark.com
+servers:
+- url: https://api.getgreenspark.com
+  description: Production
+- url: https://sandbox.getgreenspark.com
+  description: Sandbox
+- url: https://demo-api.getgreenspark.com
+  description: Demo
+security:
+- ApiKeyAuth: []
+tags:
+- name: Impacts
+paths:
+  /v1/impacts/sources/{sourceId}/triggers/{triggerId}:
+    post:
+      description: Creates an impact associated with a source and a trigger. Not executable via ReadMe MCP execute-request in the current version (read-only MCP). Use get-endpoint output to build integrations in your application.
+      operationId: createImpact
+      parameters:
+      - name: sourceId
+        required: true
+        in: path
+        description: The id of the source associated with the impact.
+        schema:
+          example: 631b035dcd13c4ad66c6d496
+          type: string
+      - name: triggerId
+        required: true
+        in: path
+        description: The id of the trigger associated with the impact.
+        schema:
+          example: 281f045dcd23c4ae26c6d498
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImpactDto'
+      responses:
+        '201':
+          description: The impact has been successfully created.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ImpactPurchaseDetail'
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires growthBusiness, growthBusinessYearly, premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+      security:
+      - access-key: []
+      summary: Create Impact
+      tags:
+      - Impacts
+  /v1/impacts/batch:
+    post:
+      description: Run multiple create impact call in a batch, equivalent to calling create impact multiple times with different parameters. Not executable via ReadMe MCP execute-request in the current version (read-only MCP). Use get-endpoint output to build integrations in your application.
+      operationId: createImpactBatch
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateImpactBatchRequestBody'
+      responses:
+        '201':
+          description: Every impacts in the batch call has been successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchImpactPurchaseResponses'
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+      security:
+      - access-key: []
+      summary: Create Impact in Batch
+      tags:
+      - Impacts
+  /v1/impacts:
+    post:
+      description: Creates an impact associated with an account id. Not executable via ReadMe MCP execute-request in the current version (read-only MCP). Use get-endpoint output to build integrations in your application.
+      operationId: createTailoredImpact
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImpactDto'
+      responses:
+        '201':
+          description: The impact has been successfully created.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ImpactPurchaseDetail'
+        '400':
+          description: Bad request.
+        '401':
+          description: Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).
+        '403':
+          description: Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.
+        '404':
+          description: Not found.
+      security:
+      - access-key: []
+      summary: Create One-time Impact
+      tags:
+      - Impacts
+  /v1/impacts/purchases/{purchaseId}:
+    get:
+      description: Public impact purchase ledger entry. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles. [Read more about the domain object here.](https://greenspark.readme.io/reference/impacts)
+      operationId: getImpactPurchase
+      parameters:
+      - name: purchaseId
+        required: true
+        in: path
+        description: The id of the purchase.
+        schema:
+          example: 34d41293-6b84-40e7-9744-122e301590a2
+          type: string
+      responses:
+        '200':
+          description: Public ledger of impact purchases are successfully fetched.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionPurchase'
+        '400':
+          description: Bad request.
+        '404':
+          description: Not found.
+      security:
+      - access-key: []
+      summary: Fetch Impact Purchase
+      tags:
+      - Impacts
+  /v1/impacts/purchases:
+    get:
+      description: Public impact purchase ledger. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles. [Read more about the domain object here.](https://greenspark.readme.io/reference/impacts)
+      operationId: getImpactPurchases
+      parameters:
+      - name: origin
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Public ledgers of impact purchases are successfully fetched.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionPurchase'
+        '400':
+          description: Bad request.
+        '404':
+          description: Not found.
+      security:
+      - access-key: []
+      summary: Fetch Impact Purchases
+      tags:
+      - Impacts
+components:
+  schemas:
+    PlantingSessionResponse:
+      type: object
+      properties:
+        fieldUpdateId:
+          type: number
+          description: Unique identifier of the field update.
+        accountId:
+          type: string
+          description: Present only when the planting session is related to the authenticated account.
+        siteAssessment:
+          description: Site assessment details.
+          allOf:
+          - $ref: '#/components/schemas/SiteAssessmentResponse'
+        planting:
+          description: Planting details.
+          allOf:
+          - $ref: '#/components/schemas/PlantingDetailsResponse'
+        blockchain:
+          description: Blockchain references for this planting session.
+          allOf:
+          - $ref: '#/components/schemas/PlantingSessionBlockchainResponse'
+        survivabilityStats:
+          description: Optional survivability stats.
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/SurvivabilityStats'
+        externalReports:
+          description: External reports attached to this session.
+          type: array
+          items:
+            $ref: '#/components/schemas/ExternalReportResponse'
+        altitude:
+          type: number
+          description: Altitude
+        longitude:
+          type: number
+          description: Longitude
+        latitude:
+          type: number
+          description: Latitude
+        site:
+          description: Subsite associated with this session.
+          allOf:
+          - $ref: '#/components/schemas/VeritreeSubsiteResponse'
+        type:
+          type: string
+          description: Discriminator type for evidence unions.
+          example: PlantingSession
+      required:
+      - fieldUpdateId
+      - siteAssessment
+      - planting
+      - blockchain
+      - altitude
+      - longitude
+      - latitude
+      - site
+      - type
+    BatchImpactPurchaseResponses:
+      type: object
+      properties:
+        responses:
+          description: The responses array contains the results of the batch impact purchases.
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchImpactPurchaseResponse'
+      required:
+      - responses
+    PointDto:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Specifies the type of GeoJSON object.
+          example: Feature
+        coordinates:
+          description: Coordinates of Point geometry object. https://tools.ietf.org/html/rfc7946#section-3.1.2
+          example: Feature
+          type: array
+          items:
+            type: string
+      required:
+      - type
+      - coordinates
+    EvidenceVideoResponse:
+      type: object
+      properties:
+        altitude:
+          type: number
+          description: Altitude
+        longitude:
+          type: number
+          description: Longitude
+        latitude:
+          type: number
+          description: Latitude
+        url:
+          type: string
+          description: Public URL of the video.
+        previewUrl:
+          type: string
+          description: Optional preview URL of the video.
+        alt:
+          type: string
+          description: Alternate text for the video.
+      required:
+      - altitude
+      - longitude
+      - latitude
+      - url
+    PlasticCollectionResponse:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Present only when the collection is related to the authenticated account.
+        collectorName:
+          type: string
+          description: The name of the collector who collected the plastic waste.
+        buyerName:
+          type: string
+          description: The name of the buyer who buys the plastic waste from the collector.
+        materialType:
+          type: string
+          description: The type of plastic material collected.
+        weight:
+          type: string
+          description: The weight of the collected plastic waste.
+        numberOfPlasticBottlesRescued:
+          type: number
+          description: Number of plastic bottles recovered, computed from weight.
+        geoJSON:
+          description: The geometry of the plastic collection.
+          allOf:
+          - $ref: '#/components/schemas/FeatureCollectionDto'
+        createdAt:
+          type: string
+          description: The creation time of the plastic collection (ISO-8601).
+        externalId:
+          type: string
+          description: External identifier for the plastic collection.
+      required:
+      - collectorName
+      - buyerName
+      - materialType
+      - weight
+      - numberOfPlasticBottlesRescued
+      - geoJSON
+      - createdAt
+      - externalId
+    PlantingSpeciesResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Species common name.
+        amountPlanted:
+          type: number
+          description: Amount planted for this species.
+      required:
+      - name
+      - amountPlanted
+    PlantingDetailsResponse:
+      type: object
+      properties:
+        datePlanted:
+          type: string
+          description: ISO date when the planting happened.
+          nullable: true
+        startTime:
+          type: string
+          description: Planting start time (ISO-8601).
+          nullable: true
+        endTime:
+          type: string
+          description: Planting end time (ISO-8601).
+          nullable: true
+        siteForester:
+          type: string
+          description: Name of the site forester.
+          nullable: true
+        numberOfPlanters:
+          type: number
+          description: Number of planters.
+          nullable: true
+        notes:
+          type: string
+          description: Notes captured during planting.
+          nullable: true
+        amountPlanted:
+          type: number
+          description: Total amount planted during this session.
+          nullable: true
+        images:
+          description: Images attached to planting details.
+          type: array
+          items:
+            $ref: '#/components/schemas/EvidenceImageResponse'
+        geoJSON:
+          description: GeoJSON objects attached to planting details.
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureCollectionDto'
+        videos:
+          description: Videos attached to planting details.
+          type: array
+          items:
+            $ref: '#/components/schemas/EvidenceVideoResponse'
+        species:
+          description: Species breakdown for this planting session.
+          type: array
+          items:
+            $ref: '#/components/schemas/PlantingSpeciesResponse'
+    SurvivabilityStats:
+      type: object
+      properties:
+        fieldUpdateId:
+          type: number
+          description: Field update id (Veritree)
+        metrics:
+          description: Survivability metrics for this field update.
+          example:
+          - name: Survival Rate
+            type: chronological
+            unit: '%'
+            value: 96
+            updatedAt: '2024-01-01T00:00:00.000Z'
+          - name: Min Height
+            type: chronological
+            unit: cm
+            value: 55
+            updatedAt: '2024-01-01T00:00:00.000Z'
+          type: array
+          items:
+            $ref: '#/components/schemas/SurvivabilityMetric'
+      required:
+      - fieldUpdateId
+      - metrics
+    PlantingSessionBlockchainResponse:
+      type: object
+      properties:
+        arweaveUrl:
+          type: string
+          description: Arweave URL, if available.
+          nullable: true
+    ImpactPurchase:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+          description: Type of the impact.
+          example: trees
+        projectId:
+          type: string
+          description: The id of the project.
+          example: 34d41293-6b84-40e7-9744-122e301590a2
+        amount:
+          type: number
+          description: Amount means number of trees, number of plastic bottles, kg of CO2.
+          example: 5
+      required:
+      - type
+      - amount
+    FeatureCollectionDto:
+      type: object
+      properties:
+        features:
+          description: A collection of feature objects. https://tools.ietf.org/html/rfc7946#section-3.3
+          example:
+          - type: Feature
+            geometry:
+              type: Point
+              coordinates:
+              - -122.63701428179544
+              - 44.86975845546196
+            properties: {}
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureDto'
+        type:
+          type: string
+          description: Specifies the type of GeoJSON object.
+          example: FeatureCollection
+      required:
+      - features
+      - type
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Minimum 1, maximum 40 characters.
+          example: customerId
+        value:
+          type: string
+          description: Minimum 1, maximum 100 characters.
+          example: 743ce227-22ef-4c6e-9c06-725f97b99690
+      required:
+      - key
+      - value
+    BatchImpactPurchaseResponse:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          description: The id of the transaction associated with a single impact creation.
+        impactPurchases:
+          description: The impactPurchases array contains details on a specific impact creation.
+          type: array
+          items:
+            $ref: '#/components/schemas/ImpactPurchaseDetail'
+      required:
+      - transactionId
+      - impactPurchases
+    ImpactDto:
+      type: object
+      properties:
+        impactPurchases:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/ImpactPurchase'
+            - $ref: '#/components/schemas/ImpactPurchaseByValue'
+          description: The impactPurchases array defines the impacts you would like to create.
+        estimationId:
+          type: string
+          example: aac1bdc1-1324-4734-8e64-3304ec2d4b30
+          description: The id of the estimation that was used to calculate the impact.
+        metadata:
+          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your impact.
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+      required:
+      - impactPurchases
+    EvidenceImageResponse:
+      type: object
+      properties:
+        altitude:
+          type: number
+          description: Altitude
+        longitude:
+          type: number
+          description: Longitude
+        latitude:
+          type: number
+          description: Latitude
+        url:
+          type: string
+          description: Public URL of the image.
+        previewUrl:
+          type: string
+          description: Optional preview URL of the image.
+        alt:
+          type: string
+          description: Alternate text for the image.
+      required:
+      - altitude
+      - longitude
+      - latitude
+      - url
+    SiteAssessmentResponse:
+      type: object
+      properties:
+        plantingSite:
+          type: string
+          description: Planting site name.
+          nullable: true
+        assessedAt:
+          type: string
+          description: ISO timestamp when the assessment was done.
+          nullable: true
+        assessorName:
+          type: string
+          description: Assessor full name.
+          nullable: true
+        notes:
+          type: string
+          description: Notes captured during assessment.
+          nullable: true
+        images:
+          description: Images attached to the assessment.
+          type: array
+          items:
+            $ref: '#/components/schemas/EvidenceImageResponse'
+        geoJSON:
+          description: GeoJSON objects attached to the assessment.
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureCollectionDto'
+        videos:
+          description: Videos attached to the assessment.
+          type: array
+          items:
+            $ref: '#/components/schemas/EvidenceVideoResponse'
+    FeatureDto:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Specifies the type of GeoJSON object.
+          example: Feature
+        geometry:
+          description: Geometry object. https://tools.ietf.org/html/rfc7946#section-3
+          example:
+            type: Point
+            coordinates:
+            - -122.63701428179544
+            - 44.86975845546196
+          allOf:
+          - $ref: '#/components/schemas/PointDto'
+        properties:
+          type: object
+          description: Properties associated with this feature.
+      required:
+      - type
+      - geometry
+      - properties
+    CreateImpactBatchRequestBody:
+      type: object
+      properties:
+        requests:
+          maxItems: 50
+          description: The requests array defines the list of impacts you would like to create.
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateImpactBatchRequest'
+      required:
+      - requests
+    CreateImpactBatchRequest:
+      type: object
+      properties:
+        sourceId:
+          type: string
+          description: The id of the source associated with the impact.
+          example: 631b035dcd13c4ad66c6d496
+        triggerId:
+          type: string
+          description: The id of the trigger associated with the impact.
+          example: 281f045dcd23c4ae26c6d498
+        impact:
+          description: The impact property defines the impact purchases you would like to create with the corresponding metadata and estimation.
+          allOf:
+          - $ref: '#/components/schemas/ImpactDto'
+      required:
+      - impact
+    SurvivabilityMetric:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Metric name.
+          example: Survival Rate
+        value:
+          type: number
+          description: Metric value.
+          example: 96
+        unit:
+          type: string
+          description: Unit for the metric value.
+          example: '%'
+        updatedAt:
+          type: string
+          description: ISO timestamp when the metric was last updated.
+          example: '2024-01-01T00:00:00.000Z'
+        type:
+          type: string
+          description: Metric type/category.
+          example: chronological
+      required:
+      - name
+      - value
+      - unit
+      - updatedAt
+      - type
+    ImpactPurchaseDetail:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+          description: Type of the impact you purchased.
+          example: trees
+        amount:
+          type: number
+          description: Amount of the impact you purchased.
+          example: 3
+        spentValue:
+          type: number
+          description: The value which has been spent on your chosen impacts and will therefore be billed.
+          example: 0.6
+        unspentValue:
+          type: number
+          description: 'Any value which is not spent. This is due to the difference between the value you have chosen to spend and the actual price of the impacts. You will not be billed for this. '
+          example: 0.01
+        projectId:
+          type: string
+          description: The id of the project.
+          example: 34d41293-6b84-40e7-9744-122e301590a2
+      required:
+      - type
+      - amount
+      - spentValue
+      - unspentValue
+      - projectId
+    ExternalReportResponse:
+      type: object
+      properties:
+        externalId:
+          type: string
+          description: External report id.
+        title:
+          type: string
+          description: External report title.
+          nullable: true
+        reportedAt:
+          type: string
+          description: ISO date when this report was reported.
+          nullable: true
+        fieldUpdateId:
+          type: number
+          description: Field update id associated with this report.
+        images:
+          description: Images attached to this report.
+          type: array
+          items:
+            $ref: '#/components/schemas/EvidenceImageResponse'
+        geoJSON:
+          description: GeoJSON objects attached to this report.
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureCollectionDto'
+        videos:
+          description: Videos attached to this report.
+          type: array
+          items:
+            $ref: '#/components/schemas/EvidenceVideoResponse'
+      required:
+      - externalId
+      - fieldUpdateId
+    TransactionPurchase:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of the purchase.
+          example: '1234'
+        type:
+          type: string
+          description: The type of the purchase.
+          example: trees
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+        amount:
+          type: number
+          description: The impact amount of the purchase.
+          example: 10
+        projectId:
+          type: string
+          description: The project id of the purchase.
+          example: '1234'
+        receiptUrl:
+          type: string
+          description: The receipt url of the purchase.
+          example: https://example.com/receipt
+        provider:
+          type: string
+          description: The provider of the impacts.
+          example: veritree
+        periodStartDate:
+          type: string
+          description: The start of the period the purchase made for.
+          example: '2024-01-01'
+        periodEndDate:
+          type: string
+          description: The end of the period the purchase made for.
+          example: '2024-01-31'
+        evidences:
+          type: array
+          description: The evidences of a purchase.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/PlantingSessionResponse'
+            - $ref: '#/components/schemas/PlasticCollectionResponse'
+          example: []
+          default: []
+      required:
+      - id
+      - type
+      - amount
+      - projectId
+      - receiptUrl
+      - provider
+      - periodStartDate
+      - periodEndDate
+      - evidences
+    ImpactPurchaseByValue:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+          description: Type of the impact.
+          example: trees
+        projectId:
+          type: string
+          description: The id of the project.
+          example: 34d41293-6b84-40e7-9744-122e301590a2
+        value:
+          type: number
+          description: Value of the impacts to be purchased in the account’s currency.
+          example: 1.8
+      required:
+      - type
+      - value
+    VeritreeSubsiteResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Veritree subsite id.
+        latitude:
+          type: number
+          description: Latitude
+        longitude:
+          type: number
+          description: Longitude
+        geofences:
+          type: object
+          description: Geofence for this subsite as a GeoJSON MultiPolygon.
+      required:
+      - id
+      - latitude
+      - longitude
+      - geofences
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: 'Greenspark API key. Match key to host: sandbox key -> sandbox host, production key -> production host.'
