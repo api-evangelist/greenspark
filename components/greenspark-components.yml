@@ -1,0 +1,36 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://docs.getgreenspark.com/reference/localisation-1 (widget endpoints) +
+  github.com/getgreenspark/gs-components + the @getgreenspark/widgets SDK.
+description: >-
+  Greenspark ships embeddable, client-side impact widgets that merchants drop
+  into storefronts and pages to display and drive climate impact. The widget
+  surface is delivered as prebuilt UI components (gs-components library, loaded
+  via the @getgreenspark/widgets SDK) and backed by widget API endpoints that
+  return each store's impact-display settings. Distinct from the server-side
+  @getgreenspark SDKs in packages/.
+loaders:
+  - name: "@getgreenspark/widgets"
+    registry: npm
+    url: https://www.npmjs.com/package/@getgreenspark/widgets
+    official: true
+  - name: gs-components
+    source: https://github.com/getgreenspark/gs-components
+    description: Greenspark's component library.
+families:
+  - family: impact-widgets
+    description: Widgets describing a store's impact configuration, rendered client-side.
+    components:
+      - Spend level widget (spend-level-widget, spend-level-widget-v2)
+      - Tiered spend level widget (tiered-spend-level-widget, tiered-spend-level-widget-v2)
+      - Per order widget (per-order-widget, per-order-widget-v2)
+      - Per product widget (per-product-widget, per-product-widget-v2)
+      - By percentage widget (by-percentage-widget, by-percentage-widget-v2)
+      - By percentage of revenue widget (by-percentage-of-revenue-widget-v2)
+      - Cart widget (cart-widget, cart-widget-v2)
+  - family: stats-and-banners
+    description: Widgets and banners showing an account's overall impact stats.
+    components:
+      - Top stats widget (top-stats-widget, top-stats-widget-v2)
+      - Full width banner (full-width-banner, full-width-banner-v2)

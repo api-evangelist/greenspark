@@ -1,0 +1,45 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://docs.getgreenspark.com — versioning and deprecation posture captured
+  from the docs (environments, per-endpoint deprecation notes) and derived from
+  the reconstructed OpenAPI. No public status page or formal SLA/deprecation
+  policy page was found at probe time.
+description: >-
+  Versioning and deprecation lifecycle for the Greenspark Climate API. Greenspark
+  runs URI-path versioning (v1 -> v2); a set of v1 routes are marked deprecated
+  in the reference and either redirect to their v2 sibling or return 404 at
+  runtime.
+versioning:
+  scheme: uri-path
+  versions: [v1, v2]
+  current: v2
+  docs: https://docs.getgreenspark.com/reference/environments
+deprecation:
+  policy_url: null
+  sunset_header: false
+  pattern: >-
+    Deprecated v1 routes are annotated in the reference. Domain/template v1
+    routes redirect to their V2 equivalents; the v1 raw-report routes
+    (fetchRawReport, fetchAReportPage) return 404 at runtime and are replaced by
+    fetchRawReportV2 (GET /v2/reports).
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+deprecated_operations:
+  - openapi/greenspark-openapi.yml#fetchRawReport
+  - openapi/greenspark-openapi.yml#fetchAReportPage
+  - openapi/greenspark-openapi.yml#getPublicAccount
+  - openapi/greenspark-openapi.yml#fetchDomains
+  - openapi/greenspark-openapi.yml#addDomain
+  - openapi/greenspark-openapi.yml#verifyDomain
+  - openapi/greenspark-openapi.yml#deleteDomain
+  - openapi/greenspark-openapi.yml#fetchTemplates
+  - openapi/greenspark-openapi.yml#fetchTemplatesDefaults
+  - openapi/greenspark-openapi.yml#addTemplate
+  - openapi/greenspark-openapi.yml#updateTemplate
+  - openapi/greenspark-openapi.yml#deleteTemplate
+  - openapi/greenspark-openapi.yml#fetchCarbonByInterval
+  - openapi/greenspark-openapi.yml#fetchPlasticByInterval
+  - openapi/greenspark-openapi.yml#fetchTreesByInterval

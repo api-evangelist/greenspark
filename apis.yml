@@ -1,7 +1,30 @@
 aid: greenspark
 name: Greenspark
-description: Greenspark is a company surfaced as a portfolio company of anthemis and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Greenspark is an Impact-as-a-Service platform that lets businesses embed
+  climate and environmental action into their products and customer journeys.
+  Its Climate API programmatically funds verified impacts — carbon offset,
+  tree planting, ocean-plastic recovery, kelp restoration, clean water and bee
+  protection — and provides carbon-footprint estimation (by Merchant Category
+  Code or Open Banking category), impact reporting, email/notification templates,
+  and embeddable impact widgets for storefronts. Authentication is a single
+  x-api-key header with separate sandbox, demo and production environments.
+  Greenspark ships six first-party TypeScript SDKs, a ReadMe-hosted MCP server,
+  and packaged Agent Skills. Backed by Anthemis; profiled and enriched by the
+  API Evangelist network.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/611391a1477389e3857d8014/64cb3773a1ba8a68d73a88ad_greenspark-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/greenspark/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,12 +34,193 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
-- Company
-apis: []
+- Sustainability
+- Carbon Offset
+- Climate
+- Impact
+- Carbon Estimation
+- Reporting
+- ESG
+- Fintech
+apis:
+- aid: greenspark:greenspark-account-api
+  name: Greenspark Account API
+  description: The Account API from Greenspark — 3 operation(s) for account.
+  humanURL: https://docs.getgreenspark.com
+  baseURL: https://api.getgreenspark.com
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/greenspark-account-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://docs.getgreenspark.com
+  - type: Documentation
+    url: https://docs.getgreenspark.com/docs
+  - type: APIReference
+    url: https://docs.getgreenspark.com/reference
+- aid: greenspark:greenspark-email-api
+  name: Greenspark Email API
+  description: The Email API from Greenspark — 14 operation(s) for email.
+  humanURL: https://docs.getgreenspark.com
+  baseURL: https://api.getgreenspark.com
+  tags:
+  - Email
+  properties:
+  - type: OpenAPI
+    url: openapi/greenspark-email-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://docs.getgreenspark.com
+  - type: Documentation
+    url: https://docs.getgreenspark.com/docs
+  - type: APIReference
+    url: https://docs.getgreenspark.com/reference
+- aid: greenspark:greenspark-estimations-api
+  name: Greenspark Estimations API
+  description: The Estimations API from Greenspark — 4 operation(s) for estimations.
+  humanURL: https://docs.getgreenspark.com
+  baseURL: https://api.getgreenspark.com
+  tags:
+  - Estimations
+  properties:
+  - type: OpenAPI
+    url: openapi/greenspark-estimations-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://docs.getgreenspark.com
+  - type: Documentation
+    url: https://docs.getgreenspark.com/docs
+  - type: APIReference
+    url: https://docs.getgreenspark.com/reference
+- aid: greenspark:greenspark-impacts-api
+  name: Greenspark Impacts API
+  description: The Impacts API from Greenspark — 5 operation(s) for impacts.
+  humanURL: https://docs.getgreenspark.com
+  baseURL: https://api.getgreenspark.com
+  tags:
+  - Impacts
+  properties:
+  - type: OpenAPI
+    url: openapi/greenspark-impacts-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://docs.getgreenspark.com
+  - type: Documentation
+    url: https://docs.getgreenspark.com/docs
+  - type: APIReference
+    url: https://docs.getgreenspark.com/reference
+- aid: greenspark:greenspark-projects-api
+  name: Greenspark Projects API
+  description: The Projects API from Greenspark — 3 operation(s) for projects.
+  humanURL: https://docs.getgreenspark.com
+  baseURL: https://api.getgreenspark.com
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/greenspark-projects-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://docs.getgreenspark.com
+  - type: Documentation
+    url: https://docs.getgreenspark.com/docs
+  - type: APIReference
+    url: https://docs.getgreenspark.com/reference
+- aid: greenspark:greenspark-reports-api
+  name: Greenspark Reports API
+  description: The Reports API from Greenspark — 15 operation(s) for reports.
+  humanURL: https://docs.getgreenspark.com
+  baseURL: https://api.getgreenspark.com
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/greenspark-reports-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://docs.getgreenspark.com
+  - type: Documentation
+    url: https://docs.getgreenspark.com/docs
+  - type: APIReference
+    url: https://docs.getgreenspark.com/reference
+- aid: greenspark:greenspark-widgets-api
+  name: Greenspark Widgets API
+  description: The Widgets API from Greenspark — 17 operation(s) for widgets.
+  humanURL: https://docs.getgreenspark.com
+  baseURL: https://api.getgreenspark.com
+  tags:
+  - Widgets
+  properties:
+  - type: OpenAPI
+    url: openapi/greenspark-widgets-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://docs.getgreenspark.com
+  - type: Documentation
+    url: https://docs.getgreenspark.com/docs
+  - type: APIReference
+    url: https://docs.getgreenspark.com/reference
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: DeveloperPortal
+  url: https://docs.getgreenspark.com
+- type: Documentation
+  url: https://docs.getgreenspark.com/docs
+- type: APIReference
+  url: https://docs.getgreenspark.com/reference
+- type: GitHubOrganization
+  url: https://github.com/getgreenspark
+- type: Support
+  url: mailto:support@getgreenspark.com
+- type: Pricing
+  url: https://www.getgreenspark.com/pricing/business
+- type: SignUp
+  url: https://app.getgreenspark.com/login
+- type: Login
+  url: https://app.getgreenspark.com/login
+- type: TermsOfService
+  url: https://www.getgreenspark.com/utility/legal
+- type: PrivacyPolicy
+  url: https://app.privasee.io/privacy-portal/61a7587adcff740014657fbf
+- type: OpenAPI
+  url: openapi/greenspark-openapi.yml
+- type: Authentication
+  url: authentication/greenspark-authentication.yml
+- type: AgenticAccess
+  url: agentic-access/greenspark-agentic-access.yml
+- type: DomainSecurity
+  url: security/greenspark-domain-security.yml
+- type: Packages
+  url: packages/greenspark-packages.yml
+- type: SDKs
+  url: packages/greenspark-packages.yml
+- type: MCPServer
+  url: mcp/greenspark-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/greenspark-llms.txt
+- type: Conventions
+  url: conventions/greenspark-conventions.yml
+- type: Lifecycle
+  url: lifecycle/greenspark-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/greenspark-problem-types.yml
+- type: Sandbox
+  url: sandbox/greenspark-sandbox.yml
+- type: Components
+  url: components/greenspark-components.yml
+- type: Conformance
+  url: conformance/greenspark-conformance.yml
+- type: DataModel
+  url: data-model/greenspark-data-model.yml
+- type: ChangeLog
+  url: changelog/greenspark-changelog.yml
+- type: Overlay
+  url: overlays/greenspark-openapi-overlay.yaml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

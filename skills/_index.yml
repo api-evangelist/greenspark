@@ -1,0 +1,38 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  Provider-published Agent Skills captured verbatim from
+  github.com/getgreenspark/mcp/tree/master/skills (release 1.0.0, 2026-05-26).
+  Seven domain skills that teach an agent to use the Greenspark API and its
+  ReadMe MCP server correctly (auth/environments, and the Impact, Projects,
+  Account, Reporting, MCP, and integration workflows). Each is grounded in real
+  Greenspark operationIds present in ../openapi/greenspark-openapi.yml.
+skills:
+  - file: greenspark-auth-environments.md
+    name: greenspark-auth-environments
+    api: openapi/greenspark-openapi.yml
+    operations: []
+  - file: greenspark-mcp.md
+    name: greenspark-mcp
+    api: openapi/greenspark-openapi.yml
+    operations: []
+  - file: greenspark-impact.md
+    name: greenspark-impact
+    api: openapi/greenspark-openapi.yml
+    operations: [getImpactPurchases, getImpactPurchase]
+  - file: greenspark-projects.md
+    name: greenspark-projects
+    api: openapi/greenspark-openapi.yml
+    operations: [getProjects, getProject, getProjectCategories]
+  - file: greenspark-account.md
+    name: greenspark-account
+    api: openapi/greenspark-openapi.yml
+    operations: [getPublicAccountV2, getCommunityPublicAccount]
+  - file: greenspark-reporting.md
+    name: greenspark-reporting
+    api: openapi/greenspark-openapi.yml
+    operations: [fetchRawReportV2]
+  - file: greenspark-integration-workflow.md
+    name: greenspark-integration-workflow
+    api: openapi/greenspark-openapi.yml
+    operations: [getProjects, createImpact, getPublicAccountV2, fetchRawReportV2, getImpactPurchases]

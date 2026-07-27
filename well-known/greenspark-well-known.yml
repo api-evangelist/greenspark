@@ -1,0 +1,21 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of the Greenspark API and docs hosts on 2026-07-19
+description: >-
+  Probe of the RFC 8615 /.well-known/ discovery surface across the Greenspark
+  hosts. None of the probed documents were present at fetch time (all 404 / no
+  response). Recorded for completeness; no WellKnown pointer is asserted because
+  no document was found.
+hosts:
+  - host: https://api.getgreenspark.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+  - host: https://www.getgreenspark.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+  - host: https://docs.getgreenspark.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}

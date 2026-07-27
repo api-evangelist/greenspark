@@ -1,0 +1,49 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/greenspark-openapi.yml
+description: >-
+  Entity-relationship model for the Greenspark Climate API, derived from the
+  reconstructed OpenAPI (paths, tags, and parameters) and the docs. The core
+  flow: an Account creates Impacts (carbon/trees/plastic/…) funded through
+  Projects; each purchase lands on the public Impact ledger; Reports roll
+  impacts up over time; Widgets render an account's impact; Email templates and
+  verified Domains support notifications.
+entities:
+  - name: Account
+    description: A Greenspark business or personal account; has a public profile with impacts and comparisons by project.
+    key_operations: [getPublicAccountV2, getCommunityPublicAccount]
+  - name: Impact
+    description: A funded climate action (carbon offset, tree planting, plastic recovery, kelp, water, bees), tagged with a source and a trigger for segmentation.
+    key_operations: [createImpact, createTailoredImpact, createImpactBatch]
+  - name: ImpactPurchase
+    description: A ledger entry in the public impact-purchase ledger for an executed impact.
+    key_operations: [getImpactPurchases, getImpactPurchase]
+  - name: Project
+    description: An impact project that impacts are funded through, grouped by category and constrained by plan/key type.
+    key_operations: [getProjects, getProject, getProjectCategories]
+  - name: ProjectCategory
+    description: A category grouping impact projects.
+    key_operations: [getProjectCategories]
+  - name: Estimation
+    description: A carbon-footprint estimate for a transaction, keyed by Merchant Category Code or Open Banking category type.
+    key_operations: [fetchCarbonEstimateOfATransactionByMcc, fetchCarbonEstimateOfMultipleTransactionsByMcc, fetchCarbonEstimateOfATransactionByOpenBankingCategoryTypes]
+  - name: Report
+    description: Aggregated impact/spend data over intervals, sources, triggers, and types; raw export via v2 with cursor pagination.
+    key_operations: [fetchRawReportV2, fetchTotalImpactByTypeReport, fetchTotalSpendOnImpacts, fetchTotalImpactsCount]
+  - name: EmailTemplate
+    description: A notification email template with default and customizable properties.
+    key_operations: [fetchTemplatesV2, addTemplateV2, updateTemplateV2, deleteTemplateV2, testTemplate]
+  - name: Domain
+    description: A sending domain verified via DNS records for email notifications.
+    key_operations: [fetchDomainsV2, addDomainV2, verifyDomainV2, deleteDomainV2]
+  - name: Widget
+    description: An embeddable UI surface describing a store's impact settings or overall stats.
+    key_operations: [top-stats-widget-v2, cart-widget-v2, per-order-widget-v2]
+relationships:
+  - {from: Impact, type: belongs_to, to: Project, via: project}
+  - {from: Impact, type: belongs_to, to: Account, via: account}
+  - {from: ImpactPurchase, type: belongs_to, to: Impact, via: impact}
+  - {from: Project, type: belongs_to, to: ProjectCategory, via: projectCategoryId}
+  - {from: Report, type: has_many, to: Impact, via: account}
+  - {from: EmailTemplate, type: belongs_to, to: Domain, via: domain}
+  - {from: Widget, type: belongs_to, to: Account, via: account}

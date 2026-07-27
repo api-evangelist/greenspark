@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/greenspark-openapi.yml
+format: non-rfc9457
+description: >-
+  Error catalog for the Greenspark Climate API, derived from the 4xx/5xx
+  responses across the reconstructed OpenAPI (67 operations) and enriched with
+  the response descriptions the provider publishes per endpoint. Errors are
+  returned as application/json (not application/problem+json); quota exhaustion
+  surfaces as 422 with a MAX_API_CALLS_REACHED marker.
+envelope:
+  media_type: application/json
+  fields: [message]
+problems:
+  - status: 400
+    title: Bad request
+    meaning: Request validation failed (missing/invalid parameters or body).
+    occurrences: 67
+  - status: 401
+    title: Unauthorized
+    meaning: Missing or invalid x-api-key header. Provide a valid API key created in the Greenspark dashboard.
+    remediation: Send a valid x-api-key for the matching environment host.
+    occurrences: 48
+  - status: 403
+    title: Forbidden — plan required
+    meaning: The route or key type requires a higher Greenspark subscription plan (growth, premium, or enterprise).
+    remediation: Upgrade the account plan or use a key type authorized for the route.
+    occurrences: 45
+  - status: 404
+    title: Not found
+    meaning: Resource not found, or a deprecated v1 route that has been removed at runtime.
+    remediation: Use the v2 operation where the v1 route is deprecated.
+    occurrences: 50
+  - status: 422
+    title: Unprocessable entity
+    meaning: Request understood but not processed. Includes API quota exhaustion (MAX_API_CALLS_REACHED).
+    remediation: Reduce call volume or upgrade quota; correct semantically invalid input.
+    occurrences: 18
+  - status: 429
+    title: Too many requests
+    meaning: Rate limit exceeded.
+    remediation: Back off and retry.
+    occurrences: 4

@@ -1,0 +1,26 @@
+generated: '2026-07-19'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: api.getgreenspark.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 15 23:54:23 2026 GMT
+  hsts: null
+- host: sandbox.getgreenspark.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 23 13:42:57 2026 GMT
+  hsts: null
+- host: demo-api.getgreenspark.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 11 16:31:04 2026 GMT
+  hsts: null
+domains:
+- domain: getgreenspark.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

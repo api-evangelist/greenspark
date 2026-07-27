@@ -1,0 +1,26 @@
+{
+  "provider": "greenspark",
+  "sources": [
+    "greenspark-account-api-openapi.yml",
+    "greenspark-email-api-openapi.yml",
+    "greenspark-estimations-api-openapi.yml",
+    "greenspark-impacts-api-openapi.yml",
+    "greenspark-projects-api-openapi.yml",
+    "greenspark-reports-api-openapi.yml",
+    "greenspark-widgets-api-openapi.yml"
+  ],
+  "outputs": [
+    "greenspark-account-api-openapi.yml",
+    "greenspark-email-api-openapi.yml",
+    "greenspark-estimations-api-openapi.yml",
+    "greenspark-impacts-api-openapi.yml",
+    "greenspark-projects-api-openapi.yml",
+    "greenspark-reports-api-openapi.yml",
+    "greenspark-widgets-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

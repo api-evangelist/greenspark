@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.getgreenspark.com/reference/environments
+description: >-
+  Greenspark publishes staging environments (Demo and Sandbox) alongside
+  production. The same API keys and Custom Integrations exist in both staging and
+  production; the only change is the base URL. Sandbox/demo usage is not charged
+  and does not create real-world impact, and the Reporting API is scoped per
+  environment. No test card numbers or magic test tokens are published (Greenspark
+  bills impact, not card payments).
+environments:
+  - name: demo
+    base_url: https://demo-api.getgreenspark.com
+    charged: false
+    note: Build and test integrations without affecting production. Reporting shows Demo data only.
+  - name: sandbox
+    base_url: https://sandbox.getgreenspark.com
+    charged: false
+    note: Build and test integrations without affecting production. Reporting shows Sandbox data only.
+  - name: production
+    base_url: https://api.getgreenspark.com
+    charged: true
+    note: Live system. Charged for API usage and impacts created. Reporting shows Production data only.
+key_binding:
+  rule: Match key to host — a sandbox key only authenticates against the sandbox host, a production key only against the production host.
+  header: x-api-key
+recommendation: Use a sandbox key for first tests.

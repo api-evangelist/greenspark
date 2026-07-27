@@ -1,0 +1,20 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/getgreenspark/mcp/blob/master/CHANGELOG.md
+description: >-
+  Dated changelog for the Greenspark MCP integration surface (server.json,
+  editor install examples, and the six/seven domain Agent Skills). This is the
+  changelog Greenspark publishes for its agent/MCP tooling repository; the
+  Climate API itself is versioned in-path (v1 -> v2, see lifecycle/).
+scheme: keep-a-changelog / semver
+current_version: 1.0.0
+entries:
+  - version: 1.0.0
+    date: '2026-05-26'
+    breaking: false
+    additions:
+      - Initial public release of MCP registry metadata (server.json), client install examples, and six domain Agent Skills.
+      - Remote MCP endpoint https://docs.getgreenspark.com/mcp (hosted by ReadMe).
+      - Skills: greenspark-mcp, greenspark-auth-environments, greenspark-impact, greenspark-reporting, greenspark-account, greenspark-projects.
+      - GitHub Actions workflow for JSON and skill frontmatter validation.
+    highlights: First public MCP + Agent Skills release for the Greenspark API.

@@ -1,0 +1,24 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Greenspark Climate API
+  version: 1.0.0
+extends: openapi/greenspark-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-source: >-
+        Reconstructed by API Evangelist from Greenspark's per-endpoint OpenAPI
+        3.0.0 definitions published on docs.getgreenspark.com/reference (67
+        operations), plus the environments, SDKs, and MCP guides.
+      x-apievangelist-artifacts:
+        authentication: authentication/greenspark-authentication.yml
+        conventions: conventions/greenspark-conventions.yml
+        errors: errors/greenspark-problem-types.yml
+        lifecycle: lifecycle/greenspark-lifecycle.yml
+        sandbox: sandbox/greenspark-sandbox.yml
+        data_model: data-model/greenspark-data-model.yml
+        mcp: mcp/greenspark-mcp.yml
+        skills: skills/_index.yml
+  - target: $.info
+    update:
+      x-apievangelist-category: sustainability, carbon-offset, climate, impact-as-a-service

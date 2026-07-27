@@ -1,0 +1,75 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://docs.getgreenspark.com — cross-cutting request/response conventions
+  that apply across the Greenspark Climate API (authentication, environments,
+  versioning, pagination, error envelope, plan gating, rate limiting), captured
+  from the docs and derived from the reconstructed OpenAPI.
+description: >-
+  How the Greenspark REST API behaves across every operation: API-key
+  authentication, environment/host selection, URI-path versioning, cursor
+  pagination on the raw report, the JSON error envelope, subscription-plan
+  gating, and quota/rate-limit signalling.
+base_url: https://api.getgreenspark.com
+api_style: REST over HTTPS, JSON requests and responses
+
+authentication:
+  scheme: API key in the x-api-key request header
+  key_types: [standard API key (created in the Greenspark dashboard)]
+  host_binding: Keys are environment-bound — a sandbox key only works on the sandbox host, a production key only on the production host.
+  docs: https://docs.getgreenspark.com/docs/mcp
+  detail: authentication/greenspark-authentication.yml
+
+environments:
+  production: https://api.getgreenspark.com
+  sandbox: https://sandbox.getgreenspark.com
+  demo: https://demo-api.getgreenspark.com
+  note: Same API keys and Custom Integrations exist in both staging and production; sandbox/demo usage is not charged and reporting is scoped per environment.
+  detail: sandbox/greenspark-sandbox.yml
+
+versioning:
+  style: uri-path
+  versions: [v1, v2]
+  current: v2
+  policy: >-
+    Newer resources are served under /v2 (e.g. GET /v2/reports, GET
+    /v2/accounts/public/{id}). Several v1 routes are deprecated and either
+    redirect to their v2 sibling or return 404 at runtime — use the V2
+    operationIds.
+  detail: lifecycle/greenspark-lifecycle.yml
+
+idempotency:
+  supported: false
+  note: >-
+    Greenspark does not document a client-supplied idempotency-key header. Impact
+    creation is a direct POST; there is a create-in-batch endpoint
+    (createImpactBatch) for multiple impacts in one call, but no idempotency
+    replay contract is published.
+
+pagination:
+  style: cursor
+  applies_to: Raw report export (fetchRawReportV2, GET /v2/reports)
+  request_params:
+    cursor: opaque cursor from the previous response
+  response_fields:
+    cursor: non-null when more pages exist; pass it back to fetch the next page
+  docs: https://docs.getgreenspark.com/reference/fetchrawreportv2
+
+error_envelope:
+  media_type: application/json
+  format: non-rfc9457
+  shape: JSON body with a message and, for quota exhaustion, a MAX_API_CALLS_REACHED marker.
+  common_statuses: [400, 401, 403, 404, 422, 429]
+  detail: errors/greenspark-problem-types.yml
+
+plan_gating:
+  mechanism: 403 responses indicate the route requires a higher subscription plan.
+  plans_referenced: [growthBusiness, growthBusinessYearly, premiumBusiness, premiumBusinessYearly, enterprise]
+  note: Some routes and key types require specific Greenspark subscription plans.
+
+rate_limiting:
+  mechanism: 429 Too Many Requests; 422 with MAX_API_CALLS_REACHED when the account API quota is exhausted.
+
+segmentation:
+  concept: Impacts can be tagged with a source and a trigger for reporting segmentation.
+  docs: https://docs.getgreenspark.com/reference/data-segmentation

@@ -1,0 +1,59 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.getgreenspark.com/reference/sdks
+description: >-
+  First-party Greenspark client libraries. Verified against the npm registry
+  (registry.npmjs.org) and the Greenspark SDK documentation. All six are
+  published under the @getgreenspark npm scope and built from the public
+  github.com/getgreenspark/sdks repository (swagger-codegen TypeScript). Latest
+  versions recorded at fetch time.
+repository: https://github.com/getgreenspark/sdks
+packages:
+  - language: typescript
+    registry: npm
+    name: "@getgreenspark/impacts"
+    version: 1.6.0
+    url: https://www.npmjs.com/package/@getgreenspark/impacts
+    source: https://github.com/getgreenspark/sdks
+    install: npm install @getgreenspark/impacts
+    official: true
+  - language: typescript
+    registry: npm
+    name: "@getgreenspark/reports"
+    version: 2.3.0
+    url: https://www.npmjs.com/package/@getgreenspark/reports
+    source: https://github.com/getgreenspark/sdks
+    install: npm install @getgreenspark/reports
+    official: true
+  - language: typescript
+    registry: npm
+    name: "@getgreenspark/estimations"
+    version: 1.1.1
+    url: https://www.npmjs.com/package/@getgreenspark/estimations
+    source: https://github.com/getgreenspark/sdks
+    install: npm install @getgreenspark/estimations
+    official: true
+  - language: typescript
+    registry: npm
+    name: "@getgreenspark/email"
+    version: 1.1.0
+    url: https://www.npmjs.com/package/@getgreenspark/email
+    source: https://github.com/getgreenspark/sdks
+    install: npm install @getgreenspark/email
+    official: true
+  - language: typescript
+    registry: npm
+    name: "@getgreenspark/projects"
+    version: 1.4.0
+    url: https://www.npmjs.com/package/@getgreenspark/projects
+    source: https://github.com/getgreenspark/sdks
+    install: npm install @getgreenspark/projects
+    official: true
+  - language: typescript
+    registry: npm
+    name: "@getgreenspark/widgets"
+    version: 2.6.5
+    url: https://www.npmjs.com/package/@getgreenspark/widgets
+    source: https://github.com/getgreenspark/sdks
+    install: npm install @getgreenspark/widgets
+    official: true
