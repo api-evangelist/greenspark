@@ -184,7 +184,7 @@ common:
 - type: PrivacyPolicy
   url: https://app.privasee.io/privacy-portal/61a7587adcff740014657fbf
 - type: OpenAPI
-  url: openapi/greenspark-openapi.yml
+  url: openapi/_original/greenspark-openapi.yml
 - type: Authentication
   url: authentication/greenspark-authentication.yml
 - type: AgenticAccess
