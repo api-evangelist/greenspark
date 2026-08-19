@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Greenspark Climate Account API",
+    "version": "2.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Community Public Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v1/accounts/community"
+          },
+          "docs": "Fetches the Greenspark community public profile. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles."
+        },
+        {
+          "info": {
+            "name": "Public Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v1/accounts/public/:publicAccountId",
+            "params": [
+              {
+                "name": "publicAccountId",
+                "value": "",
+                "type": "path",
+                "description": "The public id of an account."
+              }
+            ]
+          },
+          "docs": "Deprecated — use getPublicAccountV2 (GET /v2/accounts/public/{publicAccountId})."
+        },
+        {
+          "info": {
+            "name": "Public Account V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v2/accounts/public/:publicAccountId",
+            "params": [
+              {
+                "name": "publicAccountId",
+                "value": "",
+                "type": "path",
+                "description": "The public id of an account."
+              }
+            ]
+          },
+          "docs": "Canonical public account endpoint. Returns impacts and comparisons by project. Accepts all standard API key types. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

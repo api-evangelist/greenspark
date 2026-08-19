@@ -1,0 +1,334 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Greenspark Climate Account Email API",
+    "version": "2.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Email",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch Domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v1/email/domains"
+          },
+          "docs": "Deprecated — redirects to v2. Use fetchDomainsV2."
+        },
+        {
+          "info": {
+            "name": "Add Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v1/email/domains"
+          },
+          "docs": "Deprecated — redirects to v2. Use addDomainV2."
+        },
+        {
+          "info": {
+            "name": "Fetch Domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v2/email/domains"
+          },
+          "docs": "Fetch your previously added domains."
+        },
+        {
+          "info": {
+            "name": "Add Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v2/email/domains",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add your domain and receive the DNS records that must be added to your domain."
+        },
+        {
+          "info": {
+            "name": "Fetch Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v1/email/templates"
+          },
+          "docs": "Deprecated — redirects to v2. Use fetchTemplatesV2."
+        },
+        {
+          "info": {
+            "name": "Add Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v1/email/templates"
+          },
+          "docs": "Deprecated — redirects to v2. Use addTemplateV2. Add your notification template for email sending. If you do not want a customizable property to be custom, you should provide the default value for that property."
+        },
+        {
+          "info": {
+            "name": "Fetch Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v2/email/templates"
+          },
+          "docs": "Fetch templates for email sending."
+        },
+        {
+          "info": {
+            "name": "Add Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v2/email/templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add your notification template for email sending. If you do not want a customizable property to be custom, you should provide the default value for that property. You can get the default values for every template type from the templates-defaults endpoint."
+        },
+        {
+          "info": {
+            "name": "Delete Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getgreenspark.com/v1/email/domains/:domainId",
+            "params": [
+              {
+                "name": "domainId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the custom domain object."
+              }
+            ]
+          },
+          "docs": "Deprecated — redirects to v2. Use deleteDomainV2."
+        },
+        {
+          "info": {
+            "name": "Delete Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getgreenspark.com/v2/email/domains/:domainId",
+            "params": [
+              {
+                "name": "domainId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the custom domain object."
+              }
+            ]
+          },
+          "docs": "Delete your domain."
+        },
+        {
+          "info": {
+            "name": "Update Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getgreenspark.com/v1/email/templates/:templateId",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the notification template."
+              }
+            ]
+          },
+          "docs": "Deprecated — redirects to v2. Use updateTemplateV2. Update your notification template for email sending."
+        },
+        {
+          "info": {
+            "name": "Delete Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getgreenspark.com/v1/email/templates/:templateId",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the notification template."
+              }
+            ]
+          },
+          "docs": "Deprecated — redirects to v2. Use deleteTemplateV2."
+        },
+        {
+          "info": {
+            "name": "Update Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getgreenspark.com/v2/email/templates/:templateId",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the notification template."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update your notification template for email sending.  If you do not want a customizable property to be custom, you should provide the default value for that property. You can get the default values for every template type from the templates-defaults endpoint."
+        },
+        {
+          "info": {
+            "name": "Delete Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getgreenspark.com/v2/email/templates/:templateId",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the notification template."
+              }
+            ]
+          },
+          "docs": "Delete your template."
+        },
+        {
+          "info": {
+            "name": "Disable Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v1/email/templates/:templateId/disable",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the notification template."
+              }
+            ]
+          },
+          "docs": "Disable your notification template to stop sending emails."
+        },
+        {
+          "info": {
+            "name": "Fetch Templates Defaults",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v1/email/templates-defaults"
+          },
+          "docs": "Deprecated — redirects to v2. Use fetchTemplatesDefaultsV2."
+        },
+        {
+          "info": {
+            "name": "Fetch Templates Defaults",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v2/email/templates-defaults"
+          },
+          "docs": "Fetch templates defaults for email sending."
+        },
+        {
+          "info": {
+            "name": "Test Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v1/email/templates/test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add your notification template for email sending."
+        },
+        {
+          "info": {
+            "name": "Verify Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v1/email/domains/:domainId/verify",
+            "params": [
+              {
+                "name": "domainId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the custom domain object."
+              }
+            ]
+          },
+          "docs": "Deprecated — redirects to v2. Use verifyDomainV2."
+        },
+        {
+          "info": {
+            "name": "Verify Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v2/email/domains/:domainId/verify",
+            "params": [
+              {
+                "name": "domainId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the custom domain object."
+              }
+            ]
+          },
+          "docs": "Verify your domain based on the provided DNS records."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

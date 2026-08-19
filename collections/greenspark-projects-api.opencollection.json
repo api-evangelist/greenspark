@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Greenspark Climate Account Projects API",
+    "version": "2.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch project by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v1/projects/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the project."
+              }
+            ]
+          },
+          "docs": "Fetch detailed project information. Accepts all standard API key types. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles."
+        },
+        {
+          "info": {
+            "name": "Fetch project categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v1/project-categories",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the impact which can by purchased by the project category."
+              }
+            ]
+          },
+          "docs": "List impact project categories. Accepts all standard API key types. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles."
+        },
+        {
+          "info": {
+            "name": "Fetch projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v1/projects",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Defines a country where the project is located."
+              },
+              {
+                "name": "projectCategoryId",
+                "value": "",
+                "type": "query",
+                "description": "Defines the category that the project falls under. It links the project to its relevant category."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the impact which can by purchased by the project category."
+              },
+              {
+                "name": "vintage",
+                "value": "",
+                "type": "query",
+                "description": "The year when the project started."
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "The currency in which the project prices are returned. Returns in the account's currency for an authenticated call, otherwise in USD if it's not provided."
+              },
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "The locale what the project is returned in."
+              },
+              {
+                "name": "plan",
+                "value": "",
+                "type": "query",
+                "description": "The subscription plan to fetch the project prices for."
+              },
+              {
+                "name": "statuses",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated list of the project statuses. Default to approved."
+              }
+            ]
+          },
+          "docs": "List impact projects available to the account. Accepts all standard API key types. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

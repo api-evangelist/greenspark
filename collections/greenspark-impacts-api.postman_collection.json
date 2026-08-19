@@ -1,0 +1,1431 @@
+{
+  "item": [
+    {
+      "id": "0fddea04-5bfe-4938-971f-e26d4b6384f1",
+      "name": "Impacts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "81a60d53-4448-49d8-828c-11c6ad992e4b",
+          "name": "Create Impact",
+          "request": {
+            "name": "Create Impact",
+            "description": {
+              "content": "Creates an impact associated with a source and a trigger. Not executable via ReadMe MCP execute-request in the current version (read-only MCP). Use get-endpoint output to build integrations in your application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "impacts",
+                "sources",
+                ":sourceId",
+                "triggers",
+                ":triggerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sourceId",
+                  "description": "(Required) The id of the source associated with the impact."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "triggerId",
+                  "description": "(Required) The id of the trigger associated with the impact."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"impactPurchases\": [\n    {\n      \"type\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"projectId\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"projectId\": \"<string>\"\n    }\n  ],\n  \"estimationId\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8f84175d-890e-4313-a88c-815b44bb9436",
+              "name": "The impact has been successfully created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "sources",
+                    ":sourceId",
+                    "triggers",
+                    ":triggerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceId",
+                      "description": "(Required) The id of the source associated with the impact."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "triggerId",
+                      "description": "(Required) The id of the trigger associated with the impact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"impactPurchases\": [\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    },\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    }\n  ],\n  \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"trees\",\n    \"amount\": 3,\n    \"spentValue\": 0.6,\n    \"unspentValue\": 0.01,\n    \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n  },\n  {\n    \"type\": \"trees\",\n    \"amount\": 3,\n    \"spentValue\": 0.6,\n    \"unspentValue\": 0.01,\n    \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "199e8154-a577-4d1c-a21b-e6facb167299",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "sources",
+                    ":sourceId",
+                    "triggers",
+                    ":triggerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceId",
+                      "description": "(Required) The id of the source associated with the impact."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "triggerId",
+                      "description": "(Required) The id of the trigger associated with the impact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"impactPurchases\": [\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    },\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    }\n  ],\n  \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ed9f860a-aebf-4e03-80fc-f04aa387b3a0",
+              "name": "Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "sources",
+                    ":sourceId",
+                    "triggers",
+                    ":triggerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceId",
+                      "description": "(Required) The id of the source associated with the impact."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "triggerId",
+                      "description": "(Required) The id of the trigger associated with the impact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"impactPurchases\": [\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    },\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    }\n  ],\n  \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "377c2325-72af-462f-a240-831b7b1d29a9",
+              "name": "Requires growthBusiness, growthBusinessYearly, premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "sources",
+                    ":sourceId",
+                    "triggers",
+                    ":triggerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceId",
+                      "description": "(Required) The id of the source associated with the impact."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "triggerId",
+                      "description": "(Required) The id of the trigger associated with the impact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"impactPurchases\": [\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    },\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    }\n  ],\n  \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7fcfa7d1-0f5b-41d1-9c4a-2e2ae8374a6d",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "sources",
+                    ":sourceId",
+                    "triggers",
+                    ":triggerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceId",
+                      "description": "(Required) The id of the source associated with the impact."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "triggerId",
+                      "description": "(Required) The id of the trigger associated with the impact."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"impactPurchases\": [\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    },\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    }\n  ],\n  \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "564e7ad9-7d26-4542-bf37-ffb47d4403de",
+          "name": "Create Impact in Batch",
+          "request": {
+            "name": "Create Impact in Batch",
+            "description": {
+              "content": "Run multiple create impact call in a batch, equivalent to calling create impact multiple times with different parameters. Not executable via ReadMe MCP execute-request in the current version (read-only MCP). Use get-endpoint output to build integrations in your application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "impacts",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": [\n    {\n      \"impact\": {\n        \"impactPurchases\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"estimationId\": \"<string>\",\n        \"metadata\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"sourceId\": \"<string>\",\n      \"triggerId\": \"<string>\"\n    },\n    {\n      \"impact\": {\n        \"impactPurchases\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"estimationId\": \"<string>\",\n        \"metadata\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"sourceId\": \"<string>\",\n      \"triggerId\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fe1dd977-2bf0-4503-93d1-4fb4d1f3edc8",
+              "name": "Every impacts in the batch call has been successfully created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"impact\": {\n        \"impactPurchases\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n        \"metadata\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"sourceId\": \"631b035dcd13c4ad66c6d496\",\n      \"triggerId\": \"281f045dcd23c4ae26c6d498\"\n    },\n    {\n      \"impact\": {\n        \"impactPurchases\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n        \"metadata\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"sourceId\": \"631b035dcd13c4ad66c6d496\",\n      \"triggerId\": \"281f045dcd23c4ae26c6d498\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"responses\": [\n    {\n      \"transactionId\": \"string\",\n      \"impactPurchases\": [\n        {\n          \"type\": \"trees\",\n          \"amount\": 3,\n          \"spentValue\": 0.6,\n          \"unspentValue\": 0.01,\n          \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n        },\n        {\n          \"type\": \"trees\",\n          \"amount\": 3,\n          \"spentValue\": 0.6,\n          \"unspentValue\": 0.01,\n          \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n        }\n      ]\n    },\n    {\n      \"transactionId\": \"string\",\n      \"impactPurchases\": [\n        {\n          \"type\": \"trees\",\n          \"amount\": 3,\n          \"spentValue\": 0.6,\n          \"unspentValue\": 0.01,\n          \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n        },\n        {\n          \"type\": \"trees\",\n          \"amount\": 3,\n          \"spentValue\": 0.6,\n          \"unspentValue\": 0.01,\n          \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e307942-b292-493d-9102-590d723df443",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"impact\": {\n        \"impactPurchases\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n        \"metadata\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"sourceId\": \"631b035dcd13c4ad66c6d496\",\n      \"triggerId\": \"281f045dcd23c4ae26c6d498\"\n    },\n    {\n      \"impact\": {\n        \"impactPurchases\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n        \"metadata\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"sourceId\": \"631b035dcd13c4ad66c6d496\",\n      \"triggerId\": \"281f045dcd23c4ae26c6d498\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c522887-cb0a-4b61-8ad6-fff420696920",
+              "name": "Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"impact\": {\n        \"impactPurchases\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n        \"metadata\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"sourceId\": \"631b035dcd13c4ad66c6d496\",\n      \"triggerId\": \"281f045dcd23c4ae26c6d498\"\n    },\n    {\n      \"impact\": {\n        \"impactPurchases\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n        \"metadata\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"sourceId\": \"631b035dcd13c4ad66c6d496\",\n      \"triggerId\": \"281f045dcd23c4ae26c6d498\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a3201fc6-4104-4e8e-9464-9c0da5261ed4",
+              "name": "Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"impact\": {\n        \"impactPurchases\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n        \"metadata\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"sourceId\": \"631b035dcd13c4ad66c6d496\",\n      \"triggerId\": \"281f045dcd23c4ae26c6d498\"\n    },\n    {\n      \"impact\": {\n        \"impactPurchases\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n        \"metadata\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"sourceId\": \"631b035dcd13c4ad66c6d496\",\n      \"triggerId\": \"281f045dcd23c4ae26c6d498\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "97474eb2-259c-4eef-aa05-90783112af93",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"impact\": {\n        \"impactPurchases\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n        \"metadata\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"sourceId\": \"631b035dcd13c4ad66c6d496\",\n      \"triggerId\": \"281f045dcd23c4ae26c6d498\"\n    },\n    {\n      \"impact\": {\n        \"impactPurchases\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n        \"metadata\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"sourceId\": \"631b035dcd13c4ad66c6d496\",\n      \"triggerId\": \"281f045dcd23c4ae26c6d498\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b772547f-5524-4b7b-9416-c3ce4803bb9e",
+          "name": "Create One-time Impact",
+          "request": {
+            "name": "Create One-time Impact",
+            "description": {
+              "content": "Creates an impact associated with an account id. Not executable via ReadMe MCP execute-request in the current version (read-only MCP). Use get-endpoint output to build integrations in your application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "impacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"impactPurchases\": [\n    {\n      \"type\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"projectId\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"projectId\": \"<string>\"\n    }\n  ],\n  \"estimationId\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2da33ca4-c463-4f85-9be5-8b78042d4f16",
+              "name": "The impact has been successfully created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"impactPurchases\": [\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    },\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    }\n  ],\n  \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"trees\",\n    \"amount\": 3,\n    \"spentValue\": 0.6,\n    \"unspentValue\": 0.01,\n    \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n  },\n  {\n    \"type\": \"trees\",\n    \"amount\": 3,\n    \"spentValue\": 0.6,\n    \"unspentValue\": 0.01,\n    \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1f52e9e-7528-4a54-a5d2-69e50c81bcdb",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"impactPurchases\": [\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    },\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    }\n  ],\n  \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d38683aa-5e51-478d-a869-51fabac043d6",
+              "name": "Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"impactPurchases\": [\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    },\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    }\n  ],\n  \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "905e87d3-baa3-4948-94d2-ad7e8da4413a",
+              "name": "Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"impactPurchases\": [\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    },\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    }\n  ],\n  \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "516f0588-b2cd-4060-a7ba-d7870ca7ce18",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"impactPurchases\": [\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    },\n    {\n      \"type\": \"trees\",\n      \"amount\": 5,\n      \"projectId\": \"34d41293-6b84-40e7-9744-122e301590a2\"\n    }\n  ],\n  \"estimationId\": \"aac1bdc1-1324-4734-8e64-3304ec2d4b30\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe97435c-e7db-4ca8-a3dd-b756eb9bb253",
+          "name": "Fetch Impact Purchase",
+          "request": {
+            "name": "Fetch Impact Purchase",
+            "description": {
+              "content": "Public impact purchase ledger entry. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles. [Read more about the domain object here.](https://greenspark.readme.io/reference/impacts)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "impacts",
+                "purchases",
+                ":purchaseId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "purchaseId",
+                  "description": "(Required) The id of the purchase."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "ea3d5375-b090-40ee-ac52-7c6f5b08fc8b",
+              "name": "Public ledger of impact purchases are successfully fetched.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "purchases",
+                    ":purchaseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "purchaseId",
+                      "description": "(Required) The id of the purchase."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"1234\",\n  \"type\": \"trees\",\n  \"amount\": 10,\n  \"projectId\": \"1234\",\n  \"receiptUrl\": \"https://example.com/receipt\",\n  \"provider\": \"veritree\",\n  \"periodStartDate\": \"2024-01-01\",\n  \"periodEndDate\": \"2024-01-31\",\n  \"evidences\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e7b591c-d870-4d48-b6d5-b9d73aeddcbc",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "purchases",
+                    ":purchaseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "purchaseId",
+                      "description": "(Required) The id of the purchase."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "010a2b3d-a159-4ebb-8563-ee5adab21d11",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "purchases",
+                    ":purchaseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "purchaseId",
+                      "description": "(Required) The id of the purchase."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62296ca2-75c5-4122-b456-55c4b582d48e",
+          "name": "Fetch Impact Purchases",
+          "request": {
+            "name": "Fetch Impact Purchases",
+            "description": {
+              "content": "Public impact purchase ledger. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles. [Read more about the domain object here.](https://greenspark.readme.io/reference/impacts)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "impacts",
+                "purchases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "origin",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "e072eb6e-c75c-44cb-abd2-67a5250d6389",
+              "name": "Public ledgers of impact purchases are successfully fetched.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "purchases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "origin",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"1234\",\n    \"type\": \"trees\",\n    \"amount\": 10,\n    \"projectId\": \"1234\",\n    \"receiptUrl\": \"https://example.com/receipt\",\n    \"provider\": \"veritree\",\n    \"periodStartDate\": \"2024-01-01\",\n    \"periodEndDate\": \"2024-01-31\",\n    \"evidences\": []\n  },\n  {\n    \"id\": \"1234\",\n    \"type\": \"trees\",\n    \"amount\": 10,\n    \"projectId\": \"1234\",\n    \"receiptUrl\": \"https://example.com/receipt\",\n    \"provider\": \"veritree\",\n    \"periodStartDate\": \"2024-01-01\",\n    \"periodEndDate\": \"2024-01-31\",\n    \"evidences\": []\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42217faf-8f00-4214-8e5a-b4292a560969",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "purchases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "origin",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d766a36c-c803-487b-9507-3186f958599f",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "impacts",
+                    "purchases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "origin",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getgreenspark.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "715d69eb-c06b-41e6-9a84-25ac04600bfb",
+    "name": "Greenspark Climate Account Impacts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Greenspark Impact-as-a-Service Climate API: create carbon-offset, tree-planting, plastic-recovery and other climate impacts, fetch impact/project data, carbon estimations, reporting, email templates and embeddable impact widgets. Reconstructed by API Evangelist from the provider's per-endpoint OpenAPI definitions published on docs.getgreenspark.com.\n\nContact Support:\n Name: Greenspark Support\n Email: support@getgreenspark.com",
+      "type": "text/plain"
+    }
+  }
+}

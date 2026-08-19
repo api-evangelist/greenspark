@@ -1,0 +1,1233 @@
+{
+  "item": [
+    {
+      "id": "6c6d6ad0-d124-4c17-8de9-aeae11e624c8",
+      "name": "Projects",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b63faf6f-0a91-4820-ad72-c681c1f02b09",
+          "name": "Fetch project by id",
+          "request": {
+            "name": "Fetch project by id",
+            "description": {
+              "content": "Fetch detailed project information. Accepts all standard API key types. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "projects",
+                ":projectId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) The id of the project."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "bbbcb3de-8a1b-4a77-8911-80a4e34ddf4e",
+              "name": "The project is successfully fetched.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects",
+                    ":projectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The id of the project."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"projectId\": \"ca724c03-6e8b-4c17-800d-80177ede64c7\",\n  \"projectCategoryId\": \"256d3c28-e9c3-4a47-a5a8-63b7634ac5bd\",\n  \"name\": \"Hydropower Project\",\n  \"description\": \"string\",\n  \"type\": \"carbon\",\n  \"unit\": 20,\n  \"link\": \"https://www.getgreenspark.com/projects/the-plastic-bank-turning-plastic-pollution-into-empowering-income\",\n  \"imageUrl\": \"www.example.com/image.png\",\n  \"thumbnailImageUrl\": \"www.example.com/image_thumbnail.png\",\n  \"countries\": \"string\",\n  \"vintage\": 2020,\n  \"price\": 0.01,\n  \"status\": \"approved\",\n  \"statusInitiatedAt\": \"2024-01-01\",\n  \"registryLink\": \"www.example.com\",\n  \"availability\": 1000,\n  \"default\": true,\n  \"projectPartnerLogo\": \"https://cdn.getgreenspark.com/project-images/partner-logos/example_logo.jpg\",\n  \"geoJSON\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      {\n        \"type\": \"Feature\",\n        \"geometry\": {\n          \"type\": \"Point\",\n          \"coordinates\": [\n            -122.63701428179544,\n            44.86975845546196\n          ]\n        },\n        \"properties\": {}\n      }\n    ]\n  },\n  \"metadata\": [\n    {\n      \"description\": \"string\",\n      \"key\": \"string\",\n      \"type\": \"string\",\n      \"value\": {}\n    },\n    {\n      \"description\": \"string\",\n      \"key\": \"string\",\n      \"type\": \"string\",\n      \"value\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8802cca9-477a-4e69-89b4-e5fe7204d117",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects",
+                    ":projectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The id of the project."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ea57387-a1d4-43a6-9201-6d562224e2e5",
+              "name": "Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects",
+                    ":projectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The id of the project."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b3561795-8cfc-4c1c-8793-30c764605c55",
+              "name": "Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects",
+                    ":projectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The id of the project."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e11808b-dfa2-403b-84de-8cff58426cbb",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects",
+                    ":projectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The id of the project."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16650892-7636-4047-b597-c97871cfe453",
+              "name": "422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects",
+                    ":projectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The id of the project."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d20d70d6-5c35-48a0-9280-c82bd6dead54",
+          "name": "Fetch project categories",
+          "request": {
+            "name": "Fetch project categories",
+            "description": {
+              "content": "List impact project categories. Accepts all standard API key types. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "project-categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "The type of the impact which can by purchased by the project category."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "af63c62e-f17a-4755-b97c-6c41e6e9a851",
+              "name": "The project categories are successfully fetched.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "project-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "carbon"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"projectCategoryId\": \"256d3c28-e9c3-4a47-a5a8-63b7634ac5bd\",\n    \"name\": \"Energy Efficiency\",\n    \"description\": \"Energy Efficiency project category description.\",\n    \"images\": [\n      {\n        \"imageUrl\": \"example.com/image.png\",\n        \"style\": \"flat\"\n      },\n      {\n        \"imageUrl\": \"example.com/image.png\",\n        \"style\": \"flat\"\n      }\n    ],\n    \"type\": \"carbon\"\n  },\n  {\n    \"projectCategoryId\": \"256d3c28-e9c3-4a47-a5a8-63b7634ac5bd\",\n    \"name\": \"Energy Efficiency\",\n    \"description\": \"Energy Efficiency project category description.\",\n    \"images\": [\n      {\n        \"imageUrl\": \"example.com/image.png\",\n        \"style\": \"flat\"\n      },\n      {\n        \"imageUrl\": \"example.com/image.png\",\n        \"style\": \"flat\"\n      }\n    ],\n    \"type\": \"carbon\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e195e21-8c6d-4e8e-8fe2-892bd925b69f",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "project-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "carbon"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aedc5b09-e510-4cfc-b301-50c2bdfb2216",
+              "name": "Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "project-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "carbon"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "33449cfb-d35c-478b-a4c7-4fbaf98e6808",
+              "name": "Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "project-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "carbon"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c7b4ff3d-4d26-4065-90d6-1ba652dc38e5",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "project-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "carbon"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "abad363e-8e99-4742-81c5-09e7b7e79a5f",
+              "name": "422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "project-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "carbon"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68365e64-58a7-45b9-b089-c77b28a75369",
+          "name": "Fetch projects",
+          "request": {
+            "name": "Fetch projects",
+            "description": {
+              "content": "List impact projects available to the account. Accepts all standard API key types. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Defines a country where the project is located."
+                },
+                {
+                  "disabled": false,
+                  "key": "projectCategoryId",
+                  "value": "<string>",
+                  "description": "Defines the category that the project falls under. It links the project to its relevant category."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "The type of the impact which can by purchased by the project category."
+                },
+                {
+                  "disabled": false,
+                  "key": "vintage",
+                  "value": "<number>",
+                  "description": "The year when the project started."
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "The currency in which the project prices are returned. Returns in the account's currency for an authenticated call, otherwise in USD if it's not provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "<string>",
+                  "description": "The locale what the project is returned in."
+                },
+                {
+                  "disabled": false,
+                  "key": "plan",
+                  "value": "<string>",
+                  "description": "The subscription plan to fetch the project prices for."
+                },
+                {
+                  "disabled": false,
+                  "key": "statuses",
+                  "value": "<string>",
+                  "description": "Comma separated list of the project statuses. Default to approved."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "9e5a816b-c323-432b-8dd2-12cf938558cd",
+              "name": "The projects are successfully fetched.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "India"
+                    },
+                    {
+                      "key": "projectCategoryId",
+                      "value": "256d3c28-e9c3-4a47-a5a8-63b7634ac5bd"
+                    },
+                    {
+                      "key": "type",
+                      "value": "carbon"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "2020"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "plan",
+                      "value": "growthBusiness"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"projectId\": \"ca724c03-6e8b-4c17-800d-80177ede64c7\",\n    \"projectCategoryId\": \"256d3c28-e9c3-4a47-a5a8-63b7634ac5bd\",\n    \"name\": \"Hydropower Project\",\n    \"description\": \"string\",\n    \"type\": \"carbon\",\n    \"unit\": 20,\n    \"link\": \"https://www.getgreenspark.com/projects/the-plastic-bank-turning-plastic-pollution-into-empowering-income\",\n    \"imageUrl\": \"www.example.com/image.png\",\n    \"thumbnailImageUrl\": \"www.example.com/image_thumbnail.png\",\n    \"countries\": \"string\",\n    \"vintage\": 2020,\n    \"price\": 0.01,\n    \"status\": \"approved\",\n    \"statusInitiatedAt\": \"2024-01-01\",\n    \"registryLink\": \"www.example.com\",\n    \"availability\": 1000,\n    \"default\": true,\n    \"projectPartnerLogo\": \"https://cdn.getgreenspark.com/project-images/partner-logos/example_logo.jpg\",\n    \"geoJSON\": {\n      \"features\": [\n        {\n          \"type\": \"Feature\",\n          \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n              -122.63701428179544,\n              44.86975845546196\n            ]\n          },\n          \"properties\": {}\n        }\n      ],\n      \"type\": \"FeatureCollection\"\n    }\n  },\n  {\n    \"projectId\": \"ca724c03-6e8b-4c17-800d-80177ede64c7\",\n    \"projectCategoryId\": \"256d3c28-e9c3-4a47-a5a8-63b7634ac5bd\",\n    \"name\": \"Hydropower Project\",\n    \"description\": \"string\",\n    \"type\": \"carbon\",\n    \"unit\": 20,\n    \"link\": \"https://www.getgreenspark.com/projects/the-plastic-bank-turning-plastic-pollution-into-empowering-income\",\n    \"imageUrl\": \"www.example.com/image.png\",\n    \"thumbnailImageUrl\": \"www.example.com/image_thumbnail.png\",\n    \"countries\": \"string\",\n    \"vintage\": 2020,\n    \"price\": 0.01,\n    \"status\": \"approved\",\n    \"statusInitiatedAt\": \"2024-01-01\",\n    \"registryLink\": \"www.example.com\",\n    \"availability\": 1000,\n    \"default\": true,\n    \"projectPartnerLogo\": \"https://cdn.getgreenspark.com/project-images/partner-logos/example_logo.jpg\",\n    \"geoJSON\": {\n      \"features\": [\n        {\n          \"type\": \"Feature\",\n          \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n              -122.63701428179544,\n              44.86975845546196\n            ]\n          },\n          \"properties\": {}\n        }\n      ],\n      \"type\": \"FeatureCollection\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0323e247-ca3b-4232-88ec-0b46cb5e7da5",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "India"
+                    },
+                    {
+                      "key": "projectCategoryId",
+                      "value": "256d3c28-e9c3-4a47-a5a8-63b7634ac5bd"
+                    },
+                    {
+                      "key": "type",
+                      "value": "carbon"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "2020"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "plan",
+                      "value": "growthBusiness"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "09b5e932-2d07-4a13-9d3c-eddbedeb2980",
+              "name": "Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "India"
+                    },
+                    {
+                      "key": "projectCategoryId",
+                      "value": "256d3c28-e9c3-4a47-a5a8-63b7634ac5bd"
+                    },
+                    {
+                      "key": "type",
+                      "value": "carbon"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "2020"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "plan",
+                      "value": "growthBusiness"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d28ce444-f6bd-4086-b1c6-abde6ec2e811",
+              "name": "Requires premiumBusiness, premiumBusinessYearly, or enterpriseBusiness subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "India"
+                    },
+                    {
+                      "key": "projectCategoryId",
+                      "value": "256d3c28-e9c3-4a47-a5a8-63b7634ac5bd"
+                    },
+                    {
+                      "key": "type",
+                      "value": "carbon"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "2020"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "plan",
+                      "value": "growthBusiness"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aa70c224-ce00-4d7a-a43a-9e02afad0dec",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "India"
+                    },
+                    {
+                      "key": "projectCategoryId",
+                      "value": "256d3c28-e9c3-4a47-a5a8-63b7634ac5bd"
+                    },
+                    {
+                      "key": "type",
+                      "value": "carbon"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "2020"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "plan",
+                      "value": "growthBusiness"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2f1d0640-ad16-4931-be22-0b8e28fd75b9",
+              "name": "422 Unprocessable Entity when API quota is exhausted (MAX_API_CALLS_REACHED).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "India"
+                    },
+                    {
+                      "key": "projectCategoryId",
+                      "value": "256d3c28-e9c3-4a47-a5a8-63b7634ac5bd"
+                    },
+                    {
+                      "key": "type",
+                      "value": "carbon"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "2020"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "plan",
+                      "value": "growthBusiness"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getgreenspark.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c0b51fdf-6f85-4e28-a104-2ae7b112ecda",
+    "name": "Greenspark Climate Account Projects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Greenspark Impact-as-a-Service Climate API: create carbon-offset, tree-planting, plastic-recovery and other climate impacts, fetch impact/project data, carbon estimations, reporting, email templates and embeddable impact widgets. Reconstructed by API Evangelist from the provider's per-endpoint OpenAPI definitions published on docs.getgreenspark.com.\n\nContact Support:\n Name: Greenspark Support\n Email: support@getgreenspark.com",
+      "type": "text/plain"
+    }
+  }
+}

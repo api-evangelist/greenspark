@@ -1,0 +1,2966 @@
+{
+  "item": [
+    {
+      "id": "6401da02-0752-4005-85fc-6a173cfb044d",
+      "name": "Widgets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4c0ac883-f45e-41ad-ba1a-3c61e27cb6b7",
+          "name": "By percentage of revenue widget v2",
+          "request": {
+            "name": "By percentage of revenue widget v2",
+            "description": {
+              "content": "Fetching a widget that describes a given store’s by percentage of revenue impact settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "widgets",
+                "by-percentage-of-revenue-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e681bad4-1974-415d-b255-126df9abbf25",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "by-percentage-of-revenue-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db21ae06-90ef-4673-96fe-5031f74e8260",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "by-percentage-of-revenue-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "544cdf57-7cc4-4509-9038-a9b8347a807d",
+          "name": "By percentage widget v2",
+          "request": {
+            "name": "By percentage widget v2",
+            "description": {
+              "content": "Fetching a widget that describes a given store’s by percentage impact settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "widgets",
+                "by-percentage-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3120e3d0-7ff2-48a1-9a22-21a2ab46cfb2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "by-percentage-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fff1e28-4634-4607-bacd-a351249805bc",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "by-percentage-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68494424-2716-40f3-88de-f97c0d9e1491",
+          "name": "By percentage widget",
+          "request": {
+            "name": "By percentage widget",
+            "description": {
+              "content": "Fetching a widget that describes a given store’s by percentage impact settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "widgets",
+                "by-percentage-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a60bdc2d-d32a-4442-b422-d205f19053cc",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "by-percentage-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4063b3a0-49a3-4e90-88b9-7993a81afec3",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "by-percentage-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b414e5f8-41bb-407d-8f71-18d7ec10f8f0",
+          "name": "Cart widget v2",
+          "request": {
+            "name": "Cart widget v2",
+            "description": {
+              "content": "Fetching a widget that describes the impact made by the products placed in the cart.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "widgets",
+                "cart-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"order\": {\n    \"currency\": \"USD\",\n    \"totalPrice\": 100,\n    \"lineItems\": [\n      {\n        \"productId\": \"PRODUCT ID OF CART ITEM\",\n        \"quantity\": 1\n      },\n      {\n        \"productId\": \"PRODUCT ID OF CART ITEM\",\n        \"quantity\": 1\n      }\n    ]\n  },\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "658a9a7b-0332-4fce-ab1d-5dfebbfacd71",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "cart-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"order\": {\n    \"currency\": \"USD\",\n    \"totalPrice\": 100,\n    \"lineItems\": [\n      {\n        \"productId\": \"PRODUCT ID OF CART ITEM\",\n        \"quantity\": 1\n      },\n      {\n        \"productId\": \"PRODUCT ID OF CART ITEM\",\n        \"quantity\": 1\n      }\n    ]\n  },\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38b52caa-100e-4568-9826-e8c46f764030",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "cart-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"order\": {\n    \"currency\": \"USD\",\n    \"totalPrice\": 100,\n    \"lineItems\": [\n      {\n        \"productId\": \"PRODUCT ID OF CART ITEM\",\n        \"quantity\": 1\n      },\n      {\n        \"productId\": \"PRODUCT ID OF CART ITEM\",\n        \"quantity\": 1\n      }\n    ]\n  },\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "227417c0-be62-4bb1-9d4d-06f7253f8b1b",
+          "name": "Cart widget",
+          "request": {
+            "name": "Cart widget",
+            "description": {
+              "content": "Fetching a widget that describes the impact made by the products placed in the cart.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "widgets",
+                "cart-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"order\": {\n    \"currency\": \"USD\",\n    \"totalPrice\": 100,\n    \"lineItems\": [\n      {\n        \"productId\": \"PRODUCT ID OF CART ITEM\",\n        \"quantity\": 1\n      },\n      {\n        \"productId\": \"PRODUCT ID OF CART ITEM\",\n        \"quantity\": 1\n      }\n    ]\n  },\n  \"withPopup\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0da6e70d-d8d8-4f55-ab06-df0352ac9de2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "cart-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"order\": {\n    \"currency\": \"USD\",\n    \"totalPrice\": 100,\n    \"lineItems\": [\n      {\n        \"productId\": \"PRODUCT ID OF CART ITEM\",\n        \"quantity\": 1\n      },\n      {\n        \"productId\": \"PRODUCT ID OF CART ITEM\",\n        \"quantity\": 1\n      }\n    ]\n  },\n  \"withPopup\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab340e1a-5de1-4c93-bb62-5d8883b7eb88",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "cart-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"order\": {\n    \"currency\": \"USD\",\n    \"totalPrice\": 100,\n    \"lineItems\": [\n      {\n        \"productId\": \"PRODUCT ID OF CART ITEM\",\n        \"quantity\": 1\n      },\n      {\n        \"productId\": \"PRODUCT ID OF CART ITEM\",\n        \"quantity\": 1\n      }\n    ]\n  },\n  \"withPopup\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce75c816-bb12-4373-ab36-5299f718c73f",
+          "name": "Full width banner v2",
+          "request": {
+            "name": "Full width banner v2",
+            "description": {
+              "content": "Fetching a banner which displays the user's top stats",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "widgets",
+                "full-width-banner"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"options\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"imageUrl\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"callToActionUrl\": \"<string>\",\n  \"textColor\": \"<string>\",\n  \"buttonBackgroundColor\": \"<string>\",\n  \"buttonTextColor\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e37c2b65-84ad-4c22-9512-43bbed8c32e7",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "full-width-banner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"options\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"imageUrl\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"callToActionUrl\": \"<string>\",\n  \"textColor\": \"<string>\",\n  \"buttonBackgroundColor\": \"<string>\",\n  \"buttonTextColor\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11b5ab21-bd39-422c-bba4-2c27b4dee580",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "full-width-banner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"options\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"imageUrl\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"callToActionUrl\": \"<string>\",\n  \"textColor\": \"<string>\",\n  \"buttonBackgroundColor\": \"<string>\",\n  \"buttonTextColor\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "935fd46d-5716-4525-a4da-e6185dfa994e",
+          "name": "Full width banner",
+          "request": {
+            "name": "Full width banner",
+            "description": {
+              "content": "Fetching a banner which displays the user's top stats",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "widgets",
+                "full-width-banner"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"options\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"imageUrl\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "de18be1d-1457-4b82-80f0-853e50ecab23",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "full-width-banner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"options\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"imageUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dcef9fec-9c55-4377-8c5c-032f07d81244",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "full-width-banner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"options\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"imageUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80b99c6d-60ad-4c52-a8af-12a43239dd02",
+          "name": "Per order widget v2",
+          "request": {
+            "name": "Per order widget v2",
+            "description": {
+              "content": "Fetching a widget that describes a given store’s per order impact settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "widgets",
+                "per-order-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a3983b52-d4fd-4ebf-b145-47dfcfe18cc4",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "per-order-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa872992-2d53-4f93-ac58-c3e34026b54c",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "per-order-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4853c6a2-4c44-448d-bd0d-66b1d2f60caa",
+          "name": "Per order widget",
+          "request": {
+            "name": "Per order widget",
+            "description": {
+              "content": "Fetching a widget that describes a given store’s per order impact settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "widgets",
+                "per-order-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "565cc69a-4857-4cd5-be4c-1d976da64b1f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "per-order-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7df9d5a-3804-41f3-a087-3e71beb20623",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "per-order-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"withPopup\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6056345d-4cd1-4541-9a2d-781d639f0102",
+          "name": "Per product widget v2",
+          "request": {
+            "name": "Per product widget v2",
+            "description": {
+              "content": "Fetching a widget that describes a given store’s impact settings for a selected product.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "widgets",
+                "per-product-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"productId\": \"PRODUCT ID\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7b96fde1-abca-4409-ab48-b726d22ae493",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "per-product-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"productId\": \"PRODUCT ID\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8cc5cd0-eebd-44f5-ac54-191f9b641ecc",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "per-product-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"productId\": \"PRODUCT ID\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50295354-1567-458a-b972-cd04814a95fc",
+          "name": "Per product widget",
+          "request": {
+            "name": "Per product widget",
+            "description": {
+              "content": "Fetching a widget that describes a given store’s impact settings for a selected product.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "widgets",
+                "per-product-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"productId\": \"PRODUCT ID\",\n  \"withPopup\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a944f464-6d07-40bf-9689-e3123fa91fff",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "per-product-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"productId\": \"PRODUCT ID\",\n  \"withPopup\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0170f23d-35f0-4b82-90fb-8028fe9c9957",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "per-product-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"productId\": \"PRODUCT ID\",\n  \"withPopup\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73ee66a0-bf9c-4957-a596-04ee03a5bb0b",
+          "name": "Spend level widget v2",
+          "request": {
+            "name": "Spend level widget v2",
+            "description": {
+              "content": "Fetching a widget that describes a given store’s spend level impact settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "widgets",
+                "spend-level-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"currency\": \"USD\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "84fb0f74-8fd9-4fa6-9cbe-1f11ae3bc015",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "spend-level-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"currency\": \"USD\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb59cce1-37cd-4709-a682-e2928f395c07",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "spend-level-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"currency\": \"USD\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd85bcf9-fa08-422a-912e-65002b1cb770",
+          "name": "Spend level widget",
+          "request": {
+            "name": "Spend level widget",
+            "description": {
+              "content": "Fetching a widget that describes a given store’s spend level impact settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "widgets",
+                "spend-level-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"currency\": \"USD\",\n  \"withPopup\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aa82e73c-bb1f-4e87-a6a6-92049688a886",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "spend-level-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"currency\": \"USD\",\n  \"withPopup\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9967cc55-420e-4ba7-8981-d3fbb6538c21",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "spend-level-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"currency\": \"USD\",\n  \"withPopup\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "133e3775-9b64-45f6-ad42-fa8c2521f57c",
+          "name": "Tiered spend level widget v2",
+          "request": {
+            "name": "Tiered spend level widget v2",
+            "description": {
+              "content": "Fetching a widget that describes a given store’s tiered spend level impact settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "widgets",
+                "tiered-spend-level-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"currency\": \"USD\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c2a2f133-5eb3-4cb5-8a13-e118bb4ba96e",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "tiered-spend-level-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"currency\": \"USD\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1a61a66-ef63-47ec-bbe2-62d64c89cec4",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "tiered-spend-level-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationSlug\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"currency\": \"USD\",\n  \"withPopup\": false,\n  \"style\": \"default\",\n  \"popupTheme\": \"light\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7d5e84c-0b3a-4c47-91dc-2d607f492252",
+          "name": "Tiered spend level widget",
+          "request": {
+            "name": "Tiered spend level widget",
+            "description": {
+              "content": "Fetching a widget that describes a given store’s tiered spend level impact settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "widgets",
+                "tiered-spend-level-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"currency\": \"USD\",\n  \"withPopup\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bedaf977-115a-4870-a08e-134db256f278",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "tiered-spend-level-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"currency\": \"USD\",\n  \"withPopup\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3841b97a-4439-47be-adf5-c6bc9546075d",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "tiered-spend-level-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shopUniqueName\": \"YOUR-SHOP-NAME\",\n  \"color\": \"green\",\n  \"currency\": \"USD\",\n  \"withPopup\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1021e423-d620-4632-9617-d3b97e693946",
+          "name": "Top stats widget v2",
+          "request": {
+            "name": "Top stats widget v2",
+            "description": {
+              "content": "Fetching a widget that shows the overall stats of a given Greenspark account. Please note that any impacts with 0 value are automatically hidden from the widget.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "widgets",
+                "stats-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"color\": \"green\",\n  \"withPopup\": \"<boolean>\",\n  \"popupTheme\": \"light\",\n  \"impactTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b3ca994-bde0-4fe7-b9d0-80629f3e5eee",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "stats-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"color\": \"green\",\n  \"withPopup\": \"<boolean>\",\n  \"popupTheme\": \"light\",\n  \"impactTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0db764a-df6c-4158-bde4-8c37cbbd9053",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "widgets",
+                    "stats-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"color\": \"green\",\n  \"withPopup\": \"<boolean>\",\n  \"popupTheme\": \"light\",\n  \"impactTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08ea06d6-fbf2-4de8-b003-a2bdb508e7a8",
+          "name": "Top stats widget",
+          "request": {
+            "name": "Top stats widget",
+            "description": {
+              "content": "Fetching a widget that shows the overall stats of a given Greenspark account. Please note that any impacts with 0 value are automatically hidden from the widget.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "widgets",
+                "stats-widget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"color\": \"green\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a6304a9f-5803-4fd2-9237-d3ed8bc0c718",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "stats-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"color\": \"green\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1450528a-6d38-40c7-a5a7-5162409416f4",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "stats-widget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"color\": \"green\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getgreenspark.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "83bc0b55-07c9-4039-99c4-1405535634c0",
+    "name": "Greenspark Climate Account Widgets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Greenspark Impact-as-a-Service Climate API: create carbon-offset, tree-planting, plastic-recovery and other climate impacts, fetch impact/project data, carbon estimations, reporting, email templates and embeddable impact widgets. Reconstructed by API Evangelist from the provider's per-endpoint OpenAPI definitions published on docs.getgreenspark.com.\n\nContact Support:\n Name: Greenspark Support\n Email: support@getgreenspark.com",
+      "type": "text/plain"
+    }
+  }
+}

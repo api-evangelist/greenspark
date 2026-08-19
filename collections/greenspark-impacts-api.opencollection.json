@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Greenspark Climate Account Impacts API",
+    "version": "2.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Impacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Impact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v1/impacts/sources/:sourceId/triggers/:triggerId",
+            "params": [
+              {
+                "name": "sourceId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the source associated with the impact."
+              },
+              {
+                "name": "triggerId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the trigger associated with the impact."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an impact associated with a source and a trigger. Not executable via ReadMe MCP execute-request in the current version (read-only MCP). Use get-endpoint output to build integrations in your application."
+        },
+        {
+          "info": {
+            "name": "Create Impact in Batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v1/impacts/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run multiple create impact call in a batch, equivalent to calling create impact multiple times with different parameters. Not executable via ReadMe MCP execute-request in the current version (read-only MCP). Use get-endpoint output to build integrations in your application."
+        },
+        {
+          "info": {
+            "name": "Create One-time Impact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v1/impacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an impact associated with an account id. Not executable via ReadMe MCP execute-request in the current version (read-only MCP). Use get-endpoint output to build integrations in your application."
+        },
+        {
+          "info": {
+            "name": "Fetch Impact Purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v1/impacts/purchases/:purchaseId",
+            "params": [
+              {
+                "name": "purchaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the purchase."
+              }
+            ]
+          },
+          "docs": "Public impact purchase ledger entry. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles. [Read more about the domain object here.](https://greenspark.readme.io/reference/impacts)"
+        },
+        {
+          "info": {
+            "name": "Fetch Impact Purchases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgreenspark.com/v1/impacts/purchases",
+            "headers": [
+              {
+                "name": "origin",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Public impact purchase ledger. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles. [Read more about the domain object here.](https://greenspark.readme.io/reference/impacts)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

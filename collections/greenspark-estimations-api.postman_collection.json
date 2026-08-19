@@ -1,0 +1,1479 @@
+{
+  "item": [
+    {
+      "id": "1b75d72b-5fb1-4ca6-a2be-25cb3bcfef3b",
+      "name": "Estimations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "65bea7bb-de6c-4e17-bc99-afab89658384",
+          "name": "Fetch Carbon Estimate of a Transaction by MCC",
+          "request": {
+            "name": "Fetch Carbon Estimate of a Transaction by MCC",
+            "description": {
+              "content": "Estimating the carbon footprint of a transaction based on a Merchant Category Code",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "estimations",
+                "transaction",
+                "mcc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": \"<number>\",\n  \"mcc\": \"<string>\",\n  \"currencyISO\": \"<string>\",\n  \"merchant\": \"<string>\",\n  \"geo\": \"<string>\",\n  \"userType\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff6f482f-f865-4dbb-aef3-dcfa30a1d290",
+              "name": "The estimated carbon footprint has been successfully fetched.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "mcc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": 1000,\n  \"mcc\": \"5411\",\n  \"currencyISO\": \"EUR\",\n  \"merchant\": \"Superstore\",\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emissionsLevel\": \"category\",\n  \"name\": \"Superstore\",\n  \"kgOfCO2Emissions\": 4.66,\n  \"mtOfCO2Emissions\": 0.0047,\n  \"similarTo\": [\n    \"Eating 52 cookies\",\n    \"Absorbed by a tree every 19 days\",\n    \"Eating 1.8 cans of tuna\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "616ec872-d5b1-4ada-aaf9-6023247b31a1",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "mcc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": 1000,\n  \"mcc\": \"5411\",\n  \"currencyISO\": \"EUR\",\n  \"merchant\": \"Superstore\",\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1cbd7587-04aa-4860-aa33-26cde43a1f07",
+              "name": "Provide your API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "mcc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": 1000,\n  \"mcc\": \"5411\",\n  \"currencyISO\": \"EUR\",\n  \"merchant\": \"Superstore\",\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f4ce5963-a022-4fe2-8919-434ce01b8e80",
+              "name": "Please upgrade to a premium or enterprise plan.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "mcc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": 1000,\n  \"mcc\": \"5411\",\n  \"currencyISO\": \"EUR\",\n  \"merchant\": \"Superstore\",\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7cbf8e8b-b1d8-454a-bd7f-ad68f389ba26",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "mcc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": 1000,\n  \"mcc\": \"5411\",\n  \"currencyISO\": \"EUR\",\n  \"merchant\": \"Superstore\",\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13cbc2a0-c0c8-4b57-92d2-180ffbd21749",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "mcc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": 1000,\n  \"mcc\": \"5411\",\n  \"currencyISO\": \"EUR\",\n  \"merchant\": \"Superstore\",\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e19d6add-c0e8-4ac4-876a-583008735604",
+          "name": "Fetch Carbon Estimate of a Transaction by Open Banking Category Types",
+          "request": {
+            "name": "Fetch Carbon Estimate of a Transaction by Open Banking Category Types",
+            "description": {
+              "content": "Estimating the carbon footprint of a transaction based on Open Banking Category Types",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "estimations",
+                "transaction",
+                "category-type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": \"<number>\",\n  \"categoryType\": \"<string>\",\n  \"categoryValue\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"currencyISO\": \"<string>\",\n  \"geo\": \"<string>\",\n  \"userType\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb63cbf5-7b18-49d6-adc3-177532f0ad35",
+              "name": "The estimated carbon footprint has been successfully fetched.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "category-type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": 1000,\n  \"categoryType\": \"plaid\",\n  \"categoryValue\": [\n    \"FOOD_AND_DRINK\",\n    \"FOOD_AND_DRINK_GROCERIES\"\n  ],\n  \"currencyISO\": \"EUR\",\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emissionsLevel\": \"category\",\n  \"name\": \"Superstore\",\n  \"kgOfCO2Emissions\": 4.66,\n  \"mtOfCO2Emissions\": 0.0047,\n  \"similarTo\": [\n    \"Eating 52 cookies\",\n    \"Absorbed by a tree every 19 days\",\n    \"Eating 1.8 cans of tuna\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2057cbae-ad6f-4f79-9694-480592fe8cba",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "category-type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": 1000,\n  \"categoryType\": \"plaid\",\n  \"categoryValue\": [\n    \"FOOD_AND_DRINK\",\n    \"FOOD_AND_DRINK_GROCERIES\"\n  ],\n  \"currencyISO\": \"EUR\",\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "61edd013-4e3c-455b-a703-5b54ee2e4281",
+              "name": "Provide your API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "category-type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": 1000,\n  \"categoryType\": \"plaid\",\n  \"categoryValue\": [\n    \"FOOD_AND_DRINK\",\n    \"FOOD_AND_DRINK_GROCERIES\"\n  ],\n  \"currencyISO\": \"EUR\",\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13631b63-4396-42f3-ba67-9d75381024b5",
+              "name": "Please upgrade to a premium or enterprise plan.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "category-type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": 1000,\n  \"categoryType\": \"plaid\",\n  \"categoryValue\": [\n    \"FOOD_AND_DRINK\",\n    \"FOOD_AND_DRINK_GROCERIES\"\n  ],\n  \"currencyISO\": \"EUR\",\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3eec0c1-d4ac-469a-9b87-c5fc18d8b233",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "category-type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": 1000,\n  \"categoryType\": \"plaid\",\n  \"categoryValue\": [\n    \"FOOD_AND_DRINK\",\n    \"FOOD_AND_DRINK_GROCERIES\"\n  ],\n  \"currencyISO\": \"EUR\",\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "682702bf-ae64-4a2c-8dbb-32bceb575ff1",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "category-type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": 1000,\n  \"categoryType\": \"plaid\",\n  \"categoryValue\": [\n    \"FOOD_AND_DRINK\",\n    \"FOOD_AND_DRINK_GROCERIES\"\n  ],\n  \"currencyISO\": \"EUR\",\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7be3aff1-7981-4dd8-af6e-0cabc89134b9",
+          "name": "Fetch Carbon Estimate of Multiple Transactions by MCC",
+          "request": {
+            "name": "Fetch Carbon Estimate of Multiple Transactions by MCC",
+            "description": {
+              "content": "Estimating the carbon footprint of multiple transactions based on a Merchant Category Code",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "estimations",
+                "transaction",
+                "mcc",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transactions\": [\n    {\n      \"price\": \"<number>\",\n      \"mcc\": \"<string>\",\n      \"currencyISO\": \"<string>\",\n      \"merchant\": \"<string>\"\n    },\n    {\n      \"price\": \"<number>\",\n      \"mcc\": \"<string>\",\n      \"currencyISO\": \"<string>\",\n      \"merchant\": \"<string>\"\n    }\n  ],\n  \"geo\": \"<string>\",\n  \"userType\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a574386f-9491-401c-bf9f-dee1286800a4",
+              "name": "The estimated carbon footprints has been successfully fetched.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "mcc",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactions\": [\n    {\n      \"merchant\": \"Supermarket\",\n      \"price\": 77.96,\n      \"mcc\": \"3612\",\n      \"currencyISO\": \"GBP\"\n    },\n    {\n      \"merchant\": \"Superstore\",\n      \"price\": 41.27,\n      \"mcc\": \"3611\",\n      \"currencyISO\": \"HUF\"\n    }\n  ],\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emissionsLevel\": \"category\",\n  \"name\": \"Superstore\",\n  \"kgOfCO2Emissions\": 4.66,\n  \"mtOfCO2Emissions\": 0.0047,\n  \"similarTo\": [\n    \"Eating 52 cookies\",\n    \"Absorbed by a tree every 19 days\",\n    \"Eating 1.8 cans of tuna\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb06741d-d887-4b26-aae4-3fe78cb2666b",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "mcc",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactions\": [\n    {\n      \"merchant\": \"Supermarket\",\n      \"price\": 77.96,\n      \"mcc\": \"3612\",\n      \"currencyISO\": \"GBP\"\n    },\n    {\n      \"merchant\": \"Superstore\",\n      \"price\": 41.27,\n      \"mcc\": \"3611\",\n      \"currencyISO\": \"HUF\"\n    }\n  ],\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3d20786c-a4a9-4c78-80fd-91d91150462a",
+              "name": "Provide your API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "mcc",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactions\": [\n    {\n      \"merchant\": \"Supermarket\",\n      \"price\": 77.96,\n      \"mcc\": \"3612\",\n      \"currencyISO\": \"GBP\"\n    },\n    {\n      \"merchant\": \"Superstore\",\n      \"price\": 41.27,\n      \"mcc\": \"3611\",\n      \"currencyISO\": \"HUF\"\n    }\n  ],\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a0979266-60a6-470e-871e-629f56a1134c",
+              "name": "Please upgrade to a premium or enterprise plan.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "mcc",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactions\": [\n    {\n      \"merchant\": \"Supermarket\",\n      \"price\": 77.96,\n      \"mcc\": \"3612\",\n      \"currencyISO\": \"GBP\"\n    },\n    {\n      \"merchant\": \"Superstore\",\n      \"price\": 41.27,\n      \"mcc\": \"3611\",\n      \"currencyISO\": \"HUF\"\n    }\n  ],\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "341b30fe-1305-4b79-8003-abba756d2790",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "mcc",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactions\": [\n    {\n      \"merchant\": \"Supermarket\",\n      \"price\": 77.96,\n      \"mcc\": \"3612\",\n      \"currencyISO\": \"GBP\"\n    },\n    {\n      \"merchant\": \"Superstore\",\n      \"price\": 41.27,\n      \"mcc\": \"3611\",\n      \"currencyISO\": \"HUF\"\n    }\n  ],\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "67ccdfa0-2d48-4cca-bf59-35047300f6ec",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "mcc",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactions\": [\n    {\n      \"merchant\": \"Supermarket\",\n      \"price\": 77.96,\n      \"mcc\": \"3612\",\n      \"currencyISO\": \"GBP\"\n    },\n    {\n      \"merchant\": \"Superstore\",\n      \"price\": 41.27,\n      \"mcc\": \"3611\",\n      \"currencyISO\": \"HUF\"\n    }\n  ],\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b2da96a-873a-4062-934a-52d2199e0007",
+          "name": "Fetch Carbon Estimate of Multiple Transactions by Open Banking Category Types",
+          "request": {
+            "name": "Fetch Carbon Estimate of Multiple Transactions by Open Banking Category Types",
+            "description": {
+              "content": "Estimating the carbon footprint of multiple transactions based on Open Banking Category Types",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "estimations",
+                "transaction",
+                "category-type",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transactions\": [\n    {\n      \"price\": \"<number>\",\n      \"categoryType\": \"<string>\",\n      \"categoryValue\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"currencyISO\": \"<string>\"\n    },\n    {\n      \"price\": \"<number>\",\n      \"categoryType\": \"<string>\",\n      \"categoryValue\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"currencyISO\": \"<string>\"\n    }\n  ],\n  \"geo\": \"<string>\",\n  \"userType\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dab03538-da03-41bb-88d0-48775ac6c86b",
+              "name": "The estimated carbon footprint has been successfully fetched.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "category-type",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactions\": [\n    {\n      \"price\": 77.96,\n      \"currencyISO\": \"GBP\",\n      \"categoryType\": \"plaid\",\n      \"categoryValue\": [\n        \"FOOD_AND_DRINK\",\n        \"FOOD_AND_DRINK_GROCERIES\"\n      ]\n    }\n  ],\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emissionsLevel\": \"category\",\n  \"name\": \"Superstore\",\n  \"kgOfCO2Emissions\": 4.66,\n  \"mtOfCO2Emissions\": 0.0047,\n  \"similarTo\": [\n    \"Eating 52 cookies\",\n    \"Absorbed by a tree every 19 days\",\n    \"Eating 1.8 cans of tuna\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2e5750b-13ce-4084-a189-eaeaf40a238a",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "category-type",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactions\": [\n    {\n      \"price\": 77.96,\n      \"currencyISO\": \"GBP\",\n      \"categoryType\": \"plaid\",\n      \"categoryValue\": [\n        \"FOOD_AND_DRINK\",\n        \"FOOD_AND_DRINK_GROCERIES\"\n      ]\n    }\n  ],\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1bb0a98c-40ba-4844-8e62-0119a22d2873",
+              "name": "Provide your API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "category-type",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactions\": [\n    {\n      \"price\": 77.96,\n      \"currencyISO\": \"GBP\",\n      \"categoryType\": \"plaid\",\n      \"categoryValue\": [\n        \"FOOD_AND_DRINK\",\n        \"FOOD_AND_DRINK_GROCERIES\"\n      ]\n    }\n  ],\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6cd9adc1-fe67-49dd-8fb6-6af30e00d874",
+              "name": "Please upgrade to a premium or enterprise plan.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "category-type",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactions\": [\n    {\n      \"price\": 77.96,\n      \"currencyISO\": \"GBP\",\n      \"categoryType\": \"plaid\",\n      \"categoryValue\": [\n        \"FOOD_AND_DRINK\",\n        \"FOOD_AND_DRINK_GROCERIES\"\n      ]\n    }\n  ],\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "738db1e1-02ee-4cf8-8422-e157eb84fcd7",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "category-type",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactions\": [\n    {\n      \"price\": 77.96,\n      \"currencyISO\": \"GBP\",\n      \"categoryType\": \"plaid\",\n      \"categoryValue\": [\n        \"FOOD_AND_DRINK\",\n        \"FOOD_AND_DRINK_GROCERIES\"\n      ]\n    }\n  ],\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6c66d2b-4eed-455f-b41f-e90e0cd6f400",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimations",
+                    "transaction",
+                    "category-type",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactions\": [\n    {\n      \"price\": 77.96,\n      \"currencyISO\": \"GBP\",\n      \"categoryType\": \"plaid\",\n      \"categoryValue\": [\n        \"FOOD_AND_DRINK\",\n        \"FOOD_AND_DRINK_GROCERIES\"\n      ]\n    }\n  ],\n  \"geo\": \"EU/UK\",\n  \"userType\": \"PERSONAL\",\n  \"metadata\": [\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    },\n    {\n      \"key\": \"customerId\",\n      \"value\": \"743ce227-22ef-4c6e-9c06-725f97b99690\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getgreenspark.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6eceb97f-2213-41ff-877b-8af9dcb73821",
+    "name": "Greenspark Climate Account Estimations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Greenspark Impact-as-a-Service Climate API: create carbon-offset, tree-planting, plastic-recovery and other climate impacts, fetch impact/project data, carbon estimations, reporting, email templates and embeddable impact widgets. Reconstructed by API Evangelist from the provider's per-endpoint OpenAPI definitions published on docs.getgreenspark.com.\n\nContact Support:\n Name: Greenspark Support\n Email: support@getgreenspark.com",
+      "type": "text/plain"
+    }
+  }
+}

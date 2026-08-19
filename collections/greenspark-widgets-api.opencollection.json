@@ -1,0 +1,417 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Greenspark Climate Account Widgets API",
+    "version": "2.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Widgets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "By percentage of revenue widget v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v2/widgets/by-percentage-of-revenue-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that describes a given store’s by percentage of revenue impact settings."
+        },
+        {
+          "info": {
+            "name": "By percentage widget v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v2/widgets/by-percentage-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that describes a given store’s by percentage impact settings."
+        },
+        {
+          "info": {
+            "name": "By percentage widget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/widgets/by-percentage-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that describes a given store’s by percentage impact settings."
+        },
+        {
+          "info": {
+            "name": "Cart widget v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v2/widgets/cart-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that describes the impact made by the products placed in the cart."
+        },
+        {
+          "info": {
+            "name": "Cart widget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/widgets/cart-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that describes the impact made by the products placed in the cart."
+        },
+        {
+          "info": {
+            "name": "Full width banner v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v2/widgets/full-width-banner",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a banner which displays the user's top stats"
+        },
+        {
+          "info": {
+            "name": "Full width banner",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/widgets/full-width-banner",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a banner which displays the user's top stats"
+        },
+        {
+          "info": {
+            "name": "Per order widget v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v2/widgets/per-order-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that describes a given store’s per order impact settings."
+        },
+        {
+          "info": {
+            "name": "Per order widget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/widgets/per-order-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that describes a given store’s per order impact settings."
+        },
+        {
+          "info": {
+            "name": "Per product widget v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v2/widgets/per-product-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that describes a given store’s impact settings for a selected product."
+        },
+        {
+          "info": {
+            "name": "Per product widget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/widgets/per-product-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that describes a given store’s impact settings for a selected product."
+        },
+        {
+          "info": {
+            "name": "Spend level widget v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v2/widgets/spend-level-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that describes a given store’s spend level impact settings."
+        },
+        {
+          "info": {
+            "name": "Spend level widget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/widgets/spend-level-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that describes a given store’s spend level impact settings."
+        },
+        {
+          "info": {
+            "name": "Tiered spend level widget v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v2/widgets/tiered-spend-level-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that describes a given store’s tiered spend level impact settings."
+        },
+        {
+          "info": {
+            "name": "Tiered spend level widget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/widgets/tiered-spend-level-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that describes a given store’s tiered spend level impact settings."
+        },
+        {
+          "info": {
+            "name": "Top stats widget v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v2/widgets/stats-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that shows the overall stats of a given Greenspark account. Please note that any impacts with 0 value are automatically hidden from the widget."
+        },
+        {
+          "info": {
+            "name": "Top stats widget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/widgets/stats-widget",
+            "params": [
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Set the widget's language. Currently supported languages are: English (en), German (de)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetching a widget that shows the overall stats of a given Greenspark account. Please note that any impacts with 0 value are automatically hidden from the widget."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

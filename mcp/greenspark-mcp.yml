@@ -2,15 +2,12 @@ generated: '2026-07-19'
 method: searched
 status: published
 source: https://docs.getgreenspark.com/docs/mcp
-description: >-
-  Greenspark operates an official remote MCP server hosted by ReadMe at
-  https://docs.getgreenspark.com/mcp. v1 is read-only: it exposes the Greenspark
-  OpenAPI specs and guides for schema-aware answers, and allows execute-request
-  on enabled GET routes when a valid x-api-key is provided (match key to host:
-  sandbox key -> sandbox host, production key -> production host). Registry
-  metadata (server.json), editor install examples, and Agent Skills live at
-  github.com/getgreenspark/mcp. Tool list captured verbatim from the Greenspark
-  MCP documentation.
+description: 'Greenspark operates an official remote MCP server hosted by ReadMe at https://docs.getgreenspark.com/mcp.
+  v1 is read-only: it exposes the Greenspark OpenAPI specs and guides for schema-aware answers, and allows
+  execute-request on enabled GET routes when a valid x-api-key is provided (match key to host: sandbox
+  key -> sandbox host, production key -> production host). Registry metadata (server.json), editor install
+  examples, and Agent Skills live at github.com/getgreenspark/mcp. Tool list captured verbatim from the
+  Greenspark MCP documentation.'
 server:
   name: com.getgreenspark/greenspark-api
   title: Greenspark API
@@ -21,22 +18,34 @@ server:
   registry_manifest: mcp/greenspark-server.json
   repository: https://github.com/getgreenspark/mcp
 tools:
-  - name: list-specs
-    description: Browse the available OpenAPI specs.
-  - name: list-endpoints
-    description: List routes across the specs.
-  - name: get-endpoint
-    description: Full schema for a single operation.
-  - name: search-endpoints
-    description: Find routes by keyword.
-  - name: execute-request
-    description: GET-only live call, on routes enabled in ReadMe MCP settings, authenticated with x-api-key.
-  - name: get-server-variables
-    description: Environment / server URL hints from the spec.
+- name: list-specs
+  description: Browse the available OpenAPI specs.
+- name: list-endpoints
+  description: List routes across the specs.
+- name: get-endpoint
+  description: Full schema for a single operation.
+- name: search-endpoints
+  description: Find routes by keyword.
+- name: execute-request
+  description: GET-only live call, on routes enabled in ReadMe MCP settings, authenticated with x-api-key.
+- name: get-server-variables
+  description: Environment / server URL hints from the spec.
 exposure:
   read_only: true
-  specs_exposed: [Impact, Reporting, Account, Projects]
-  not_executable_via_mcp: [Estimations, Email, Billing]
-  note: >-
-    v1 MCP is read-only. POST/PUT/PATCH/DELETE routes are documented for building
-    integrations; use get-endpoint for schemas, not execute-request for writes.
+  specs_exposed:
+  - Impact
+  - Reporting
+  - Account
+  - Projects
+  not_executable_via_mcp:
+  - Estimations
+  - Email
+  - Billing
+  note: v1 MCP is read-only. POST/PUT/PATCH/DELETE routes are documented for building integrations; use
+    get-endpoint for schemas, not execute-request for writes.
+deployment:
+  mode: remote
+  verified: searched
+  tools: 6
+  checked: '2026-08-12'
+  source: catalog MCP census

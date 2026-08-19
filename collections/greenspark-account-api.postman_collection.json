@@ -1,0 +1,751 @@
+{
+  "item": [
+    {
+      "id": "4549c084-d3fd-42ae-bdd5-388633150594",
+      "name": "Account",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4a61665a-8b67-4fea-b3c8-1851ec6626d0",
+          "name": "Community Public Account",
+          "request": {
+            "name": "Community Public Account",
+            "description": {
+              "content": "Fetches the Greenspark community public profile. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "accounts",
+                "community"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "d5d24d5f-c811-480e-b9b2-a0534bc846c9",
+              "name": "The Greenspark community's public information is fetched.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounts",
+                    "community"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"comparisons\": [\n    {\n      \"amount\": 14,\n      \"description\": \"This is a comparison description.\",\n      \"link\": \"example.com\",\n      \"amountDescription\": \"This is a short summary.\",\n      \"type\": \"carbon\",\n      \"unit\": \"flights\",\n      \"suffix\": \"ha\"\n    },\n    {\n      \"amount\": 14,\n      \"description\": \"This is a comparison description.\",\n      \"link\": \"example.com\",\n      \"amountDescription\": \"This is a short summary.\",\n      \"type\": \"carbon\",\n      \"unit\": \"flights\",\n      \"suffix\": \"ha\"\n    }\n  ],\n  \"impacts\": [\n    {\n      \"type\": \"carbon\",\n      \"amount\": 100,\n      \"source\": \"account\",\n      \"projectId\": \"c6e4b1bf-843e-4859-bc85-c3b764f507e6\"\n    },\n    {\n      \"type\": \"carbon\",\n      \"amount\": 100,\n      \"source\": \"account\",\n      \"projectId\": \"c6e4b1bf-843e-4859-bc85-c3b764f507e6\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "079183ec-564f-40b1-93c2-17835a0d6cc0",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounts",
+                    "community"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1be2693f-a2a3-4af6-9870-563bddc7e030",
+              "name": "Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounts",
+                    "community"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f1b2a139-976b-4147-8a6b-2fec4a5f138a",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounts",
+                    "community"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c05907f-20bb-4099-94dc-a0eb2cb68012",
+          "name": "Public Account",
+          "request": {
+            "name": "Public Account",
+            "description": {
+              "content": "Deprecated — use getPublicAccountV2 (GET /v2/accounts/public/{publicAccountId}).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "accounts",
+                "public",
+                ":publicAccountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "publicAccountId",
+                  "description": "(Required) The public id of an account."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "c6527627-7b81-44e7-abd4-a64a3357d892",
+              "name": "The account's public information is fetched.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounts",
+                    "public",
+                    ":publicAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publicAccountId",
+                      "description": "(Required) The public id of an account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"comparisons\": [\n    {\n      \"amount\": 14,\n      \"description\": \"This is a comparison description.\",\n      \"link\": \"example.com\",\n      \"amountDescription\": \"This is a short summary.\",\n      \"type\": \"carbon\",\n      \"unit\": \"flights\",\n      \"suffix\": \"ha\"\n    },\n    {\n      \"amount\": 14,\n      \"description\": \"This is a comparison description.\",\n      \"link\": \"example.com\",\n      \"amountDescription\": \"This is a short summary.\",\n      \"type\": \"carbon\",\n      \"unit\": \"flights\",\n      \"suffix\": \"ha\"\n    }\n  ],\n  \"name\": \"ACME\",\n  \"signupDate\": \"2021-01-01T00:00:00.000Z\",\n  \"accountType\": \"business\",\n  \"impacts\": [\n    {\n      \"type\": \"carbon\",\n      \"amount\": 100,\n      \"source\": \"account\"\n    },\n    {\n      \"type\": \"carbon\",\n      \"amount\": 100,\n      \"source\": \"account\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14a84edb-4233-469f-a8c6-74565467950b",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounts",
+                    "public",
+                    ":publicAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publicAccountId",
+                      "description": "(Required) The public id of an account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "643cf666-1d95-41e6-bcd5-9fe09a7d64d7",
+              "name": "Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounts",
+                    "public",
+                    ":publicAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publicAccountId",
+                      "description": "(Required) The public id of an account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "53567de3-2882-4205-ac2c-2fce9f65234d",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounts",
+                    "public",
+                    ":publicAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publicAccountId",
+                      "description": "(Required) The public id of an account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1811d8c-a49b-49d2-8312-851dd6fce74b",
+          "name": "Public Account V2",
+          "request": {
+            "name": "Public Account V2",
+            "description": {
+              "content": "Canonical public account endpoint. Returns impacts and comparisons by project. Accepts all standard API key types. Callable via ReadMe MCP execute-request when this route is enabled in ReadMe MCP route toggles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "accounts",
+                "public",
+                ":publicAccountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "publicAccountId",
+                  "description": "(Required) The public id of an account."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "c061eae2-21fa-4c88-ba1a-2cfe045e75e7",
+              "name": "The account's public information is fetched.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "accounts",
+                    "public",
+                    ":publicAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publicAccountId",
+                      "description": "(Required) The public id of an account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"comparisons\": [\n    {\n      \"amount\": 14,\n      \"description\": \"This is a comparison description.\",\n      \"link\": \"example.com\",\n      \"amountDescription\": \"This is a short summary.\",\n      \"type\": \"carbon\",\n      \"unit\": \"flights\",\n      \"suffix\": \"ha\"\n    },\n    {\n      \"amount\": 14,\n      \"description\": \"This is a comparison description.\",\n      \"link\": \"example.com\",\n      \"amountDescription\": \"This is a short summary.\",\n      \"type\": \"carbon\",\n      \"unit\": \"flights\",\n      \"suffix\": \"ha\"\n    }\n  ],\n  \"name\": \"ACME\",\n  \"signupDate\": \"2021-01-01T00:00:00.000Z\",\n  \"accountType\": \"business\",\n  \"impacts\": [\n    {\n      \"type\": \"carbon\",\n      \"amount\": 100,\n      \"source\": \"account\",\n      \"projectId\": \"c6e4b1bf-843e-4859-bc85-c3b764f507e6\"\n    },\n    {\n      \"type\": \"carbon\",\n      \"amount\": 100,\n      \"source\": \"account\",\n      \"projectId\": \"c6e4b1bf-843e-4859-bc85-c3b764f507e6\"\n    }\n  ],\n  \"comparisonsByProject\": [\n    {\n      \"amount\": 14,\n      \"description\": \"This is a comparison description.\",\n      \"link\": \"example.com\",\n      \"amountDescription\": \"This is a short summary.\",\n      \"type\": \"carbon\",\n      \"projectId\": \"7b726bbc-b121-4432-96d8-30d507a19664\",\n      \"unit\": \"flights\",\n      \"suffix\": \"ha\"\n    },\n    {\n      \"amount\": 14,\n      \"description\": \"This is a comparison description.\",\n      \"link\": \"example.com\",\n      \"amountDescription\": \"This is a short summary.\",\n      \"type\": \"carbon\",\n      \"projectId\": \"7b726bbc-b121-4432-96d8-30d507a19664\",\n      \"unit\": \"flights\",\n      \"suffix\": \"ha\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c2f6f4c-83f5-458f-9c5d-e3de4a50f6ad",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "accounts",
+                    "public",
+                    ":publicAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publicAccountId",
+                      "description": "(Required) The public id of an account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db0104a3-f68c-4587-9167-0af7b5d9a5a3",
+              "name": "Provide a valid x-api-key header. Keys are created in the Greenspark dashboard after registration (separate key per environment).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "accounts",
+                    "public",
+                    ":publicAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publicAccountId",
+                      "description": "(Required) The public id of an account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7ac6a39c-afbd-43ed-93c4-f6ff4c09614a",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "accounts",
+                    "public",
+                    ":publicAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publicAccountId",
+                      "description": "(Required) The public id of an account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getgreenspark.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b990404d-09ae-492c-a56b-6b71f61d6b3e",
+    "name": "Greenspark Climate Account API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Greenspark Impact-as-a-Service Climate API: create carbon-offset, tree-planting, plastic-recovery and other climate impacts, fetch impact/project data, carbon estimations, reporting, email templates and embeddable impact widgets. Reconstructed by API Evangelist from the provider's per-endpoint OpenAPI definitions published on docs.getgreenspark.com.\n\nContact Support:\n Name: Greenspark Support\n Email: support@getgreenspark.com",
+      "type": "text/plain"
+    }
+  }
+}

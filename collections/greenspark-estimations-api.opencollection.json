@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Greenspark Climate Account Estimations API",
+    "version": "2.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Estimations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch Carbon Estimate of a Transaction by MCC",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v1/estimations/transaction/mcc",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Estimating the carbon footprint of a transaction based on a Merchant Category Code"
+        },
+        {
+          "info": {
+            "name": "Fetch Carbon Estimate of a Transaction by Open Banking Category Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v1/estimations/transaction/category-type",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Estimating the carbon footprint of a transaction based on Open Banking Category Types"
+        },
+        {
+          "info": {
+            "name": "Fetch Carbon Estimate of Multiple Transactions by MCC",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v1/estimations/transaction/mcc/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Estimating the carbon footprint of multiple transactions based on a Merchant Category Code"
+        },
+        {
+          "info": {
+            "name": "Fetch Carbon Estimate of Multiple Transactions by Open Banking Category Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgreenspark.com/v1/estimations/transaction/category-type/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Estimating the carbon footprint of multiple transactions based on Open Banking Category Types"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
