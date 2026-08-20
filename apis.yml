@@ -115,6 +115,8 @@ apis:
   humanURL: https://docs.getgreenspark.com
   baseURL: https://api.getgreenspark.com
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
