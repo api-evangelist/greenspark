@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: Greenspark Climate Account API
   version: 2.3.0
@@ -103,6 +103,76 @@ paths:
       - Account
 components:
   schemas:
+    PlasticComparison:
+      type: object
+      properties:
+        amount:
+          type: number
+          description: The amount of the comparison calculation.
+          example: 14
+        description:
+          type: string
+          description: The description of the comparison.
+          example: This is a comparison description.
+        link:
+          type: string
+          description: The link which contains information on the comparison calculation.
+          example: example.com
+        amountDescription:
+          type: string
+          description: Short summary of the comparison equivalent description provided by the link.
+          example: This is a short summary.
+        suffix:
+          type:
+          - string
+          - 'null'
+          description: The unit of the comparison.
+          example: ha
+        type:
+          type: string
+          description: Impact type.
+          enum:
+          - plastic
+          example: plastic
+        unit:
+          type: string
+          description: The plastic comparison unit.
+          example: straws
+          enum:
+          - straws
+          - coffeeCups
+          - bathtubs
+      required:
+      - amount
+      - description
+      - link
+      - amountDescription
+      - type
+      - unit
+    CommunityAccount:
+      type: object
+      properties:
+        comparisons:
+          type: array
+          description: The comparisons array defines the impacts equivalents.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/CarbonComparison'
+            - $ref: '#/components/schemas/PlasticComparison'
+            - $ref: '#/components/schemas/TreeComparison'
+            - $ref: '#/components/schemas/KelpComparison'
+            - $ref: '#/components/schemas/WaterComparison'
+            - $ref: '#/components/schemas/BeesComparison'
+        impacts:
+          type: array
+          description: The impacts array defines the Greenspark community account's impacts.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/AccountImpactV2'
+            - $ref: '#/components/schemas/RelationImpactV2'
+      required:
+      - comparisons
+      - impacts
     CarbonComparisonByProject:
       type: object
       properties:
@@ -123,9 +193,10 @@ components:
           description: Short summary of the comparison equivalent description provided by the link.
           example: This is a short summary.
         suffix:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The unit of the comparison.
-          nullable: true
           example: ha
         type:
           type: string
@@ -166,7 +237,7 @@ components:
       - type
       - projectId
       - unit
-    PlasticComparisonByProject:
+    CarbonComparison:
       type: object
       properties:
         amount:
@@ -186,16 +257,63 @@ components:
           description: Short summary of the comparison equivalent description provided by the link.
           example: This is a short summary.
         suffix:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The unit of the comparison.
-          nullable: true
           example: ha
         type:
           type: string
           description: Impact type.
           enum:
-          - plastic
-          example: plastic
+          - carbon
+          example: carbon
+        unit:
+          type: string
+          description: The carbon comparison unit.
+          example: flights
+          enum:
+          - flights
+          - distance
+          - plantBased
+      required:
+      - amount
+      - description
+      - link
+      - amountDescription
+      - type
+      - unit
+    TreeComparisonByProject:
+      type: object
+      properties:
+        amount:
+          type: number
+          description: The amount of the comparison calculation.
+          example: 14
+        description:
+          type: string
+          description: The description of the comparison.
+          example: This is a comparison description.
+        link:
+          type: string
+          description: The link which contains information on the comparison calculation.
+          example: example.com
+        amountDescription:
+          type: string
+          description: Short summary of the comparison equivalent description provided by the link.
+          example: This is a short summary.
+        suffix:
+          type:
+          - string
+          - 'null'
+          description: The unit of the comparison.
+          example: ha
+        type:
+          type: string
+          description: Impact type.
+          enum:
+          - trees
+          example: trees
         projectId:
           type: string
           description: The ID of the project.
@@ -215,12 +333,12 @@ components:
           - 9be7083e-be8b-4608-96d0-a526445b4667
         unit:
           type: string
-          description: The plastic comparison unit.
-          example: straws
+          description: The tree comparison unit.
+          example: areaPlanted
           enum:
-          - straws
-          - coffeeCups
-          - bathtubs
+          - areaPlanted
+          - carbonSequestered
+          - footballPitches
       required:
       - amount
       - description
@@ -229,6 +347,34 @@ components:
       - type
       - projectId
       - unit
+    AccountImpact:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The impact type.
+          example: carbon
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+        amount:
+          type: number
+          description: The impact amount.
+          example: 100
+        source:
+          type: string
+          description: The impact source.
+          example: account
+          enum:
+          - account
+      required:
+      - type
+      - amount
+      - source
     BeesComparison:
       type: object
       properties:
@@ -249,9 +395,10 @@ components:
           description: Short summary of the comparison equivalent description provided by the link.
           example: This is a short summary.
         suffix:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The unit of the comparison.
-          nullable: true
           example: ha
         type:
           type: string
@@ -294,9 +441,10 @@ components:
           description: Short summary of the comparison equivalent description provided by the link.
           example: This is a short summary.
         suffix:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The unit of the comparison.
-          nullable: true
           example: ha
         type:
           type: string
@@ -319,7 +467,35 @@ components:
       - amountDescription
       - type
       - unit
-    TreeComparisonByProject:
+    ImpactActionImpact:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The impact type.
+          example: carbon
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+        amount:
+          type: number
+          description: The impact amount.
+          example: 100
+        source:
+          type: string
+          description: The impact source.
+          example: impactAction
+          enum:
+          - impactAction
+      required:
+      - type
+      - amount
+      - source
+    PlasticComparisonByProject:
       type: object
       properties:
         amount:
@@ -339,16 +515,17 @@ components:
           description: Short summary of the comparison equivalent description provided by the link.
           example: This is a short summary.
         suffix:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The unit of the comparison.
-          nullable: true
           example: ha
         type:
           type: string
           description: Impact type.
           enum:
-          - trees
-          example: trees
+          - plastic
+          example: plastic
         projectId:
           type: string
           description: The ID of the project.
@@ -368,52 +545,6 @@ components:
           - 9be7083e-be8b-4608-96d0-a526445b4667
         unit:
           type: string
-          description: The tree comparison unit.
-          example: areaPlanted
-          enum:
-          - areaPlanted
-          - carbonSequestered
-          - footballPitches
-      required:
-      - amount
-      - description
-      - link
-      - amountDescription
-      - type
-      - projectId
-      - unit
-    PlasticComparison:
-      type: object
-      properties:
-        amount:
-          type: number
-          description: The amount of the comparison calculation.
-          example: 14
-        description:
-          type: string
-          description: The description of the comparison.
-          example: This is a comparison description.
-        link:
-          type: string
-          description: The link which contains information on the comparison calculation.
-          example: example.com
-        amountDescription:
-          type: string
-          description: Short summary of the comparison equivalent description provided by the link.
-          example: This is a short summary.
-        suffix:
-          type: string
-          description: The unit of the comparison.
-          nullable: true
-          example: ha
-        type:
-          type: string
-          description: Impact type.
-          enum:
-          - plastic
-          example: plastic
-        unit:
-          type: string
           description: The plastic comparison unit.
           example: straws
           enum:
@@ -426,7 +557,41 @@ components:
       - link
       - amountDescription
       - type
+      - projectId
       - unit
+    ImpactActionImpactV2:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The impact type.
+          example: carbon
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+        amount:
+          type: number
+          description: The impact amount.
+          example: 100
+        source:
+          type: string
+          description: The impact source.
+          example: impactAction
+          enum:
+          - impactAction
+        projectId:
+          type: string
+          description: The project id of the impact.
+          example: c6e4b1bf-843e-4859-bc85-c3b764f507e6
+      required:
+      - type
+      - amount
+      - source
+      - projectId
     PublicAccountV2:
       type: object
       properties:
@@ -445,12 +610,10 @@ components:
           type: string
           description: The account name.
           example: ACME
-          nullable: false
         signupDate:
           type: string
           description: The account signup date.
           example: '2021-01-01T00:00:00.000Z'
-          nullable: false
         accountType:
           type: string
           description: The account type.
@@ -486,51 +649,6 @@ components:
       - accountType
       - impacts
       - comparisonsByProject
-    CarbonComparison:
-      type: object
-      properties:
-        amount:
-          type: number
-          description: The amount of the comparison calculation.
-          example: 14
-        description:
-          type: string
-          description: The description of the comparison.
-          example: This is a comparison description.
-        link:
-          type: string
-          description: The link which contains information on the comparison calculation.
-          example: example.com
-        amountDescription:
-          type: string
-          description: Short summary of the comparison equivalent description provided by the link.
-          example: This is a short summary.
-        suffix:
-          type: string
-          description: The unit of the comparison.
-          nullable: true
-          example: ha
-        type:
-          type: string
-          description: Impact type.
-          enum:
-          - carbon
-          example: carbon
-        unit:
-          type: string
-          description: The carbon comparison unit.
-          example: flights
-          enum:
-          - flights
-          - distance
-          - plantBased
-      required:
-      - amount
-      - description
-      - link
-      - amountDescription
-      - type
-      - unit
     WaterComparison:
       type: object
       properties:
@@ -551,9 +669,10 @@ components:
           description: Short summary of the comparison equivalent description provided by the link.
           example: This is a short summary.
         suffix:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The unit of the comparison.
-          nullable: true
           example: ha
         type:
           type: string
@@ -576,68 +695,7 @@ components:
       - amountDescription
       - type
       - unit
-    ImpactActionImpactV2:
-      type: object
-      properties:
-        type:
-          type: string
-          description: The impact type.
-          example: carbon
-          enum:
-          - trees
-          - carbon
-          - plastic
-          - kelp
-          - water
-          - bees
-        amount:
-          type: number
-          description: The impact amount.
-          example: 100
-        source:
-          type: string
-          description: The impact source.
-          example: impactAction
-          enum:
-          - impactAction
-        projectId:
-          type: string
-          description: The project id of the impact.
-          example: c6e4b1bf-843e-4859-bc85-c3b764f507e6
-      required:
-      - type
-      - amount
-      - source
-      - projectId
-    RelationImpact:
-      type: object
-      properties:
-        type:
-          type: string
-          description: The impact type.
-          example: carbon
-          enum:
-          - trees
-          - carbon
-          - plastic
-          - kelp
-          - water
-          - bees
-        amount:
-          type: number
-          description: The impact amount.
-          example: 100
-        source:
-          type: string
-          description: The impact source.
-          example: relation
-          enum:
-          - relation
-      required:
-      - type
-      - amount
-      - source
-    WaterComparisonByProject:
+    TreeComparison:
       type: object
       properties:
         amount:
@@ -657,16 +715,63 @@ components:
           description: Short summary of the comparison equivalent description provided by the link.
           example: This is a short summary.
         suffix:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The unit of the comparison.
-          nullable: true
           example: ha
         type:
           type: string
           description: Impact type.
           enum:
-          - water
-          example: water
+          - trees
+          example: trees
+        unit:
+          type: string
+          description: The tree comparison unit.
+          example: areaPlanted
+          enum:
+          - areaPlanted
+          - carbonSequestered
+          - footballPitches
+      required:
+      - amount
+      - description
+      - link
+      - amountDescription
+      - type
+      - unit
+    KelpComparisonByProject:
+      type: object
+      properties:
+        amount:
+          type: number
+          description: The amount of the comparison calculation.
+          example: 14
+        description:
+          type: string
+          description: The description of the comparison.
+          example: This is a comparison description.
+        link:
+          type: string
+          description: The link which contains information on the comparison calculation.
+          example: example.com
+        amountDescription:
+          type: string
+          description: Short summary of the comparison equivalent description provided by the link.
+          example: This is a short summary.
+        suffix:
+          type:
+          - string
+          - 'null'
+          description: The unit of the comparison.
+          example: ha
+        type:
+          type: string
+          description: Impact type.
+          enum:
+          - kelp
+          example: kelp
         projectId:
           type: string
           description: The ID of the project.
@@ -686,12 +791,12 @@ components:
           - 9be7083e-be8b-4608-96d0-a526445b4667
         unit:
           type: string
-          description: The water comparison unit.
-          example: litres
+          description: The kelp comparison unit.
+          example: iceHockeyRinks
           enum:
-          - litres
-          - fetchingWater
-          - brighterEducation
+          - iceHockeyRinks
+          - carbonSequestered
+          - babyWhales
       required:
       - amount
       - description
@@ -700,6 +805,42 @@ components:
       - type
       - projectId
       - unit
+    TransferredImpact:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The impact type.
+          example: carbon
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+        amount:
+          type: number
+          description: The impact amount.
+          example: 100
+        source:
+          type: string
+          description: The impact source.
+          example: transferred
+          enum:
+          - transferred
+        urls:
+          description: The urls to the transferred impacts' invoices.
+          example:
+          - example.com/image.png
+          type: array
+          items:
+            type: string
+      required:
+      - type
+      - amount
+      - source
+      - urls
     BeesComparisonByProject:
       type: object
       properties:
@@ -720,9 +861,10 @@ components:
           description: Short summary of the comparison equivalent description provided by the link.
           example: This is a short summary.
         suffix:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The unit of the comparison.
-          nullable: true
           example: ha
         type:
           type: string
@@ -763,310 +905,6 @@ components:
       - type
       - projectId
       - unit
-    ImpactActionImpact:
-      type: object
-      properties:
-        type:
-          type: string
-          description: The impact type.
-          example: carbon
-          enum:
-          - trees
-          - carbon
-          - plastic
-          - kelp
-          - water
-          - bees
-        amount:
-          type: number
-          description: The impact amount.
-          example: 100
-        source:
-          type: string
-          description: The impact source.
-          example: impactAction
-          enum:
-          - impactAction
-      required:
-      - type
-      - amount
-      - source
-    KelpComparisonByProject:
-      type: object
-      properties:
-        amount:
-          type: number
-          description: The amount of the comparison calculation.
-          example: 14
-        description:
-          type: string
-          description: The description of the comparison.
-          example: This is a comparison description.
-        link:
-          type: string
-          description: The link which contains information on the comparison calculation.
-          example: example.com
-        amountDescription:
-          type: string
-          description: Short summary of the comparison equivalent description provided by the link.
-          example: This is a short summary.
-        suffix:
-          type: string
-          description: The unit of the comparison.
-          nullable: true
-          example: ha
-        type:
-          type: string
-          description: Impact type.
-          enum:
-          - kelp
-          example: kelp
-        projectId:
-          type: string
-          description: The ID of the project.
-          example: 7b726bbc-b121-4432-96d8-30d507a19664
-          enum:
-          - 596f61ee-7149-43ac-ba4e-efb90ee3bd47
-          - 7accc260-ab82-4c51-a959-e6736284c45a
-          - 9deda055-cd6d-4ebe-b343-4c9b73ccf2d6
-          - c6e4b1bf-843e-4859-bc85-c3b764f507e6
-          - a0636f61-c9a4-4e42-ad34-26155f3dd827
-          - 6b0add6d-246f-4a22-a072-3469eb65b225
-          - 7b726bbc-b121-4432-96d8-30d507a19664
-          - 6b563fc1-033b-40ea-89b7-c8702b74b5af
-          - bd5df270-6223-46e1-baf1-04d7e20f429f
-          - fed92a6e-1842-43bc-9510-a8b93e7d910a
-          - 14f00fb9-3a8e-4b36-9385-ddb606d3bb41
-          - 9be7083e-be8b-4608-96d0-a526445b4667
-        unit:
-          type: string
-          description: The kelp comparison unit.
-          example: iceHockeyRinks
-          enum:
-          - iceHockeyRinks
-          - carbonSequestered
-          - babyWhales
-      required:
-      - amount
-      - description
-      - link
-      - amountDescription
-      - type
-      - projectId
-      - unit
-    AccountImpactV2:
-      type: object
-      properties:
-        type:
-          type: string
-          description: The impact type.
-          example: carbon
-          enum:
-          - trees
-          - carbon
-          - plastic
-          - kelp
-          - water
-          - bees
-        amount:
-          type: number
-          description: The impact amount.
-          example: 100
-        source:
-          type: string
-          description: The impact source.
-          example: account
-          enum:
-          - account
-        projectId:
-          type: string
-          description: The project id of the impact.
-          example: c6e4b1bf-843e-4859-bc85-c3b764f507e6
-      required:
-      - type
-      - amount
-      - source
-      - projectId
-    TreeComparison:
-      type: object
-      properties:
-        amount:
-          type: number
-          description: The amount of the comparison calculation.
-          example: 14
-        description:
-          type: string
-          description: The description of the comparison.
-          example: This is a comparison description.
-        link:
-          type: string
-          description: The link which contains information on the comparison calculation.
-          example: example.com
-        amountDescription:
-          type: string
-          description: Short summary of the comparison equivalent description provided by the link.
-          example: This is a short summary.
-        suffix:
-          type: string
-          description: The unit of the comparison.
-          nullable: true
-          example: ha
-        type:
-          type: string
-          description: Impact type.
-          enum:
-          - trees
-          example: trees
-        unit:
-          type: string
-          description: The tree comparison unit.
-          example: areaPlanted
-          enum:
-          - areaPlanted
-          - carbonSequestered
-          - footballPitches
-      required:
-      - amount
-      - description
-      - link
-      - amountDescription
-      - type
-      - unit
-    CommunityAccount:
-      type: object
-      properties:
-        comparisons:
-          type: array
-          description: The comparisons array defines the impacts equivalents.
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/CarbonComparison'
-            - $ref: '#/components/schemas/PlasticComparison'
-            - $ref: '#/components/schemas/TreeComparison'
-            - $ref: '#/components/schemas/KelpComparison'
-            - $ref: '#/components/schemas/WaterComparison'
-            - $ref: '#/components/schemas/BeesComparison'
-        impacts:
-          type: array
-          description: The impacts array defines the Greenspark community account's impacts.
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/AccountImpactV2'
-            - $ref: '#/components/schemas/RelationImpactV2'
-      required:
-      - comparisons
-      - impacts
-    AccountImpact:
-      type: object
-      properties:
-        type:
-          type: string
-          description: The impact type.
-          example: carbon
-          enum:
-          - trees
-          - carbon
-          - plastic
-          - kelp
-          - water
-          - bees
-        amount:
-          type: number
-          description: The impact amount.
-          example: 100
-        source:
-          type: string
-          description: The impact source.
-          example: account
-          enum:
-          - account
-      required:
-      - type
-      - amount
-      - source
-    TransferredImpact:
-      type: object
-      properties:
-        type:
-          type: string
-          description: The impact type.
-          example: carbon
-          enum:
-          - trees
-          - carbon
-          - plastic
-          - kelp
-          - water
-          - bees
-        amount:
-          type: number
-          description: The impact amount.
-          example: 100
-        source:
-          type: string
-          description: The impact source.
-          example: transferred
-          enum:
-          - transferred
-        urls:
-          description: The urls to the transferred impacts' invoices.
-          example:
-          - example.com/image.png
-          type: array
-          items:
-            type: string
-      required:
-      - type
-      - amount
-      - source
-      - urls
-    PublicAccount:
-      type: object
-      properties:
-        comparisons:
-          type: array
-          description: The comparisons array defines the impacts equivalents.
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/CarbonComparison'
-            - $ref: '#/components/schemas/PlasticComparison'
-            - $ref: '#/components/schemas/TreeComparison'
-            - $ref: '#/components/schemas/KelpComparison'
-            - $ref: '#/components/schemas/WaterComparison'
-            - $ref: '#/components/schemas/BeesComparison'
-        name:
-          type: string
-          description: The account name.
-          example: ACME
-          nullable: false
-        signupDate:
-          type: string
-          description: The account signup date.
-          example: '2021-01-01T00:00:00.000Z'
-          nullable: false
-        accountType:
-          type: string
-          description: The account type.
-          example: business
-          enum:
-          - business
-          - personal
-          - family
-        impacts:
-          type: array
-          description: The impacts array defines the account's impacts.
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/AccountImpact'
-            - $ref: '#/components/schemas/RelationImpact'
-            - $ref: '#/components/schemas/TransferredImpact'
-            - $ref: '#/components/schemas/ImpactActionImpact'
-      required:
-      - comparisons
-      - name
-      - signupDate
-      - accountType
-      - impacts
     RelationImpactV2:
       type: object
       properties:
@@ -1100,6 +938,176 @@ components:
       - amount
       - source
       - projectId
+    PublicAccount:
+      type: object
+      properties:
+        comparisons:
+          type: array
+          description: The comparisons array defines the impacts equivalents.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/CarbonComparison'
+            - $ref: '#/components/schemas/PlasticComparison'
+            - $ref: '#/components/schemas/TreeComparison'
+            - $ref: '#/components/schemas/KelpComparison'
+            - $ref: '#/components/schemas/WaterComparison'
+            - $ref: '#/components/schemas/BeesComparison'
+        name:
+          type: string
+          description: The account name.
+          example: ACME
+        signupDate:
+          type: string
+          description: The account signup date.
+          example: '2021-01-01T00:00:00.000Z'
+        accountType:
+          type: string
+          description: The account type.
+          example: business
+          enum:
+          - business
+          - personal
+          - family
+        impacts:
+          type: array
+          description: The impacts array defines the account's impacts.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/AccountImpact'
+            - $ref: '#/components/schemas/RelationImpact'
+            - $ref: '#/components/schemas/TransferredImpact'
+            - $ref: '#/components/schemas/ImpactActionImpact'
+      required:
+      - comparisons
+      - name
+      - signupDate
+      - accountType
+      - impacts
+    RelationImpact:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The impact type.
+          example: carbon
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+        amount:
+          type: number
+          description: The impact amount.
+          example: 100
+        source:
+          type: string
+          description: The impact source.
+          example: relation
+          enum:
+          - relation
+      required:
+      - type
+      - amount
+      - source
+    AccountImpactV2:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The impact type.
+          example: carbon
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+        amount:
+          type: number
+          description: The impact amount.
+          example: 100
+        source:
+          type: string
+          description: The impact source.
+          example: account
+          enum:
+          - account
+        projectId:
+          type: string
+          description: The project id of the impact.
+          example: c6e4b1bf-843e-4859-bc85-c3b764f507e6
+      required:
+      - type
+      - amount
+      - source
+      - projectId
+    WaterComparisonByProject:
+      type: object
+      properties:
+        amount:
+          type: number
+          description: The amount of the comparison calculation.
+          example: 14
+        description:
+          type: string
+          description: The description of the comparison.
+          example: This is a comparison description.
+        link:
+          type: string
+          description: The link which contains information on the comparison calculation.
+          example: example.com
+        amountDescription:
+          type: string
+          description: Short summary of the comparison equivalent description provided by the link.
+          example: This is a short summary.
+        suffix:
+          type:
+          - string
+          - 'null'
+          description: The unit of the comparison.
+          example: ha
+        type:
+          type: string
+          description: Impact type.
+          enum:
+          - water
+          example: water
+        projectId:
+          type: string
+          description: The ID of the project.
+          example: 7b726bbc-b121-4432-96d8-30d507a19664
+          enum:
+          - 596f61ee-7149-43ac-ba4e-efb90ee3bd47
+          - 7accc260-ab82-4c51-a959-e6736284c45a
+          - 9deda055-cd6d-4ebe-b343-4c9b73ccf2d6
+          - c6e4b1bf-843e-4859-bc85-c3b764f507e6
+          - a0636f61-c9a4-4e42-ad34-26155f3dd827
+          - 6b0add6d-246f-4a22-a072-3469eb65b225
+          - 7b726bbc-b121-4432-96d8-30d507a19664
+          - 6b563fc1-033b-40ea-89b7-c8702b74b5af
+          - bd5df270-6223-46e1-baf1-04d7e20f429f
+          - fed92a6e-1842-43bc-9510-a8b93e7d910a
+          - 14f00fb9-3a8e-4b36-9385-ddb606d3bb41
+          - 9be7083e-be8b-4608-96d0-a526445b4667
+        unit:
+          type: string
+          description: The water comparison unit.
+          example: litres
+          enum:
+          - litres
+          - fetchingWater
+          - brighterEducation
+      required:
+      - amount
+      - description
+      - link
+      - amountDescription
+      - type
+      - projectId
+      - unit
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Greenspark Climate Account Email API
+  title: Greenspark Climate Email API
   version: 2.3.0
   description: 'Greenspark Impact-as-a-Service Climate API: create carbon-offset, tree-planting, plastic-recovery and other climate impacts, fetch impact/project data, carbon estimations, reporting, email templates and embeddable impact widgets. Reconstructed by API Evangelist from the provider''s per-endpoint OpenAPI definitions published on docs.getgreenspark.com.'
   contact:
@@ -402,7 +402,7 @@ paths:
       tags:
       - Email
     put:
-      description: Update your notification template for email sending.  If you do not want a customizable property to be custom, you should provide the default value for that property. You can get the default values for every template type from the templates-defaults endpoint.
+      description: Update your notification template for email sending. If you do not want a customizable property to be custom, you should provide the default value for that property. You can get the default values for every template type from the templates-defaults endpoint.
       operationId: updateTemplateV2
       parameters:
       - name: templateId
@@ -917,6 +917,46 @@ paths:
       - Email
 components:
   schemas:
+    RecordDto:
+      type: object
+      properties:
+        valid:
+          type: boolean
+          description: The indicator of the DNS record validity.
+          example: false
+        type:
+          type: string
+          description: The type of the record that must be added to your domain.
+          example: cname
+        host:
+          type: string
+          description: The type of the record that must be added to your domain.
+          example: em43944.example.com
+        data:
+          type: string
+          description: The value of the record that must be added to your domain.
+          example: u250887955.wl0466.sendgrid.net
+      required:
+      - valid
+      - type
+      - host
+      - data
+    ScheduleRequestBody:
+      type: object
+      properties:
+        startDate:
+          format: date-time
+          type: string
+          description: The start date of the scheduled email sending.
+          example: '2023-02-08T13:26:33.969Z'
+        endDate:
+          format: date-time
+          type: string
+          description: The end date of the scheduled email sending.
+          example: '2023-03-08T13:26:33.969Z'
+      required:
+      - startDate
+      - endDate
     SettingsRequestBody:
       type: object
       properties:
@@ -949,94 +989,104 @@ components:
       - subject
       - preheader
       - schedule
-    CustomDomainRequestBody:
-      type: object
-      properties:
-        domain:
-          type: string
-          description: The domain name.
-          example: example.com
-      required:
-      - domain
-    SettingsDto:
-      type: object
-      properties:
-        alias:
-          type: string
-          description: This is the name display for the specified sender email address.
-          example: Greenspark
-        from:
-          description: The email address used for sending emails.
-          allOf:
-          - $ref: '#/components/schemas/EmailDto'
-        isAliasCustom:
-          type: boolean
-          description: Boolean flag indicates customized alias.
-          example: 'false'
-        isPreheaderCustom:
-          type: boolean
-          description: Boolean flag indicates customized preheader.
-          example: 'false'
-        isSubjectCustom:
-          type: boolean
-          description: Boolean flag indicates customized subject.
-          example: 'false'
-        preheader:
-          type: string
-          description: The preheader is the text following the subject line when an email is previewed.
-          example: Activate your Greenspark dashboard & grow your impact today.
-        schedule:
-          description: You can choose to send your template continuously starting at the selected start date or only during a specific date range.
-          allOf:
-          - $ref: '#/components/schemas/ScheduleDto'
-        subject:
-          type: string
-          description: Your subject line is one of the first things that your customers read and is a key driver in successful open rates.
-          example: Your {{type}} with {{sellerName}} {{impactsTextPast}}. Track your impact here.
-      required:
-      - alias
-      - from
-      - isAliasCustom
-      - isPreheaderCustom
-      - isSubjectCustom
-      - preheader
-      - schedule
-      - subject
-    EmailRequestBody:
+    TypeRequestBody:
       type: object
       properties:
         name:
           type: string
           maxLength: 200
-          description: The name part of the email address.
-          example: hello
-        domain:
+          description: Name of the template
+          example: Customer invitation template
+        template:
           type: string
-          maxLength: 200
-          description: The domain name used for sending emails based on this template.
-          example: get-greenspark.com
+          enum:
+          - invitation
+          - update
+          - nudge
+          description: The type of the template.
+          example: invitation
+        trigger:
+          description: Choose the impact action which triggers your email to be sent out.
+          example: '["offsetPerOrder", "offsetPerProduct"]'
+          type: array
+          items:
+            type: string
+        schedule:
+          description: Sets how many days after an impact creation a signup nudging email is sent out to your customer.
+          example: '[3, 7, 14]'
+          type: array
+          items:
+            type: integer
+            maximum: 365
+            minimum: 0
       required:
       - name
-      - domain
-    DnsDto:
+      - template
+      - trigger
+      - schedule
+    NotificationTemplateResponseDto:
       type: object
       properties:
-        mailCname:
-          description: Record that must be added to your domain.
-          allOf:
-          - $ref: '#/components/schemas/RecordDto'
-        dkim1:
-          description: Record that must be added to your domain.
-          allOf:
-          - $ref: '#/components/schemas/RecordDto'
-        dkim2:
-          description: Record that must be added to your domain.
-          allOf:
-          - $ref: '#/components/schemas/RecordDto'
+        id:
+          type: string
+          description: The id of the template.
+          example: 63e3a30d093df17fa11c1fbe
+        isCustom:
+          type: boolean
+          description: Boolean flag indicates customized template.
+          example: 'false'
+        type:
+          $ref: '#/components/schemas/TypeDto'
+        settings:
+          $ref: '#/components/schemas/SettingsDto'
+        content:
+          $ref: '#/components/schemas/ContentDto'
       required:
-      - mailCname
-      - dkim1
-      - dkim2
+      - id
+      - isCustom
+      - type
+      - settings
+      - content
+    CustomDomainDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of the custom domain object.
+          example: 63c5857475784b9acf05c919
+        domain:
+          type: string
+          description: The domain name.
+          example: example.com
+        dns:
+          description: This object contains the DNS records that must be added to your domain.
+          example:
+            mailCname:
+              valid: false
+              type: cname
+              host: em43944.example.com
+              data: u250887955.wl0466.sendgrid.net
+            dkim1:
+              valid: false
+              type: cname
+              host: s1._domainkey.example.com
+              data: s1.domainkey.u250887955.wl0466.sendgrid.net
+            dkim2:
+              valid: false
+              type: cname
+              host: s2._domainkey.example.com
+              data: s2.domainkey.u250887955.wl0466.sendgrid.net
+          allOf:
+          - $ref: '#/components/schemas/DnsDto'
+        valid:
+          type: boolean
+          description: The indicator of the DNS records validity.
+          example: false
+      required:
+      - id
+      - domain
+      - dns
+      - valid
     ContentDto:
       type: object
       properties:
@@ -1081,44 +1131,6 @@ components:
       - isHeaderImageCustom
       - isTotalImpactHidden
       - isTotalImpactHiddenCustom
-    RecordDto:
-      type: object
-      properties:
-        valid:
-          type: boolean
-          description: The indicator of the DNS record validity.
-          example: false
-        type:
-          type: string
-          description: The type of the record that must be added to your domain.
-          example: cname
-        host:
-          type: string
-          description: The type of the record that must be added to your domain.
-          example: em43944.example.com
-        data:
-          type: string
-          description: The value of the record that must be added to your domain.
-          example: u250887955.wl0466.sendgrid.net
-      required:
-      - valid
-      - type
-      - host
-      - data
-    TestNotificationTemplateRequestDto:
-      type: object
-      properties:
-        customerEmail:
-          type: string
-          description: Test recipient email address.
-          example: customer@example.com
-        notificationTemplate:
-          description: Notification template to test.
-          allOf:
-          - $ref: '#/components/schemas/NotificationTemplateRequestDto'
-      required:
-      - customerEmail
-      - notificationTemplate
     ScheduleDto:
       type: object
       properties:
@@ -1140,46 +1152,25 @@ components:
       - endDate
       - isEndDateCustom
       - startDate
-    CustomDomainDto:
+    DnsDto:
       type: object
       properties:
-        id:
-          type: string
-          description: The id of the custom domain object.
-          example: 63c5857475784b9acf05c919
-        domain:
-          type: string
-          description: The domain name.
-          example: example.com
-        dns:
-          description: This object contains the DNS records that must be added to your domain.
-          example:
-            mailCname:
-              valid: false
-              type: cname
-              host: em43944.example.com
-              data: u250887955.wl0466.sendgrid.net
-            dkim1:
-              valid: false
-              type: cname
-              host: s1._domainkey.example.com
-              data: s1.domainkey.u250887955.wl0466.sendgrid.net
-            dkim2:
-              valid: false
-              type: cname
-              host: s2._domainkey.example.com
-              data: s2.domainkey.u250887955.wl0466.sendgrid.net
+        mailCname:
+          description: Record that must be added to your domain.
           allOf:
-          - $ref: '#/components/schemas/DnsDto'
-        valid:
-          type: boolean
-          description: The indicator of the DNS records validity.
-          example: false
+          - $ref: '#/components/schemas/RecordDto'
+        dkim1:
+          description: Record that must be added to your domain.
+          allOf:
+          - $ref: '#/components/schemas/RecordDto'
+        dkim2:
+          description: Record that must be added to your domain.
+          allOf:
+          - $ref: '#/components/schemas/RecordDto'
       required:
-      - id
-      - domain
-      - dns
-      - valid
+      - mailCname
+      - dkim1
+      - dkim2
     TypeDto:
       type: object
       properties:
@@ -1218,6 +1209,20 @@ components:
       - schedule
       - template
       - trigger
+    TestNotificationTemplateRequestDto:
+      type: object
+      properties:
+        customerEmail:
+          type: string
+          description: Test recipient email address.
+          example: customer@example.com
+        notificationTemplate:
+          description: Notification template to test.
+          allOf:
+          - $ref: '#/components/schemas/NotificationTemplateRequestDto'
+      required:
+      - customerEmail
+      - notificationTemplate
     NotificationTemplateRequestDto:
       type: object
       properties:
@@ -1236,20 +1241,15 @@ components:
       - type
       - settings
       - content
-    EmailDto:
+    CustomDomainRequestBody:
       type: object
       properties:
         domain:
           type: string
-          description: The domain name used for sending emails based on this template.
-          example: get-greenspark.com
-        name:
-          type: string
-          description: The name part of the email address.
-          example: hello
+          description: The domain name.
+          example: example.com
       required:
       - domain
-      - name
     ContentRequestBody:
       type: object
       properties:
@@ -1276,80 +1276,80 @@ components:
       - body
       - isFooterHidden
       - isTotalImpactHidden
-    ScheduleRequestBody:
-      type: object
-      properties:
-        startDate:
-          format: date-time
-          type: string
-          description: The start date of the scheduled email sending.
-          example: '2023-02-08T13:26:33.969Z'
-        endDate:
-          format: date-time
-          type: string
-          description: The end date of the scheduled email sending.
-          example: '2023-03-08T13:26:33.969Z'
-      required:
-      - startDate
-      - endDate
-    NotificationTemplateResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The id of the template.
-          example: 63e3a30d093df17fa11c1fbe
-        isCustom:
-          type: boolean
-          description: Boolean flag indicates customized template.
-          example: 'false'
-        type:
-          $ref: '#/components/schemas/TypeDto'
-        settings:
-          $ref: '#/components/schemas/SettingsDto'
-        content:
-          $ref: '#/components/schemas/ContentDto'
-      required:
-      - id
-      - isCustom
-      - type
-      - settings
-      - content
-    TypeRequestBody:
+    EmailRequestBody:
       type: object
       properties:
         name:
           type: string
           maxLength: 200
-          description: Name of the template
-          example: Customer invitation template
-        template:
+          description: The name part of the email address.
+          example: hello
+        domain:
           type: string
-          enum:
-          - invitation
-          - update
-          - nudge
-          description: The type of the template.
-          example: invitation
-        trigger:
-          description: Choose the impact action which triggers your email to be sent out.
-          example: '["offsetPerOrder", "offsetPerProduct"]'
-          type: array
-          items:
-            type: string
-        schedule:
-          description: Sets how many days after an impact creation a signup nudging email is sent out to your customer.
-          example: '[3, 7, 14]'
-          type: array
-          items:
-            type: integer
-            maximum: 365
-            minimum: 0
+          maxLength: 200
+          description: The domain name used for sending emails based on this template.
+          example: get-greenspark.com
       required:
       - name
-      - template
-      - trigger
+      - domain
+    EmailDto:
+      type: object
+      properties:
+        domain:
+          type: string
+          description: The domain name used for sending emails based on this template.
+          example: get-greenspark.com
+        name:
+          type: string
+          description: The name part of the email address.
+          example: hello
+      required:
+      - domain
+      - name
+    SettingsDto:
+      type: object
+      properties:
+        alias:
+          type: string
+          description: This is the name display for the specified sender email address.
+          example: Greenspark
+        from:
+          description: The email address used for sending emails.
+          allOf:
+          - $ref: '#/components/schemas/EmailDto'
+        isAliasCustom:
+          type: boolean
+          description: Boolean flag indicates customized alias.
+          example: 'false'
+        isPreheaderCustom:
+          type: boolean
+          description: Boolean flag indicates customized preheader.
+          example: 'false'
+        isSubjectCustom:
+          type: boolean
+          description: Boolean flag indicates customized subject.
+          example: 'false'
+        preheader:
+          type: string
+          description: The preheader is the text following the subject line when an email is previewed.
+          example: Activate your Greenspark dashboard & grow your impact today.
+        schedule:
+          description: You can choose to send your template continuously starting at the selected start date or only during a specific date range.
+          allOf:
+          - $ref: '#/components/schemas/ScheduleDto'
+        subject:
+          type: string
+          description: Your subject line is one of the first things that your customers read and is a key driver in successful open rates.
+          example: Your {{type}} with {{sellerName}} {{impactsTextPast}}. Track your impact here.
+      required:
+      - alias
+      - from
+      - isAliasCustom
+      - isPreheaderCustom
+      - isSubjectCustom
+      - preheader
       - schedule
+      - subject
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

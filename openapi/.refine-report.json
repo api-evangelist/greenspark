@@ -1,13 +1,7 @@
 {
   "provider": "greenspark",
   "sources": [
-    "greenspark-account-api-openapi.yml",
-    "greenspark-email-api-openapi.yml",
-    "greenspark-estimations-api-openapi.yml",
-    "greenspark-impacts-api-openapi.yml",
-    "greenspark-projects-api-openapi.yml",
-    "greenspark-reports-api-openapi.yml",
-    "greenspark-widgets-api-openapi.yml"
+    "_original/greenspark-openapi.yml"
   ],
   "outputs": [
     "greenspark-account-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "greenspark-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "greenspark-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "greenspark-email-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "greenspark-estimations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "greenspark-impacts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "greenspark-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "greenspark-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "greenspark-widgets-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

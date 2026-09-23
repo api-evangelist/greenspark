@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Greenspark Climate Account Projects API
+  title: Greenspark Climate Projects API
   version: 2.3.0
   description: 'Greenspark Impact-as-a-Service Climate API: create carbon-offset, tree-planting, plastic-recovery and other climate impacts, fetch impact/project data, carbon estimations, reporting, email templates and embeddable impact widgets. Reconstructed by API Evangelist from the provider''s per-endpoint OpenAPI definitions published on docs.getgreenspark.com.'
   contact:
@@ -214,43 +214,6 @@ paths:
       - Projects
 components:
   schemas:
-    ProjectCategory:
-      type: object
-      properties:
-        projectCategoryId:
-          type: string
-          description: The unique identifier of the project.
-          example: 256d3c28-e9c3-4a47-a5a8-63b7634ac5bd
-        name:
-          type: string
-          description: The name of the project category.
-          example: Energy Efficiency
-        description:
-          type: string
-          description: Detailed explanation of what the project category is about. It provides more context for users who want to understand the category.
-          example: Energy Efficiency project category description.
-        images:
-          description: Images associated with the project category. They help users visualise the impact of the project category.
-          type: array
-          items:
-            $ref: '#/components/schemas/ProjectCategoryImage'
-        type:
-          type: string
-          description: Defines the type of environmental impact associated with projects in this category.
-          example: carbon
-          enum:
-          - trees
-          - carbon
-          - plastic
-          - kelp
-          - water
-          - bees
-      required:
-      - projectCategoryId
-      - name
-      - description
-      - images
-      - type
     ProjectCategoryImage:
       type: object
       properties:
@@ -269,6 +232,68 @@ components:
       required:
       - imageUrl
       - style
+    FeatureDto:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Specifies the type of GeoJSON object.
+          example: Feature
+        geometry:
+          description: Geometry object. https://tools.ietf.org/html/rfc7946#section-3
+          example:
+            type: Point
+            coordinates:
+            - -122.63701428179544
+            - 44.86975845546196
+          allOf:
+          - $ref: '#/components/schemas/PointDto'
+        properties:
+          type: object
+          description: Properties associated with this feature.
+      required:
+      - type
+      - geometry
+      - properties
+    FeatureCollectionDto:
+      type: object
+      properties:
+        features:
+          description: A collection of feature objects. https://tools.ietf.org/html/rfc7946#section-3.3
+          example:
+          - type: Feature
+            geometry:
+              type: Point
+              coordinates:
+              - -122.63701428179544
+              - 44.86975845546196
+            properties: {}
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureDto'
+        type:
+          type: string
+          description: Specifies the type of GeoJSON object.
+          example: FeatureCollection
+      required:
+      - features
+      - type
+    PointDto:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Specifies the type of GeoJSON object.
+          example: Feature
+        coordinates:
+          description: Coordinates of Point geometry object. https://tools.ietf.org/html/rfc7946#section-3.1.2
+          example: Feature
+          type: array
+          items:
+            type: string
+      required:
+      - type
+      - coordinates
     ProjectMetadata:
       type: object
       properties:
@@ -405,22 +430,43 @@ components:
       - price
       - status
       - statusInitiatedAt
-    PointDto:
+    ProjectCategory:
       type: object
       properties:
-        type:
+        projectCategoryId:
           type: string
-          description: Specifies the type of GeoJSON object.
-          example: Feature
-        coordinates:
-          description: Coordinates of Point geometry object. https://tools.ietf.org/html/rfc7946#section-3.1.2
-          example: Feature
+          description: The unique identifier of the project.
+          example: 256d3c28-e9c3-4a47-a5a8-63b7634ac5bd
+        name:
+          type: string
+          description: The name of the project category.
+          example: Energy Efficiency
+        description:
+          type: string
+          description: Detailed explanation of what the project category is about. It provides more context for users who want to understand the category.
+          example: Energy Efficiency project category description.
+        images:
+          description: Images associated with the project category. They help users visualise the impact of the project category.
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/ProjectCategoryImage'
+        type:
+          type: string
+          description: Defines the type of environmental impact associated with projects in this category.
+          example: carbon
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
       required:
+      - projectCategoryId
+      - name
+      - description
+      - images
       - type
-      - coordinates
     ProjectDetails:
       type: object
       properties:
@@ -542,52 +588,6 @@ components:
       - price
       - status
       - statusInitiatedAt
-    FeatureCollectionDto:
-      type: object
-      properties:
-        features:
-          description: A collection of feature objects. https://tools.ietf.org/html/rfc7946#section-3.3
-          example:
-          - type: Feature
-            geometry:
-              type: Point
-              coordinates:
-              - -122.63701428179544
-              - 44.86975845546196
-            properties: {}
-          type: array
-          items:
-            $ref: '#/components/schemas/FeatureDto'
-        type:
-          type: string
-          description: Specifies the type of GeoJSON object.
-          example: FeatureCollection
-      required:
-      - features
-      - type
-    FeatureDto:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Specifies the type of GeoJSON object.
-          example: Feature
-        geometry:
-          description: Geometry object. https://tools.ietf.org/html/rfc7946#section-3
-          example:
-            type: Point
-            coordinates:
-            - -122.63701428179544
-            - 44.86975845546196
-          allOf:
-          - $ref: '#/components/schemas/PointDto'
-        properties:
-          type: object
-          description: Properties associated with this feature.
-      required:
-      - type
-      - geometry
-      - properties
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

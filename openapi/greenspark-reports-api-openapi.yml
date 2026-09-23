@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Greenspark Climate Account Reports API
+  title: Greenspark Climate Reports API
   version: 2.3.0
   description: 'Greenspark Impact-as-a-Service Climate API: create carbon-offset, tree-planting, plastic-recovery and other climate impacts, fetch impact/project data, carbon estimations, reporting, email templates and embeddable impact widgets. Reconstructed by API Evangelist from the provider''s per-endpoint OpenAPI definitions published on docs.getgreenspark.com.'
   contact:
@@ -1295,45 +1295,131 @@ paths:
       - Reports
 components:
   schemas:
-    ImpactPurchaseWithPrice:
+    RawReportRowV2:
       type: object
       properties:
-        type:
+        id:
           type: string
-          enum:
-          - trees
-          - carbon
-          - plastic
-          - kelp
-          - water
-          - bees
-          description: Type of the impact.
-          example: trees
-        projectId:
+          example: ecebda64-1da0-4894-8658-f79059eaa00d
+          description: ID of the impact.
+        createdAt:
           type: string
-          description: The id of the project.
-          example: 34d41293-6b84-40e7-9744-122e301590a2
-        amount:
+          example: '2022-09-09 09:12:54.162+00'
+          description: Creation date of the impact.
+        totalPrice:
           type: number
-          description: Amount means number of trees, number of plastic bottles, kg of CO2.
-          example: 5
-        price:
-          type: number
-          example: 0.55
-          description: Amount of money spent on the impact purchase.
-        purchaseIds:
-          example:
-          - id1
-          - id2
-          description: The ids of the purchases what are made to for the impact.
+          example: 22.76
+          description: Total amount of money spent on the impact.
+        currency:
+          type: string
+          example: dollar
+          description: The currency of the spent money on the impact.
+        sourceName:
+          type: string
+          example: source1
+          description: The name of the source associated with the impact.
+        sourceId:
+          type: string
+          example: 631b035dcd13c4ad66c6d496
+          description: The id of the source associated with the impact.
+        triggerName:
+          type: string
+          example: trigger1
+          description: The name of the trigger associated with the impact.
+        triggerId:
+          type: string
+          example: 631b035dcd13c4ad66c6d497
+          description: The id of the trigger associated with the impact.
+        impactPurchases:
+          description: The impactPurchases array contains your spending on a specific purpose.
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/ImpactPurchaseWithPrice'
+        metadata:
+          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your impact.
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+        status:
+          type: object
+          description: The payment status of the impact.
       required:
-      - type
-      - amount
-      - price
-      - purchaseIds
+      - id
+      - createdAt
+      - totalPrice
+      - currency
+      - sourceName
+      - sourceId
+      - triggerName
+      - triggerId
+      - impactPurchases
+      - metadata
+      - status
+    RawReport:
+      type: object
+      properties:
+        rows:
+          example:
+          - createdAt: '2022-09-09 09:12:54.162+00'
+            totalPrice: 1
+            currency: dollar
+            sourceName: source1
+            sourceId: 631b035dcd13c4ad66c6d496
+            triggerName: trigger1
+            triggerId: 631b035dcd13c4ad66c6d497
+            impactPurchases:
+            - type: trees
+              amount: 5
+              price: 1
+            - type: carbon
+              amount: 5
+              price: 0.05
+            metadata:
+            - key: key1
+              value: value1
+            - key: key2
+              value: value2
+          - createdAt: '2022-09-09 09:05:07.863+00'
+            totalPrice: 0.05
+            currency: dollar
+            sourceName: API
+            sourceId: null
+            triggerName: TAILORED_IMPACT
+            triggerId: null
+            impactPurchases:
+            - type: carbon
+              amount: 5
+              price: 0.05
+            metadata:
+            - key: key1
+              value: value1
+            - key: key2
+              value: value2
+          type: array
+          items:
+            $ref: '#/components/schemas/RawReportRow'
+        totalRows:
+          type: number
+          example: 42
+          description: Number of rows in the report.
+        maxResults:
+          type: number
+          example: 100
+          description: Maximum number of rows per page.
+        cursor:
+          type: string
+          example: BG6JLNBVQMAQAAASA4EAAEEAQCAAKGQEBBSBAZBAWCXBK===
+          description: If the result set spread through multiple pages, you can fetch the next page with it. If null, it indicates that no pagination needed.
+        reportId:
+          type: string
+          example: 1aae6329-1417-48c1-96a5-a6d21c0f1a57
+          description: The id of your generated report. If the result set spread through multiple pages, you can refer to your report with it while pagination.
+      required:
+      - rows
+      - totalRows
+      - maxResults
+      - cursor
+      - reportId
     ImpactPurchase:
       type: object
       properties:
@@ -1410,145 +1496,6 @@ components:
       - triggerId
       - impactPurchases
       - metadata
-    Metadata:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Minimum 1, maximum 40 characters.
-          example: customerId
-        value:
-          type: string
-          description: Minimum 1, maximum 100 characters.
-          example: 743ce227-22ef-4c6e-9c06-725f97b99690
-      required:
-      - key
-      - value
-    RawReport:
-      type: object
-      properties:
-        rows:
-          example:
-          - createdAt: '2022-09-09 09:12:54.162+00'
-            totalPrice: 1
-            currency: dollar
-            sourceName: source1
-            sourceId: 631b035dcd13c4ad66c6d496
-            triggerName: trigger1
-            triggerId: 631b035dcd13c4ad66c6d497
-            impactPurchases:
-            - type: trees
-              amount: 5
-              price: 1
-            - type: carbon
-              amount: 5
-              price: 0.05
-            metadata:
-            - key: key1
-              value: value1
-            - key: key2
-              value: value2
-          - createdAt: '2022-09-09 09:05:07.863+00'
-            totalPrice: 0.05
-            currency: dollar
-            sourceName: API
-            sourceId: null
-            triggerName: TAILORED_IMPACT
-            triggerId: null
-            impactPurchases:
-            - type: carbon
-              amount: 5
-              price: 0.05
-            metadata:
-            - key: key1
-              value: value1
-            - key: key2
-              value: value2
-          type: array
-          items:
-            $ref: '#/components/schemas/RawReportRow'
-        totalRows:
-          type: number
-          example: 42
-          description: Number of rows in the report.
-        maxResults:
-          type: number
-          example: 100
-          description: Maximum number of rows per page.
-        cursor:
-          type: string
-          example: BG6JLNBVQMAQAAASA4EAAEEAQCAAKGQEBBSBAZBAWCXBK===
-          description: If the result set spread through multiple pages, you can fetch the next page with it. If null, it indicates that no pagination needed.
-        reportId:
-          type: string
-          example: 1aae6329-1417-48c1-96a5-a6d21c0f1a57
-          description: The id of your generated report. If the result set spread through multiple pages, you can refer to your report with it while pagination.
-      required:
-      - rows
-      - totalRows
-      - maxResults
-      - cursor
-      - reportId
-    RawReportRowV2:
-      type: object
-      properties:
-        id:
-          type: string
-          example: ecebda64-1da0-4894-8658-f79059eaa00d
-          description: ID of the impact.
-        createdAt:
-          type: string
-          example: '2022-09-09 09:12:54.162+00'
-          description: Creation date of the impact.
-        totalPrice:
-          type: number
-          example: 22.76
-          description: Total amount of money spent on the impact.
-        currency:
-          type: string
-          example: dollar
-          description: The currency of the spent money on the impact.
-        sourceName:
-          type: string
-          example: source1
-          description: The name of the source associated with the impact.
-        sourceId:
-          type: string
-          example: 631b035dcd13c4ad66c6d496
-          description: The id of the source associated with the impact.
-        triggerName:
-          type: string
-          example: trigger1
-          description: The name of the trigger associated with the impact.
-        triggerId:
-          type: string
-          example: 631b035dcd13c4ad66c6d497
-          description: The id of the trigger associated with the impact.
-        impactPurchases:
-          description: The impactPurchases array contains your spending on a specific purpose.
-          type: array
-          items:
-            $ref: '#/components/schemas/ImpactPurchaseWithPrice'
-        metadata:
-          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your impact.
-          type: array
-          items:
-            $ref: '#/components/schemas/Metadata'
-        status:
-          type: object
-          description: The payment status of the impact.
-      required:
-      - id
-      - createdAt
-      - totalPrice
-      - currency
-      - sourceName
-      - sourceId
-      - triggerName
-      - triggerId
-      - impactPurchases
-      - metadata
-      - status
     RawReportV2:
       type: object
       properties:
@@ -1606,6 +1553,59 @@ components:
       - rows
       - maxResults
       - cursor
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Minimum 1, maximum 40 characters.
+          example: customerId
+        value:
+          type: string
+          description: Minimum 1, maximum 100 characters.
+          example: 743ce227-22ef-4c6e-9c06-725f97b99690
+      required:
+      - key
+      - value
+    ImpactPurchaseWithPrice:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+          description: Type of the impact.
+          example: trees
+        projectId:
+          type: string
+          description: The id of the project.
+          example: 34d41293-6b84-40e7-9744-122e301590a2
+        amount:
+          type: number
+          description: Amount means number of trees, number of plastic bottles, kg of CO2.
+          example: 5
+        price:
+          type: number
+          example: 0.55
+          description: Amount of money spent on the impact purchase.
+        purchaseIds:
+          example:
+          - id1
+          - id2
+          description: The ids of the purchases what are made to for the impact.
+          type: array
+          items:
+            type: string
+      required:
+      - type
+      - amount
+      - price
+      - purchaseIds
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
