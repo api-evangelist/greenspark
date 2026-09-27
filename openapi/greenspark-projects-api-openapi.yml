@@ -214,24 +214,22 @@ paths:
       - Projects
 components:
   schemas:
-    ProjectCategoryImage:
+    PointDto:
       type: object
       properties:
-        imageUrl:
+        type:
           type: string
-          description: The url of the image.
-          example: example.com/image.png
-        style:
-          type: string
-          description: The style of the image.
-          example: flat
-          enum:
-          - flat
-          - simplified
-          - 3d
+          description: Specifies the type of GeoJSON object.
+          example: Feature
+        coordinates:
+          description: Coordinates of Point geometry object. https://tools.ietf.org/html/rfc7946#section-3.1.2
+          example: Feature
+          type: array
+          items:
+            type: string
       required:
-      - imageUrl
-      - style
+      - type
+      - coordinates
     FeatureDto:
       type: object
       properties:
@@ -255,6 +253,24 @@ components:
       - type
       - geometry
       - properties
+    ProjectCategoryImage:
+      type: object
+      properties:
+        imageUrl:
+          type: string
+          description: The url of the image.
+          example: example.com/image.png
+        style:
+          type: string
+          description: The style of the image.
+          example: flat
+          enum:
+          - flat
+          - simplified
+          - 3d
+      required:
+      - imageUrl
+      - style
     FeatureCollectionDto:
       type: object
       properties:
@@ -278,42 +294,6 @@ components:
       required:
       - features
       - type
-    PointDto:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Specifies the type of GeoJSON object.
-          example: Feature
-        coordinates:
-          description: Coordinates of Point geometry object. https://tools.ietf.org/html/rfc7946#section-3.1.2
-          example: Feature
-          type: array
-          items:
-            type: string
-      required:
-      - type
-      - coordinates
-    ProjectMetadata:
-      type: object
-      properties:
-        description:
-          type: string
-          description: The description of the metadata.
-        key:
-          type: string
-          description: The key of the metadata.
-        type:
-          type: string
-          description: The type of the metadata. It can be either a primitive type, an array or an object or even a custom type.
-        value:
-          type: object
-          description: The value of the metadata with the type defined in the type field.
-      required:
-      - description
-      - key
-      - type
-      - value
     Project:
       type: object
       properties:
@@ -467,6 +447,26 @@ components:
       - description
       - images
       - type
+    ProjectMetadata:
+      type: object
+      properties:
+        description:
+          type: string
+          description: The description of the metadata.
+        key:
+          type: string
+          description: The key of the metadata.
+        type:
+          type: string
+          description: The type of the metadata. It can be either a primitive type, an array or an object or even a custom type.
+        value:
+          type: object
+          description: The value of the metadata with the type defined in the type field.
+      required:
+      - description
+      - key
+      - type
+      - value
     ProjectDetails:
       type: object
       properties:

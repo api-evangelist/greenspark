@@ -153,6 +153,113 @@ paths:
       - access-key: []
 components:
   schemas:
+    EstimationsByMCCRequestBody:
+      type: object
+      properties:
+        price:
+          type: number
+          description: Price of purchase.
+          example: 1000
+        mcc:
+          type: string
+          description: '[Merchant Category Code](https://usa.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf) of Merchant.'
+          example: '5411'
+        currencyISO:
+          type: string
+          description: ISO Currency Code of Purchase.
+          example: EUR
+        merchant:
+          type: string
+          description: Name of Merchant.
+          example: Superstore
+        geo:
+          type: string
+          enum:
+          - USA
+          - EU/UK
+          - GB
+          - BG
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - CN
+          - CZ
+          - DE
+          - DK
+          - ES
+          - FR
+          - GR
+          - HR
+          - HU
+          - IT
+          - JP
+          - KR
+          - LT
+          - LV
+          - MX
+          - NL
+          - 'NO'
+          - PL
+          - PT
+          - RU
+          - SK
+          - TW
+          - WA
+          - WE
+          - WF
+          - WL
+          - WM
+          - EE
+          - ID
+          - IE
+          - MT
+          - SE
+          - SI
+          - ZA
+          description: Indicates the specific country that should be used for the CO2 emissions factors.
+          example: EU/UK
+        userType:
+          type: string
+          enum:
+          - PERSONAL
+          - BUSINESS
+          description: 'Indicates whether the API should use emissions factors for people or businesses (Either: "PERSONAL"(default), "BUSINESS")'
+          example: PERSONAL
+        metadata:
+          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your estimation.
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+      required:
+      - price
+      - mcc
+      - currencyISO
+    EstimationsByMCC:
+      type: object
+      properties:
+        price:
+          type: number
+          description: Price of purchase.
+          example: 1000
+        mcc:
+          type: string
+          description: '[Merchant Category Code](https://usa.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf) of Merchant.'
+          example: '5411'
+        currencyISO:
+          type: string
+          description: ISO Currency Code of Purchase.
+          example: EUR
+        merchant:
+          type: string
+          description: Name of Merchant.
+          example: Superstore
+      required:
+      - price
+      - mcc
+      - currencyISO
     EstimationsByCategoryTypeRequestBody:
       type: object
       properties:
@@ -244,48 +351,9 @@ components:
       - categoryType
       - categoryValue
       - currencyISO
-    EstimationsByMCC:
+    BulkEstimationsByMCCRequestBody:
       type: object
       properties:
-        price:
-          type: number
-          description: Price of purchase.
-          example: 1000
-        mcc:
-          type: string
-          description: '[Merchant Category Code](https://usa.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf) of Merchant.'
-          example: '5411'
-        currencyISO:
-          type: string
-          description: ISO Currency Code of Purchase.
-          example: EUR
-        merchant:
-          type: string
-          description: Name of Merchant.
-          example: Superstore
-      required:
-      - price
-      - mcc
-      - currencyISO
-    EstimationsByMCCRequestBody:
-      type: object
-      properties:
-        price:
-          type: number
-          description: Price of purchase.
-          example: 1000
-        mcc:
-          type: string
-          description: '[Merchant Category Code](https://usa.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf) of Merchant.'
-          example: '5411'
-        currencyISO:
-          type: string
-          description: ISO Currency Code of Purchase.
-          example: EUR
-        merchant:
-          type: string
-          description: Name of Merchant.
-          example: Superstore
         geo:
           type: string
           enum:
@@ -342,45 +410,27 @@ components:
           - BUSINESS
           description: 'Indicates whether the API should use emissions factors for people or businesses (Either: "PERSONAL"(default), "BUSINESS")'
           example: PERSONAL
+        transactions:
+          description: Array of transactions.
+          example:
+          - merchant: Supermarket
+            price: 77.96
+            mcc: '3612'
+            currencyISO: GBP
+          - merchant: Superstore
+            price: 41.27
+            mcc: '3611'
+            currencyISO: HUF
+          type: array
+          items:
+            $ref: '#/components/schemas/EstimationsByMCC'
         metadata:
           description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your estimation.
           type: array
           items:
             $ref: '#/components/schemas/Metadata'
       required:
-      - price
-      - mcc
-      - currencyISO
-    EstimationsByCategoryType:
-      type: object
-      properties:
-        price:
-          type: number
-          description: Price of purchase.
-          example: 1000
-        categoryType:
-          type: string
-          enum:
-          - plaid
-          description: Type of category.
-          example: plaid
-        categoryValue:
-          description: The name of the category used to calculate the co2 emission. We support all [plaid categories](https://plaid.com/docs/api/products/transactions/#categoriesget) and the new categorisation for [personal_finance_category](https://plaid.com/docs/api/products/transactions/#transactions-recurring-get-request-options-include-personal-finance-category).
-          example:
-          - FOOD_AND_DRINK
-          - FOOD_AND_DRINK_GROCERIES
-          type: array
-          items:
-            type: string
-        currencyISO:
-          type: string
-          description: ISO Currency Code of Purchase.
-          example: EUR
-      required:
-      - price
-      - categoryType
-      - categoryValue
-      - currencyISO
+      - transactions
     Estimation:
       type: object
       properties:
@@ -496,86 +546,36 @@ components:
             $ref: '#/components/schemas/Metadata'
       required:
       - transactions
-    BulkEstimationsByMCCRequestBody:
+    EstimationsByCategoryType:
       type: object
       properties:
-        geo:
+        price:
+          type: number
+          description: Price of purchase.
+          example: 1000
+        categoryType:
           type: string
           enum:
-          - USA
-          - EU/UK
-          - GB
-          - BG
-          - AT
-          - AU
-          - BE
-          - BR
-          - CA
-          - CH
-          - CN
-          - CZ
-          - DE
-          - DK
-          - ES
-          - FR
-          - GR
-          - HR
-          - HU
-          - IT
-          - JP
-          - KR
-          - LT
-          - LV
-          - MX
-          - NL
-          - 'NO'
-          - PL
-          - PT
-          - RU
-          - SK
-          - TW
-          - WA
-          - WE
-          - WF
-          - WL
-          - WM
-          - EE
-          - ID
-          - IE
-          - MT
-          - SE
-          - SI
-          - ZA
-          description: Indicates the specific country that should be used for the CO2 emissions factors.
-          example: EU/UK
-        userType:
-          type: string
-          enum:
-          - PERSONAL
-          - BUSINESS
-          description: 'Indicates whether the API should use emissions factors for people or businesses (Either: "PERSONAL"(default), "BUSINESS")'
-          example: PERSONAL
-        transactions:
-          description: Array of transactions.
+          - plaid
+          description: Type of category.
+          example: plaid
+        categoryValue:
+          description: The name of the category used to calculate the co2 emission. We support all [plaid categories](https://plaid.com/docs/api/products/transactions/#categoriesget) and the new categorisation for [personal_finance_category](https://plaid.com/docs/api/products/transactions/#transactions-recurring-get-request-options-include-personal-finance-category).
           example:
-          - merchant: Supermarket
-            price: 77.96
-            mcc: '3612'
-            currencyISO: GBP
-          - merchant: Superstore
-            price: 41.27
-            mcc: '3611'
-            currencyISO: HUF
+          - FOOD_AND_DRINK
+          - FOOD_AND_DRINK_GROCERIES
           type: array
           items:
-            $ref: '#/components/schemas/EstimationsByMCC'
-        metadata:
-          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your estimation.
-          type: array
-          items:
-            $ref: '#/components/schemas/Metadata'
+            type: string
+        currencyISO:
+          type: string
+          description: ISO Currency Code of Purchase.
+          example: EUR
       required:
-      - transactions
+      - price
+      - categoryType
+      - categoryValue
+      - currencyISO
     Metadata:
       type: object
       properties:
