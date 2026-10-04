@@ -49,6 +49,9 @@ x-tier-reason: portfolio-lead
 specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-19'
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
 tags:
 - Sustainability
 - Carbon Offset
@@ -179,6 +182,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/greenspark-capability-edges.yml
+  name: Greenspark Business Capability Map
 - type: Website
   url: https://www.getgreenspark.com/
 - type: DeveloperPortal
