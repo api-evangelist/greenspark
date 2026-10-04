@@ -214,22 +214,6 @@ paths:
       - Projects
 components:
   schemas:
-    PointDto:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Specifies the type of GeoJSON object.
-          example: Feature
-        coordinates:
-          description: Coordinates of Point geometry object. https://tools.ietf.org/html/rfc7946#section-3.1.2
-          example: Feature
-          type: array
-          items:
-            type: string
-      required:
-      - type
-      - coordinates
     ProjectCategoryImage:
       type: object
       properties:
@@ -248,6 +232,79 @@ components:
       required:
       - imageUrl
       - style
+    PointDto:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Specifies the type of GeoJSON object.
+          example: Feature
+        coordinates:
+          description: Coordinates of Point geometry object. https://tools.ietf.org/html/rfc7946#section-3.1.2
+          example: Feature
+          type: array
+          items:
+            type: string
+      required:
+      - type
+      - coordinates
+    ProjectMetadata:
+      type: object
+      properties:
+        description:
+          type: string
+          description: The description of the metadata.
+        key:
+          type: string
+          description: The key of the metadata.
+        type:
+          type: string
+          description: The type of the metadata. It can be either a primitive type, an array or an object or even a custom type.
+        value:
+          type: object
+          description: The value of the metadata with the type defined in the type field.
+      required:
+      - description
+      - key
+      - type
+      - value
+    ProjectCategory:
+      type: object
+      properties:
+        projectCategoryId:
+          type: string
+          description: The unique identifier of the project.
+          example: 256d3c28-e9c3-4a47-a5a8-63b7634ac5bd
+        name:
+          type: string
+          description: The name of the project category.
+          example: Energy Efficiency
+        description:
+          type: string
+          description: Detailed explanation of what the project category is about. It provides more context for users who want to understand the category.
+          example: Energy Efficiency project category description.
+        images:
+          description: Images associated with the project category. They help users visualise the impact of the project category.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectCategoryImage'
+        type:
+          type: string
+          description: Defines the type of environmental impact associated with projects in this category.
+          example: carbon
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+      required:
+      - projectCategoryId
+      - name
+      - description
+      - images
+      - type
     FeatureDto:
       type: object
       properties:
@@ -271,6 +328,122 @@ components:
       - type
       - geometry
       - properties
+    Project:
+      type: object
+      properties:
+        projectId:
+          type: string
+          description: The unique identifier of the project.
+          example: ca724c03-6e8b-4c17-800d-80177ede64c7
+        projectCategoryId:
+          type: string
+          description: Defines the category that the project falls under. It links the project to its relevant category.
+          example: 256d3c28-e9c3-4a47-a5a8-63b7634ac5bd
+        name:
+          type: string
+          description: The name of the project.
+          example: Hydropower Project
+        description:
+          type: string
+          description: Detailed explanation of what the project is about. It provides more context for users who want to understand the project.
+        type:
+          type: string
+          description: Refers to the type of impact that the project is expected to have.
+          example: carbon
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+        unit:
+          type: number
+          description: 'The purchase unit of the given project. Example: purchasing 20 bees by purchasing one amount of the project.'
+          example: 20
+        registryLink:
+          type: string
+          description: This is a link to a webpage where users can find more detailed information about the project.
+          example: www.example.com
+        link:
+          type: string
+          description: This is a link to the project specific Greenspark page.
+          example: https://www.getgreenspark.com/projects/the-plastic-bank-turning-plastic-pollution-into-empowering-income
+        imageUrl:
+          type: string
+          description: Link to an image representing the project.
+          example: www.example.com/image.png
+        thumbnailImageUrl:
+          type: string
+          description: Link to a thumbnail image representing the project.
+          example: www.example.com/image_thumbnail.png
+        countries:
+          type: string
+          description: List of countries where the project is located.
+          example:
+          - China
+          - India
+          - Brazil
+        vintage:
+          type: number
+          description: The year when the project started.
+          example: 2020
+        price:
+          type: number
+          description: Defines how much it costs to purchase one unit of impact in the account's currency.
+          example: 0.01
+        availability:
+          type: number
+          description: Defines how many units of impact are still available for purchase through the project. If there's no limit, this would be null. For a carbon offsetting project, this would be the number of tonnes of carbon that can still be offset through the project.
+          example: 1000
+        default:
+          type: boolean
+          description: Defines the default project for a project category. When an impact purchase is made, the default project's impact will be purchased if the project is not specified.
+          example: true
+        status:
+          type: string
+          description: Defines the project status.
+          example: approved
+          enum:
+          - approved
+          - deprecated
+        statusInitiatedAt:
+          type: string
+          description: The date when the project get into the current status.
+          example: '2024-01-01'
+        projectPartnerLogo:
+          type: string
+          description: Defines the logo of the project partner.
+          example: https://cdn.getgreenspark.com/project-images/partner-logos/example_logo.jpg
+        geoJSON:
+          description: The geometry of the project. http://datatracker.ietf.org/doc/html/rfc7946#section-3.3
+          example:
+            type: FeatureCollection
+            features:
+            - type: Feature
+              geometry:
+                type: Point
+                coordinates:
+                - -122.63701428179544
+                - 44.86975845546196
+              properties: {}
+          allOf:
+          - $ref: '#/components/schemas/FeatureCollectionDto'
+      required:
+      - projectId
+      - projectCategoryId
+      - name
+      - description
+      - type
+      - unit
+      - link
+      - imageUrl
+      - thumbnailImageUrl
+      - countries
+      - vintage
+      - price
+      - status
+      - statusInitiatedAt
     ProjectDetails:
       type: object
       properties:
@@ -392,179 +565,6 @@ components:
       - price
       - status
       - statusInitiatedAt
-    ProjectCategory:
-      type: object
-      properties:
-        projectCategoryId:
-          type: string
-          description: The unique identifier of the project.
-          example: 256d3c28-e9c3-4a47-a5a8-63b7634ac5bd
-        name:
-          type: string
-          description: The name of the project category.
-          example: Energy Efficiency
-        description:
-          type: string
-          description: Detailed explanation of what the project category is about. It provides more context for users who want to understand the category.
-          example: Energy Efficiency project category description.
-        images:
-          description: Images associated with the project category. They help users visualise the impact of the project category.
-          type: array
-          items:
-            $ref: '#/components/schemas/ProjectCategoryImage'
-        type:
-          type: string
-          description: Defines the type of environmental impact associated with projects in this category.
-          example: carbon
-          enum:
-          - trees
-          - carbon
-          - plastic
-          - kelp
-          - water
-          - bees
-      required:
-      - projectCategoryId
-      - name
-      - description
-      - images
-      - type
-    Project:
-      type: object
-      properties:
-        projectId:
-          type: string
-          description: The unique identifier of the project.
-          example: ca724c03-6e8b-4c17-800d-80177ede64c7
-        projectCategoryId:
-          type: string
-          description: Defines the category that the project falls under. It links the project to its relevant category.
-          example: 256d3c28-e9c3-4a47-a5a8-63b7634ac5bd
-        name:
-          type: string
-          description: The name of the project.
-          example: Hydropower Project
-        description:
-          type: string
-          description: Detailed explanation of what the project is about. It provides more context for users who want to understand the project.
-        type:
-          type: string
-          description: Refers to the type of impact that the project is expected to have.
-          example: carbon
-          enum:
-          - trees
-          - carbon
-          - plastic
-          - kelp
-          - water
-          - bees
-        unit:
-          type: number
-          description: 'The purchase unit of the given project. Example: purchasing 20 bees by purchasing one amount of the project.'
-          example: 20
-        registryLink:
-          type: string
-          description: This is a link to a webpage where users can find more detailed information about the project.
-          example: www.example.com
-        link:
-          type: string
-          description: This is a link to the project specific Greenspark page.
-          example: https://www.getgreenspark.com/projects/the-plastic-bank-turning-plastic-pollution-into-empowering-income
-        imageUrl:
-          type: string
-          description: Link to an image representing the project.
-          example: www.example.com/image.png
-        thumbnailImageUrl:
-          type: string
-          description: Link to a thumbnail image representing the project.
-          example: www.example.com/image_thumbnail.png
-        countries:
-          type: string
-          description: List of countries where the project is located.
-          example:
-          - China
-          - India
-          - Brazil
-        vintage:
-          type: number
-          description: The year when the project started.
-          example: 2020
-        price:
-          type: number
-          description: Defines how much it costs to purchase one unit of impact in the account's currency.
-          example: 0.01
-        availability:
-          type: number
-          description: Defines how many units of impact are still available for purchase through the project. If there's no limit, this would be null. For a carbon offsetting project, this would be the number of tonnes of carbon that can still be offset through the project.
-          example: 1000
-        default:
-          type: boolean
-          description: Defines the default project for a project category. When an impact purchase is made, the default project's impact will be purchased if the project is not specified.
-          example: true
-        status:
-          type: string
-          description: Defines the project status.
-          example: approved
-          enum:
-          - approved
-          - deprecated
-        statusInitiatedAt:
-          type: string
-          description: The date when the project get into the current status.
-          example: '2024-01-01'
-        projectPartnerLogo:
-          type: string
-          description: Defines the logo of the project partner.
-          example: https://cdn.getgreenspark.com/project-images/partner-logos/example_logo.jpg
-        geoJSON:
-          description: The geometry of the project. http://datatracker.ietf.org/doc/html/rfc7946#section-3.3
-          example:
-            type: FeatureCollection
-            features:
-            - type: Feature
-              geometry:
-                type: Point
-                coordinates:
-                - -122.63701428179544
-                - 44.86975845546196
-              properties: {}
-          allOf:
-          - $ref: '#/components/schemas/FeatureCollectionDto'
-      required:
-      - projectId
-      - projectCategoryId
-      - name
-      - description
-      - type
-      - unit
-      - link
-      - imageUrl
-      - thumbnailImageUrl
-      - countries
-      - vintage
-      - price
-      - status
-      - statusInitiatedAt
-    ProjectMetadata:
-      type: object
-      properties:
-        description:
-          type: string
-          description: The description of the metadata.
-        key:
-          type: string
-          description: The key of the metadata.
-        type:
-          type: string
-          description: The type of the metadata. It can be either a primitive type, an array or an object or even a custom type.
-        value:
-          type: object
-          description: The value of the metadata with the type defined in the type field.
-      required:
-      - description
-      - key
-      - type
-      - value
     FeatureCollectionDto:
       type: object
       properties:

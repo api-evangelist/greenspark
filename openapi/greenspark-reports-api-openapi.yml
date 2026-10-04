@@ -1295,6 +1295,57 @@ paths:
       - Reports
 components:
   schemas:
+    RawReportRow:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          example: '2022-09-09 09:12:54.162+00'
+          description: Creation date of the impact.
+        totalPrice:
+          type: number
+          example: 1
+          description: Total amount of money spent on the impact.
+        currency:
+          type: string
+          example: dollar
+          description: The currency of the spent money on the impact.
+        sourceName:
+          type: string
+          example: source1
+          description: The name of the source associated with the impact.
+        sourceId:
+          type: string
+          example: 631b035dcd13c4ad66c6d496
+          description: The id of the source associated with the impact.
+        triggerName:
+          type: string
+          example: trigger1
+          description: The name of the trigger associated with the impact.
+        triggerId:
+          type: string
+          example: 631b035dcd13c4ad66c6d497
+          description: The id of the trigger associated with the impact.
+        impactPurchases:
+          description: The impactPurchases array contains your spending on a specific purpose.
+          type: array
+          items:
+            $ref: '#/components/schemas/ImpactPurchase'
+        metadata:
+          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your impact.
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+      required:
+      - createdAt
+      - totalPrice
+      - currency
+      - sourceName
+      - sourceId
+      - triggerName
+      - triggerId
+      - impactPurchases
+      - metadata
     RawReport:
       type: object
       properties:
@@ -1417,71 +1468,6 @@ components:
       - rows
       - maxResults
       - cursor
-    Metadata:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Minimum 1, maximum 40 characters.
-          example: customerId
-        value:
-          type: string
-          description: Minimum 1, maximum 100 characters.
-          example: 743ce227-22ef-4c6e-9c06-725f97b99690
-      required:
-      - key
-      - value
-    RawReportRow:
-      type: object
-      properties:
-        createdAt:
-          type: string
-          example: '2022-09-09 09:12:54.162+00'
-          description: Creation date of the impact.
-        totalPrice:
-          type: number
-          example: 1
-          description: Total amount of money spent on the impact.
-        currency:
-          type: string
-          example: dollar
-          description: The currency of the spent money on the impact.
-        sourceName:
-          type: string
-          example: source1
-          description: The name of the source associated with the impact.
-        sourceId:
-          type: string
-          example: 631b035dcd13c4ad66c6d496
-          description: The id of the source associated with the impact.
-        triggerName:
-          type: string
-          example: trigger1
-          description: The name of the trigger associated with the impact.
-        triggerId:
-          type: string
-          example: 631b035dcd13c4ad66c6d497
-          description: The id of the trigger associated with the impact.
-        impactPurchases:
-          description: The impactPurchases array contains your spending on a specific purpose.
-          type: array
-          items:
-            $ref: '#/components/schemas/ImpactPurchase'
-        metadata:
-          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your impact.
-          type: array
-          items:
-            $ref: '#/components/schemas/Metadata'
-      required:
-      - createdAt
-      - totalPrice
-      - currency
-      - sourceName
-      - sourceId
-      - triggerName
-      - triggerId
-      - impactPurchases
-      - metadata
     RawReportRowV2:
       type: object
       properties:
@@ -1567,6 +1553,20 @@ components:
       required:
       - type
       - amount
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Minimum 1, maximum 40 characters.
+          example: customerId
+        value:
+          type: string
+          description: Minimum 1, maximum 100 characters.
+          example: 743ce227-22ef-4c6e-9c06-725f97b99690
+      required:
+      - key
+      - value
     ImpactPurchaseWithPrice:
       type: object
       properties:

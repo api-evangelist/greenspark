@@ -153,20 +153,6 @@ paths:
       - access-key: []
 components:
   schemas:
-    Metadata:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Minimum 1, maximum 40 characters.
-          example: customerId
-        value:
-          type: string
-          description: Minimum 1, maximum 100 characters.
-          example: 743ce227-22ef-4c6e-9c06-725f97b99690
-      required:
-      - key
-      - value
     EstimationsByCategoryType:
       type: object
       properties:
@@ -197,6 +183,84 @@ components:
       - categoryType
       - categoryValue
       - currencyISO
+    BulkEstimationsByCategoryTypeRequestBody:
+      type: object
+      properties:
+        geo:
+          type: string
+          enum:
+          - USA
+          - EU/UK
+          - GB
+          - BG
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - CN
+          - CZ
+          - DE
+          - DK
+          - ES
+          - FR
+          - GR
+          - HR
+          - HU
+          - IT
+          - JP
+          - KR
+          - LT
+          - LV
+          - MX
+          - NL
+          - 'NO'
+          - PL
+          - PT
+          - RU
+          - SK
+          - TW
+          - WA
+          - WE
+          - WF
+          - WL
+          - WM
+          - EE
+          - ID
+          - IE
+          - MT
+          - SE
+          - SI
+          - ZA
+          description: Indicates the specific country that should be used for the CO2 emissions factors.
+          example: EU/UK
+        userType:
+          type: string
+          enum:
+          - PERSONAL
+          - BUSINESS
+          description: 'Indicates whether the API should use emissions factors for people or businesses (Either: "PERSONAL"(default), "BUSINESS")'
+          example: PERSONAL
+        transactions:
+          description: Array of transactions.
+          example:
+          - price: 77.96
+            currencyISO: GBP
+            categoryType: plaid
+            categoryValue:
+            - FOOD_AND_DRINK
+            - FOOD_AND_DRINK_GROCERIES
+          type: array
+          items:
+            $ref: '#/components/schemas/EstimationsByCategoryType'
+        metadata:
+          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your estimation.
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+      required:
+      - transactions
     BulkEstimationsByMCCRequestBody:
       type: object
       properties:
@@ -277,43 +341,6 @@ components:
             $ref: '#/components/schemas/Metadata'
       required:
       - transactions
-    Estimation:
-      type: object
-      properties:
-        emissionsLevel:
-          type: string
-          enum:
-          - category
-          - merchant
-          description: Either "category" or "merchant" depending on whether there is emissions data available on that merchant or only on the mcc category.
-          example: category
-        name:
-          type: string
-          description: 'In the case of "category" this is the mcc code string (Ex: Supermarkets), and if emissions_level is "merchant" it returns the name of the merchant you entered (ex: "Superstore"). [Full list of merchant categories.](https://usa.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf)'
-          example: Superstore
-        kgOfCO2Emissions:
-          type: number
-          description: Estimated carbon footprint In Kg of CO2 equivalent.
-          example: 4.66
-        mtOfCO2Emissions:
-          type: number
-          description: Estimated carbon footprint In metric tons (mt) of CO2 equivalent.
-          example: 0.0047
-        similarTo:
-          description: Random list of relatable actions with similar footprint.
-          example:
-          - Eating 52 cookies
-          - Absorbed by a tree every 19 days
-          - Eating 1.8 cans of tuna
-          type: array
-          items:
-            type: string
-      required:
-      - emissionsLevel
-      - name
-      - kgOfCO2Emissions
-      - mtOfCO2Emissions
-      - similarTo
     EstimationsByMCC:
       type: object
       properties:
@@ -337,6 +364,104 @@ components:
       - price
       - mcc
       - currencyISO
+    EstimationsByMCCRequestBody:
+      type: object
+      properties:
+        price:
+          type: number
+          description: Price of purchase.
+          example: 1000
+        mcc:
+          type: string
+          description: '[Merchant Category Code](https://usa.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf) of Merchant.'
+          example: '5411'
+        currencyISO:
+          type: string
+          description: ISO Currency Code of Purchase.
+          example: EUR
+        merchant:
+          type: string
+          description: Name of Merchant.
+          example: Superstore
+        geo:
+          type: string
+          enum:
+          - USA
+          - EU/UK
+          - GB
+          - BG
+          - AT
+          - AU
+          - BE
+          - BR
+          - CA
+          - CH
+          - CN
+          - CZ
+          - DE
+          - DK
+          - ES
+          - FR
+          - GR
+          - HR
+          - HU
+          - IT
+          - JP
+          - KR
+          - LT
+          - LV
+          - MX
+          - NL
+          - 'NO'
+          - PL
+          - PT
+          - RU
+          - SK
+          - TW
+          - WA
+          - WE
+          - WF
+          - WL
+          - WM
+          - EE
+          - ID
+          - IE
+          - MT
+          - SE
+          - SI
+          - ZA
+          description: Indicates the specific country that should be used for the CO2 emissions factors.
+          example: EU/UK
+        userType:
+          type: string
+          enum:
+          - PERSONAL
+          - BUSINESS
+          description: 'Indicates whether the API should use emissions factors for people or businesses (Either: "PERSONAL"(default), "BUSINESS")'
+          example: PERSONAL
+        metadata:
+          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your estimation.
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+      required:
+      - price
+      - mcc
+      - currencyISO
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Minimum 1, maximum 40 characters.
+          example: customerId
+        value:
+          type: string
+          description: Minimum 1, maximum 100 characters.
+          example: 743ce227-22ef-4c6e-9c06-725f97b99690
+      required:
+      - key
+      - value
     EstimationsByCategoryTypeRequestBody:
       type: object
       properties:
@@ -428,168 +553,43 @@ components:
       - categoryType
       - categoryValue
       - currencyISO
-    EstimationsByMCCRequestBody:
+    Estimation:
       type: object
       properties:
-        price:
-          type: number
-          description: Price of purchase.
-          example: 1000
-        mcc:
+        emissionsLevel:
           type: string
-          description: '[Merchant Category Code](https://usa.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf) of Merchant.'
-          example: '5411'
-        currencyISO:
+          enum:
+          - category
+          - merchant
+          description: Either "category" or "merchant" depending on whether there is emissions data available on that merchant or only on the mcc category.
+          example: category
+        name:
           type: string
-          description: ISO Currency Code of Purchase.
-          example: EUR
-        merchant:
-          type: string
-          description: Name of Merchant.
+          description: 'In the case of "category" this is the mcc code string (Ex: Supermarkets), and if emissions_level is "merchant" it returns the name of the merchant you entered (ex: "Superstore"). [Full list of merchant categories.](https://usa.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf)'
           example: Superstore
-        geo:
-          type: string
-          enum:
-          - USA
-          - EU/UK
-          - GB
-          - BG
-          - AT
-          - AU
-          - BE
-          - BR
-          - CA
-          - CH
-          - CN
-          - CZ
-          - DE
-          - DK
-          - ES
-          - FR
-          - GR
-          - HR
-          - HU
-          - IT
-          - JP
-          - KR
-          - LT
-          - LV
-          - MX
-          - NL
-          - 'NO'
-          - PL
-          - PT
-          - RU
-          - SK
-          - TW
-          - WA
-          - WE
-          - WF
-          - WL
-          - WM
-          - EE
-          - ID
-          - IE
-          - MT
-          - SE
-          - SI
-          - ZA
-          description: Indicates the specific country that should be used for the CO2 emissions factors.
-          example: EU/UK
-        userType:
-          type: string
-          enum:
-          - PERSONAL
-          - BUSINESS
-          description: 'Indicates whether the API should use emissions factors for people or businesses (Either: "PERSONAL"(default), "BUSINESS")'
-          example: PERSONAL
-        metadata:
-          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your estimation.
-          type: array
-          items:
-            $ref: '#/components/schemas/Metadata'
-      required:
-      - price
-      - mcc
-      - currencyISO
-    BulkEstimationsByCategoryTypeRequestBody:
-      type: object
-      properties:
-        geo:
-          type: string
-          enum:
-          - USA
-          - EU/UK
-          - GB
-          - BG
-          - AT
-          - AU
-          - BE
-          - BR
-          - CA
-          - CH
-          - CN
-          - CZ
-          - DE
-          - DK
-          - ES
-          - FR
-          - GR
-          - HR
-          - HU
-          - IT
-          - JP
-          - KR
-          - LT
-          - LV
-          - MX
-          - NL
-          - 'NO'
-          - PL
-          - PT
-          - RU
-          - SK
-          - TW
-          - WA
-          - WE
-          - WF
-          - WL
-          - WM
-          - EE
-          - ID
-          - IE
-          - MT
-          - SE
-          - SI
-          - ZA
-          description: Indicates the specific country that should be used for the CO2 emissions factors.
-          example: EU/UK
-        userType:
-          type: string
-          enum:
-          - PERSONAL
-          - BUSINESS
-          description: 'Indicates whether the API should use emissions factors for people or businesses (Either: "PERSONAL"(default), "BUSINESS")'
-          example: PERSONAL
-        transactions:
-          description: Array of transactions.
+        kgOfCO2Emissions:
+          type: number
+          description: Estimated carbon footprint In Kg of CO2 equivalent.
+          example: 4.66
+        mtOfCO2Emissions:
+          type: number
+          description: Estimated carbon footprint In metric tons (mt) of CO2 equivalent.
+          example: 0.0047
+        similarTo:
+          description: Random list of relatable actions with similar footprint.
           example:
-          - price: 77.96
-            currencyISO: GBP
-            categoryType: plaid
-            categoryValue:
-            - FOOD_AND_DRINK
-            - FOOD_AND_DRINK_GROCERIES
+          - Eating 52 cookies
+          - Absorbed by a tree every 19 days
+          - Eating 1.8 cans of tuna
           type: array
           items:
-            $ref: '#/components/schemas/EstimationsByCategoryType'
-        metadata:
-          description: In the metadata array you can store up to 10 key-value pairs. You can use them to associate arbitrary data with your estimation.
-          type: array
-          items:
-            $ref: '#/components/schemas/Metadata'
+            type: string
       required:
-      - transactions
+      - emissionsLevel
+      - name
+      - kgOfCO2Emissions
+      - mtOfCO2Emissions
+      - similarTo
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
