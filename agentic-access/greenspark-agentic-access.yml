@@ -1,21 +1,53 @@
-generated: '2026-07-19'
+generated: '2026-09-23'
 method: generated
-source: openapi/greenspark-openapi.yml
+source: openapi/greenspark-account-api-openapi.yml, openapi/greenspark-email-api-openapi.yml,
+  openapi/greenspark-estimations-api-openapi.yml, openapi/greenspark-impacts-api-openapi.yml,
+  openapi/greenspark-projects-api-openapi.yml, openapi/greenspark-reports-api-openapi.yml, openapi/greenspark-widgets-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 67
   by_action_class:
-    acting: 38
-    connected: 29
+    connected: 33
+    acting: 34
   by_consequence:
-    write: 35
-    read: 29
+    read: 33
+    write: 31
     safety-critical: 1
     physical: 2
   human_in_the_loop_required: 1
 operations:
+- path: /v1/accounts/community
+  method: get
+  operationId: getCommunityPublicAccount
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/accounts/public/{publicAccountId}
+  method: get
+  operationId: getPublicAccount
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/accounts/public/{publicAccountId}
+  method: get
+  operationId: getPublicAccountV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /v1/email/domains
   method: post
   operationId: addDomain
@@ -120,134 +152,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v2/widgets/by-percentage-of-revenue-widget
-  method: post
-  operationId: by-percentage-of-revenue-widget-v2
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v2/widgets/by-percentage-widget
-  method: post
-  operationId: by-percentage-widget-v2
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /widgets/by-percentage-widget
-  method: post
-  operationId: by-percentage-widget
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v2/widgets/cart-widget
-  method: post
-  operationId: cart-widget-v2
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /widgets/cart-widget
-  method: post
-  operationId: cart-widget
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/impacts/sources/{sourceId}/triggers/{triggerId}
-  method: post
-  operationId: createImpact
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/impacts/batch
-  method: post
-  operationId: createImpactBatch
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/impacts
-  method: post
-  operationId: createTailoredImpact
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /v1/email/domains/{domainId}
   method: delete
   operationId: deleteDomain
@@ -360,6 +264,212 @@ operations:
     escalation:
       human-in-the-loop: required
     audit: required
+- path: /v1/email/templates-defaults
+  method: get
+  operationId: fetchTemplatesDefaults
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/email/templates-defaults
+  method: get
+  operationId: fetchTemplatesDefaultsV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/email/templates/test
+  method: post
+  operationId: testTemplate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/email/domains/{domainId}/verify
+  method: post
+  operationId: verifyDomain
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/email/domains/{domainId}/verify
+  method: post
+  operationId: verifyDomainV2
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/estimations/transaction/mcc
+  method: post
+  operationId: fetchCarbonEstimateOfATransactionByMCC
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/estimations/transaction/category-type
+  method: post
+  operationId: fetchCarbonEstimateOfATransactionByOpenBankingCategoryTypes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/estimations/transaction/mcc/bulk
+  method: post
+  operationId: fetchCarbonEstimateOfMultipleTransactionsByMCC
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/estimations/transaction/category-type/bulk
+  method: post
+  operationId: fetchCarbonEstimateOfMultipleTransactionsByOpenBankingCategoryTypes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/impacts/sources/{sourceId}/triggers/{triggerId}
+  method: post
+  operationId: createImpact
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/impacts/batch
+  method: post
+  operationId: createImpactBatch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/impacts
+  method: post
+  operationId: createTailoredImpact
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/impacts/purchases/{purchaseId}
+  method: get
+  operationId: getImpactPurchase
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/impacts/purchases
+  method: get
+  operationId: getImpactPurchases
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/projects/{projectId}
+  method: get
+  operationId: getProject
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/project-categories
+  method: get
+  operationId: getProjectCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/projects
+  method: get
+  operationId: getProjects
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /v1/reports/{reportId}/{cursor}
   method: get
   operationId: fetchAReportPage
@@ -390,70 +500,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v1/estimations/transaction/mcc
-  method: post
-  operationId: fetchCarbonEstimateOfATransactionByMCC
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/estimations/transaction/category-type
-  method: post
-  operationId: fetchCarbonEstimateOfATransactionByOpenBankingCategoryTypes
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/estimations/transaction/mcc/bulk
-  method: post
-  operationId: fetchCarbonEstimateOfMultipleTransactionsByMCC
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/estimations/transaction/category-type/bulk
-  method: post
-  operationId: fetchCarbonEstimateOfMultipleTransactionsByOpenBankingCategoryTypes
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /v1/reports/impact-amount-by-type-per-source
   method: get
   operationId: fetchImpactAmountByTypePerSourceReport
@@ -507,26 +553,6 @@ operations:
 - path: /v2/reports
   method: get
   operationId: fetchRawReportV2
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/email/templates-defaults
-  method: get
-  operationId: fetchTemplatesDefaults
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v2/email/templates-defaults
-  method: get
-  operationId: fetchTemplatesDefaultsV2
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -594,6 +620,86 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /v2/widgets/by-percentage-of-revenue-widget
+  method: post
+  operationId: by-percentage-of-revenue-widget-v2
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/widgets/by-percentage-widget
+  method: post
+  operationId: by-percentage-widget-v2
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /widgets/by-percentage-widget
+  method: post
+  operationId: by-percentage-widget
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/widgets/cart-widget
+  method: post
+  operationId: cart-widget-v2
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /widgets/cart-widget
+  method: post
+  operationId: cart-widget
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /v2/widgets/full-width-banner
   method: post
   operationId: full-width-banner-v2
@@ -626,86 +732,6 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v1/accounts/community
-  method: get
-  operationId: getCommunityPublicAccount
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/impacts/purchases/{purchaseId}
-  method: get
-  operationId: getImpactPurchase
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/impacts/purchases
-  method: get
-  operationId: getImpactPurchases
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/projects/{projectId}
-  method: get
-  operationId: getProject
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/project-categories
-  method: get
-  operationId: getProjectCategories
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/projects
-  method: get
-  operationId: getProjects
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/accounts/public/{publicAccountId}
-  method: get
-  operationId: getPublicAccount
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v2/accounts/public/{publicAccountId}
-  method: get
-  operationId: getPublicAccountV2
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /v2/widgets/per-order-widget
   method: post
   operationId: per-order-widget-v2
@@ -806,22 +832,6 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v1/email/templates/test
-  method: post
-  operationId: testTemplate
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /v2/widgets/tiered-spend-level-widget
   method: post
   operationId: tiered-spend-level-widget-v2
@@ -873,38 +883,6 @@ operations:
 - path: /widgets/stats-widget
   method: post
   operationId: top-stats-widget
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/email/domains/{domainId}/verify
-  method: post
-  operationId: verifyDomain
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v2/email/domains/{domainId}/verify
-  method: post
-  operationId: verifyDomainV2
   x-agentic-access:
     action-class: acting
     consequence: write
