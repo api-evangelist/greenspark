@@ -214,97 +214,6 @@ paths:
       - Projects
 components:
   schemas:
-    ProjectCategoryImage:
-      type: object
-      properties:
-        imageUrl:
-          type: string
-          description: The url of the image.
-          example: example.com/image.png
-        style:
-          type: string
-          description: The style of the image.
-          example: flat
-          enum:
-          - flat
-          - simplified
-          - 3d
-      required:
-      - imageUrl
-      - style
-    PointDto:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Specifies the type of GeoJSON object.
-          example: Feature
-        coordinates:
-          description: Coordinates of Point geometry object. https://tools.ietf.org/html/rfc7946#section-3.1.2
-          example: Feature
-          type: array
-          items:
-            type: string
-      required:
-      - type
-      - coordinates
-    ProjectMetadata:
-      type: object
-      properties:
-        description:
-          type: string
-          description: The description of the metadata.
-        key:
-          type: string
-          description: The key of the metadata.
-        type:
-          type: string
-          description: The type of the metadata. It can be either a primitive type, an array or an object or even a custom type.
-        value:
-          type: object
-          description: The value of the metadata with the type defined in the type field.
-      required:
-      - description
-      - key
-      - type
-      - value
-    ProjectCategory:
-      type: object
-      properties:
-        projectCategoryId:
-          type: string
-          description: The unique identifier of the project.
-          example: 256d3c28-e9c3-4a47-a5a8-63b7634ac5bd
-        name:
-          type: string
-          description: The name of the project category.
-          example: Energy Efficiency
-        description:
-          type: string
-          description: Detailed explanation of what the project category is about. It provides more context for users who want to understand the category.
-          example: Energy Efficiency project category description.
-        images:
-          description: Images associated with the project category. They help users visualise the impact of the project category.
-          type: array
-          items:
-            $ref: '#/components/schemas/ProjectCategoryImage'
-        type:
-          type: string
-          description: Defines the type of environmental impact associated with projects in this category.
-          example: carbon
-          enum:
-          - trees
-          - carbon
-          - plastic
-          - kelp
-          - water
-          - bees
-      required:
-      - projectCategoryId
-      - name
-      - description
-      - images
-      - type
     FeatureDto:
       type: object
       properties:
@@ -328,6 +237,24 @@ components:
       - type
       - geometry
       - properties
+    ProjectCategoryImage:
+      type: object
+      properties:
+        imageUrl:
+          type: string
+          description: The url of the image.
+          example: example.com/image.png
+        style:
+          type: string
+          description: The style of the image.
+          example: flat
+          enum:
+          - flat
+          - simplified
+          - 3d
+      required:
+      - imageUrl
+      - style
     Project:
       type: object
       properties:
@@ -444,6 +371,102 @@ components:
       - price
       - status
       - statusInitiatedAt
+    ProjectCategory:
+      type: object
+      properties:
+        projectCategoryId:
+          type: string
+          description: The unique identifier of the project.
+          example: 256d3c28-e9c3-4a47-a5a8-63b7634ac5bd
+        name:
+          type: string
+          description: The name of the project category.
+          example: Energy Efficiency
+        description:
+          type: string
+          description: Detailed explanation of what the project category is about. It provides more context for users who want to understand the category.
+          example: Energy Efficiency project category description.
+        images:
+          description: Images associated with the project category. They help users visualise the impact of the project category.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectCategoryImage'
+        type:
+          type: string
+          description: Defines the type of environmental impact associated with projects in this category.
+          example: carbon
+          enum:
+          - trees
+          - carbon
+          - plastic
+          - kelp
+          - water
+          - bees
+      required:
+      - projectCategoryId
+      - name
+      - description
+      - images
+      - type
+    FeatureCollectionDto:
+      type: object
+      properties:
+        features:
+          description: A collection of feature objects. https://tools.ietf.org/html/rfc7946#section-3.3
+          example:
+          - type: Feature
+            geometry:
+              type: Point
+              coordinates:
+              - -122.63701428179544
+              - 44.86975845546196
+            properties: {}
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureDto'
+        type:
+          type: string
+          description: Specifies the type of GeoJSON object.
+          example: FeatureCollection
+      required:
+      - features
+      - type
+    ProjectMetadata:
+      type: object
+      properties:
+        description:
+          type: string
+          description: The description of the metadata.
+        key:
+          type: string
+          description: The key of the metadata.
+        type:
+          type: string
+          description: The type of the metadata. It can be either a primitive type, an array or an object or even a custom type.
+        value:
+          type: object
+          description: The value of the metadata with the type defined in the type field.
+      required:
+      - description
+      - key
+      - type
+      - value
+    PointDto:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Specifies the type of GeoJSON object.
+          example: Feature
+        coordinates:
+          description: Coordinates of Point geometry object. https://tools.ietf.org/html/rfc7946#section-3.1.2
+          example: Feature
+          type: array
+          items:
+            type: string
+      required:
+      - type
+      - coordinates
     ProjectDetails:
       type: object
       properties:
@@ -565,29 +588,6 @@ components:
       - price
       - status
       - statusInitiatedAt
-    FeatureCollectionDto:
-      type: object
-      properties:
-        features:
-          description: A collection of feature objects. https://tools.ietf.org/html/rfc7946#section-3.3
-          example:
-          - type: Feature
-            geometry:
-              type: Point
-              coordinates:
-              - -122.63701428179544
-              - 44.86975845546196
-            properties: {}
-          type: array
-          items:
-            $ref: '#/components/schemas/FeatureDto'
-        type:
-          type: string
-          description: Specifies the type of GeoJSON object.
-          example: FeatureCollection
-      required:
-      - features
-      - type
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
