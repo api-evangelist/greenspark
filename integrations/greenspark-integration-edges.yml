@@ -25,8 +25,90 @@ edges:
     builder: unknown (not in the directory record)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/@getgreenspark/email
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@getgreenspark/email'
+      version: 1.1.0
+      released: '2025-06-06'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@getgreenspark/email
+      repo_leg: github-org:getgreenspark
+      publisher_leg: email:getgreenspark.com
+      matched_by: domain
+    - name: '@getgreenspark/estimations'
+      version: 1.1.1
+      released: '2025-06-06'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@getgreenspark/estimations
+      repo_leg: github-org:getgreenspark
+      publisher_leg: email:getgreenspark.com
+      matched_by: domain
+    - name: '@getgreenspark/impacts'
+      version: 1.6.0
+      released: '2026-03-05'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@getgreenspark/impacts
+      repo_leg: github-org:getgreenspark
+      publisher_leg: email:getgreenspark.com
+      matched_by: domain
+    - name: '@getgreenspark/projects'
+      version: 1.5.0
+      released: '2026-09-21'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@getgreenspark/projects
+      repo_leg: github-org:getgreenspark
+      publisher_leg: email:getgreenspark.com
+      matched_by: domain
+    - name: '@getgreenspark/reports'
+      version: 2.3.0
+      released: '2025-06-06'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@getgreenspark/reports
+      repo_leg: github-org:getgreenspark
+      publisher_leg: email:getgreenspark.com
+      matched_by: domain
+    - name: '@getgreenspark/widgets'
+      version: 2.6.5
+      released: '2026-06-22'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@getgreenspark/widgets
+      repo_leg: github-org:getgreenspark
+      publisher_leg: email:getgreenspark.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 method: searched
 checked:
+- https://api.nuget.org/v3
+- https://crates.io/api/v1
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
 - https://zapier.com/api/v4/apps/
 source:
 - https://zapier.com/api/v4/apps/

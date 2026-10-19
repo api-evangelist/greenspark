@@ -28,3 +28,79 @@
     builder: unknown (not in the directory record)
   status: not-a-workflow
   arazzo: null
+- slug: greenspark-npm-registry
+  label: npm registry
+  partner: npm
+  partner_name: npm registry
+  category: official SDK (JavaScript/TypeScript)
+  type: register
+  channel: package-registry
+  evidence: https://www.npmjs.com/package/@getgreenspark/email
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@getgreenspark/email'
+      version: 1.1.0
+      released: '2025-06-06'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@getgreenspark/email
+      repo_leg: github-org:getgreenspark
+      publisher_leg: email:getgreenspark.com
+      matched_by: domain
+    - name: '@getgreenspark/estimations'
+      version: 1.1.1
+      released: '2025-06-06'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@getgreenspark/estimations
+      repo_leg: github-org:getgreenspark
+      publisher_leg: email:getgreenspark.com
+      matched_by: domain
+    - name: '@getgreenspark/impacts'
+      version: 1.6.0
+      released: '2026-03-05'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@getgreenspark/impacts
+      repo_leg: github-org:getgreenspark
+      publisher_leg: email:getgreenspark.com
+      matched_by: domain
+    - name: '@getgreenspark/projects'
+      version: 1.5.0
+      released: '2026-09-21'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@getgreenspark/projects
+      repo_leg: github-org:getgreenspark
+      publisher_leg: email:getgreenspark.com
+      matched_by: domain
+    - name: '@getgreenspark/reports'
+      version: 2.3.0
+      released: '2025-06-06'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@getgreenspark/reports
+      repo_leg: github-org:getgreenspark
+      publisher_leg: email:getgreenspark.com
+      matched_by: domain
+    - name: '@getgreenspark/widgets'
+      version: 2.6.5
+      released: '2026-06-22'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@getgreenspark/widgets
+      repo_leg: github-org:getgreenspark
+      publisher_leg: email:getgreenspark.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
