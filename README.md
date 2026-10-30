@@ -64,6 +64,129 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Greenspark is a company surfaced as a portfolio company of anthemis and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Greenspark is an Impact-as-a-Service platform that lets businesses embed climate and environmental action into their products and customer journeys. Its Climate API programmatically funds verified impacts — carbon offset, tree planting, ocean-plastic recovery, kelp restoration, clean water and bee protection — and provides carbon-footprint estimation (by Merchant Category Code or Open Banking category), impact reporting, email/notification templates, and embeddable impact widgets for storefronts. Authentication is a single x-api-key header with separate sandbox, demo and production environments. Greenspark ships six first-party TypeScript SDKs, a ReadMe-hosted MCP server, and packaged Agent Skills. Backed by Anthemis; profiled and enriched by the API Evangelist network.
 
-Backed by: anthemis
+**Areas:** Sustainability · Carbon Offset · Climate · Impact · Carbon Estimation · Reporting · ESG · Fintech
+
+## Greenspark on APIs.io
+
+Everything profiled for Greenspark is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/greenspark/](https://apis.io/providers/greenspark/)** — or go straight to one of the APIs or properties below.
+
+### APIs (7)
+
+- [Greenspark Account API](https://apis.io/apis/greenspark/greenspark-account-api/) — The Account API from Greenspark — 3 operation(s) for account.
+- [Greenspark Email API](https://apis.io/apis/greenspark/greenspark-email-api/) — The Email API from Greenspark — 14 operation(s) for email.
+- [Greenspark Estimations API](https://apis.io/apis/greenspark/greenspark-estimations-api/) — The Estimations API from Greenspark — 4 operation(s) for estimations.
+- [Greenspark Impacts API](https://apis.io/apis/greenspark/greenspark-impacts-api/) — The Impacts API from Greenspark — 5 operation(s) for impacts.
+- [Greenspark Projects API](https://apis.io/apis/greenspark/greenspark-projects-api/) — The Projects API from Greenspark — 3 operation(s) for projects.
+- [Greenspark Reports API](https://apis.io/apis/greenspark/greenspark-reports-api/) — The Reports API from Greenspark — 15 operation(s) for reports.
+- [Greenspark Widgets API](https://apis.io/apis/greenspark/greenspark-widgets-api/) — The Widgets API from Greenspark — 17 operation(s) for widgets.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [Greenspark API](https://apis.io/servers/greenspark/com-getgreenspark-greenspark-api/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Greenspark Agentic Access](https://apis.io/agentic-access/greenspark/greenspark-agentic-access/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [Greenspark Climate Account API](https://apis.io/collections/greenspark/open-greenspark-account-api/)
+- [Greenspark Climate Account Email API](https://apis.io/collections/greenspark/open-greenspark-email-api/)
+- [Greenspark Climate Account Estimations API](https://apis.io/collections/greenspark/open-greenspark-estimations-api/)
+- [Greenspark Climate Account Impacts API](https://apis.io/collections/greenspark/open-greenspark-impacts-api/)
+- [Greenspark Climate Account Projects API](https://apis.io/collections/greenspark/open-greenspark-projects-api/)
+- [Greenspark Climate Account Reports API](https://apis.io/collections/greenspark/open-greenspark-reports-api/)
+- [Greenspark Climate Account Widgets API](https://apis.io/collections/greenspark/open-greenspark-widgets-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Greenspark Openapi Overlay](https://apis.io/overlays/greenspark/greenspark-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Greenspark Authentication](https://apis.io/security/greenspark/greenspark-authentication/)
+- [Greenspark Domain Security](https://apis.io/security/greenspark/greenspark-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.getgreenspark.com/)
+- [Documentation](https://docs.getgreenspark.com/docs)
+- [API reference](https://docs.getgreenspark.com/reference)
+- [Pricing](https://www.getgreenspark.com/pricing/business)
+- [Sign up](https://app.getgreenspark.com/login)
+- [Terms of service](https://www.getgreenspark.com/utility/legal)
+- [Privacy policy](https://app.privasee.io/privacy-portal/61a7587adcff740014657fbf)
+- [GitHub](https://github.com/getgreenspark)
+
+## API Evangelist rating
+
+**Kin Score 40.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.7 |
+| Contract quality | 53.2 |
+| Contract governance | 4.5 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 51.2 |
+| Access clarity | 31.6 |
+
+**Agent readiness 26.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/greenspark/](https://apis.io/providers/greenspark/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Greenspark: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/greenspark/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
